@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+
+    @Styles.Render("~/Content/css")
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet">
+
+</head>
+<body>
+
+    <section id="logo-container">
+        <i class="fa fa-envira" aria-hidden="true"> Cupid</i>
+        <h2>Some random text goes here</h2>
+    </section>
+
+    @RenderBody()
+
+
+
+    <footer id="footer">
+        <div>
+            <h5>За нас</h5>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+            consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
+            cillum dolore eu fugiat nulla pariatur.
+        </div>
+        <div>
+            <h5>Бюлетин</h5>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
+            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
+            <form method="post" id="subscribe-to-bulletin-form">
+                <input type="email">
+                <a href="#" class="blue-btn">Запиши</a>
+            </form>
+        </div>
+        <div>
+            <h5>Информация</h5>
+            <nav>
+                <ol>
+                    <li><a href="#">Начало</a></li>
+                    <li><a href="#">Галерия</a></li>
+                    <li><a href="#">За нас</a></li>
+                    <li><a href="#">Контакти</a></li>
+                </ol>
+            </nav>
+        </div>
+        <div>
+            <h5>Тагове</h5>
+            <ul>
+                <li><a href="#">София</a></li>
+                <li><a href="#">Рим</a></li>
+                <li><a href="#">Париж</a></li>
+                <li><a href="#">Берлин</a></li>
+                <li><a href="#">Лондон</a></li>
+                <li><a href="#">Мадрид</a></li>
+                <li><a href="#">Ню Йорк</a></li>
+                <li><a href="#">Виена</a></li>
+                <li><a href="#">Токио</a></li>
+                <li><a href="#">Прага</a></li>
+                <li><a href="#">Истанбул</a></li>
+                <li><a href="#">Вашингтон</a></li>
+                <li><a href="#">Манчестър</a></li>
+            </ul>
+        </div>
+    </footer>
+
+    @Scripts.Render("~/bundles/babylon")
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/touchcarousel")
+    @Scripts.Render("~/bundles/scripts")
+    @RenderSection("scripts", required: false)
+
+
+</body>
+</html>

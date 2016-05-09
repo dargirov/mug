@@ -1,0 +1,53 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@Html.Partial("_CanvasPartial")
+@Html.Partial("_MenuPartial")
+
+<section id="about-us-summary" class="site-section">
+    <h2>За нас</h2>
+    <h4>Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorp</h4>
+    <div>
+        <span>Ceonsequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptaum zzelenit augue duis dolore te feugait nulla facilisi. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem vestigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum.</span>
+        <span>Ceonsequat, vel illum dolore eu feugiat nulla facilisis at vero eros et accumsan et iusto odio dignissim qui blandit praesent luptaum zzelenit augue duis dolore te feugait nulla facilisi. Typi non habent claritatem insitam; est usus legentis in iis qui facit eorum claritatem vestigationes demonstraverunt lectores legere me lius quod ii legunt saepius. Claritas est etiam processus dynamicus, qui sequitur mutationem consuetudium lectorum.</span>
+    </div>
+</section>
+
+<section id="recommended-products">
+    <div class="site-section">
+        <h2>Препоръчани продукти</h2>
+        <div class="touchcarousel">
+            <div class="touchcarousel-wrapper">
+                <ul class="touchcarousel-container">
+                    @for (int i = 0; i < 15; i++)
+                    {
+                    <li class="touchcarousel-item" style="width: 250px;">
+                        <img src="~/Content/images/cup1.jpg">
+                        <strong>Some random text <?php echo $i; ?></strong>
+                        <a href="#">Виж повече</a>
+                    </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section scripts {
+    <script>
+	    $(document).ready(function(){
+
+		    var scene = Scene;
+		    scene.init();
+
+		    var mug1 = Mug;
+		    mug1.init('lqlq', {x: 0, height: 2, z: 0}, scene.getScene());
+		    mug1.create();
+
+		    var cart = Cart;
+		    cart.init({ selector: 'canvas-container-right', mug: mug1});
+
+	    });
+    </script>
+}

@@ -1,4 +1,6 @@
-﻿using System;
+﻿using MugStore.Data;
+using MugStore.Data.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,6 +12,21 @@ namespace MugStore.Web.Controllers
     {
         public ActionResult Index()
         {
+            using (var db = new ApplicationDbContext())
+            {
+                db.Images.Add(new Image() { Name = "sadfasfadsf" });
+                db.SaveChanges();
+
+                foreach (var i in db.Images)
+                {
+                    this.Response.AddHeader(i.Name, i.Name);
+                }
+            }
+            //var city = new City();
+            //city.Name = "Asgr";
+            //var c = new ApplicationDbContext();
+            //c.Cities.Add(city);
+            //c.SaveChanges();
             return View();
         }
 

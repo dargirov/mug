@@ -1,5 +1,6 @@
 ﻿using MugStore.Data;
 using MugStore.Data.Models;
+using MugStore.Services.Data;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,25 +9,24 @@ using System.Web.Mvc;
 
 namespace MugStore.Web.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
+        private readonly IOrdersService orders;
+
+        public HomeController(IOrdersService orders)
+        {
+            this.orders = orders;
+        }
+
         public ActionResult Index()
         {
-            using (var db = new ApplicationDbContext())
+            var order = new Order()
             {
-                db.Images.Add(new Image() { Name = "sadfasfadsf" });
-                db.SaveChanges();
+                Quantity = 1
+            };
 
-                foreach (var i in db.Images)
-                {
-                    this.Response.AddHeader(i.Name, i.Name);
-                }
-            }
-            //var city = new City();
-            //city.Name = "Asgr";
-            //var c = new ApplicationDbContext();
-            //c.Cities.Add(city);
-            //c.SaveChanges();
+            this.orders.Create(order);
+
             return View();
         }
 

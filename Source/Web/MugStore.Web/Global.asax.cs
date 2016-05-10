@@ -6,6 +6,7 @@
     using System.Web.Routing;
     using MugStore.Data;
     using MugStore.Data.Migrations;
+    using MugStore.Web.App_Start;
 
     public class MvcApplication : System.Web.HttpApplication
     {
@@ -15,6 +16,7 @@
             ViewEngines.Engines.Add(new RazorViewEngine());
 
             Database.SetInitializer(new MigrateDatabaseToLatestVersion<ApplicationDbContext, Configuration>());
+            AutofacConfig.RegisterAutofac();
 
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

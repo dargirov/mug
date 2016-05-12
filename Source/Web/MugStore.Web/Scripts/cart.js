@@ -127,7 +127,8 @@ var Cart = (function($) {
 		// final button for creating order
 		$('#create-order-btn').on('click', createOrderBtnClick);
 		function createOrderBtnClick(e) {
-			e.preventDefault();
+		    e.preventDefault();
+		    var url = $(this).data('url');
 			var count = _mug.getImagesCount();
 			var data = {};
 			data.images = [];
@@ -176,7 +177,10 @@ var Cart = (function($) {
 			}
 
 			if (!invalidInput) {
-				console.log(JSON.stringify(data), data);				
+			    $.ajax({ method: "POST", url: url, data: { data: JSON.stringify(data) } })
+                    .done(function (msg) {
+                        alert("Data Saved: " + msg);
+                    });
 			}
 		}
 

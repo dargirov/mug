@@ -1,6 +1,6 @@
 ﻿namespace MugStore.Data.Models
 {
-    using MugStore.Data.Common.Models;
+    using Common.Models;
 
     public class City : BaseModel<int>
     {

@@ -1,18 +1,12 @@
-﻿using MugStore.Data;
-using MugStore.Data.Models;
-using MugStore.Services.Data;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Net;
-using System.Web;
-using System.Web.Helpers;
-using System.Web.Mvc;
-using MugStore.Common;
-
-namespace MugStore.Web.Controllers
+﻿namespace MugStore.Web.Controllers
 {
+    using System;
+    using System.IO;
+    using System.Web.Mvc;
+    using Common;
+    using Data.Models;
+    using Services.Data;
+
     public class HomeController : BaseController
     {
         private readonly IOrdersService orders;
@@ -38,21 +32,28 @@ namespace MugStore.Web.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            this.ViewBag.Message = "Your application description page.";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            this.ViewBag.Message = "Your contact page.";
+
 
             return View();
         }
 
+        public ActionResult Order()
+        {
+
+            return null;
+        }
+
         public ActionResult Upload()
         {
-            var rootPath = Server.MapPath(GlobalConstants.PathToUploadImages);
+            var rootPath = this.Server.MapPath(GlobalConstants.PathToUploadImages);
             var datePath = string.Format(@"{0}\{1}\", DateTime.Today.Year, DateTime.Today.Month);
             var path = rootPath + datePath;
             
@@ -93,6 +94,7 @@ namespace MugStore.Web.Controllers
             var image = new Image()
             {
                 Name = fileName,
+                OriginalName = file.FileName,
                 ContentType = file.ContentType,
                 Path = datePath,
                 Width = imageData.Width,
@@ -101,7 +103,7 @@ namespace MugStore.Web.Controllers
             };
 
             order.Images.Add(image);
-            this.images.Add(image);         
+            this.images.Add(image);
 
             var result = new
             {

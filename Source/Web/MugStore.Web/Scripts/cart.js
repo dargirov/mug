@@ -40,7 +40,7 @@ var Cart = (function($) {
 	}
 
 	function uploadFile(data) {
-		_mug.addImage({url: '/mugs/files/' + data.filename, width: data.width, height: data.height, dpi: data.dpi});
+		_mug.addImage({url: '/Image/' + data.filename, width: data.width, height: data.height, dpi: data.dpi});
 		$('#customization-controls-container').removeClass('hidden');
 		var $controls = $($('.move-controls.hidden')[0]);
 		$controls.removeClass('hidden');

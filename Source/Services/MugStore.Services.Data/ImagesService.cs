@@ -1,5 +1,6 @@
 ﻿namespace MugStore.Services.Data
 {
+    using System.Linq;
     using MugStore.Data.Common;
     using MugStore.Data.Models;
 
@@ -16,6 +17,12 @@
         {
             this.images.Add(image);
             this.images.Save();
+        }
+
+
+        public Image Get(string name)
+        {
+            return this.images.All().Where(i => i.Name == name).FirstOrDefault();
         }
     }
 }

@@ -55,27 +55,45 @@ namespace MugStore.Web.Controllers
             var rootPath = Server.MapPath(GlobalConstants.PathToUploadImages);
             var datePath = string.Format(@"{0}\{1}\", DateTime.Today.Year, DateTime.Today.Month);
             var path = rootPath + datePath;
+            
 
             var file = this.Request.Files[0];
-            Stream stream = file.InputStream;
-            System.Drawing.Image imageData = System.Drawing.Image.FromStream(stream);
+            var type = file.ContentType.Split('/');
+            var fileName = Guid.NewGuid().ToString();
 
+            Stream stream = file.InputStream;
+            System.Drawing.Image imageData;
+            try
+            {
+                imageData = System.Drawing.Image.FromStream(stream);
+            }
+            catch (ArgumentException ex)
+            {
+                return this.Json(new 
+                { 
+                    status = "error",
+                    message = ex.Message
+                });
+            }
+            
             if (!Directory.Exists(path))
             {
                 Directory.CreateDirectory(path);
             }
 
-            file.SaveAs(path + file.FileName);
+            file.SaveAs(path + fileName + "." + type[1]);
 
             var order = this.GetOrderFromSession();
             if (order == null)
             {
                 order = this.CreateOrder();
+                this.Session["orderId"] = order.Id;
             }
 
             var image = new Image()
             {
-                Name = file.FileName,
+                Name = fileName,
+                ContentType = file.ContentType,
                 Path = datePath,
                 Width = imageData.Width,
                 Height = imageData.Height,
@@ -87,7 +105,8 @@ namespace MugStore.Web.Controllers
 
             var result = new
             {
-                filename = "zack.jpg",
+                status = "ok",
+                filename = fileName,
                 width = imageData.Width,
                 height = imageData.Height,
                 dpi = (int)Math.Ceiling(imageData.HorizontalResolution)

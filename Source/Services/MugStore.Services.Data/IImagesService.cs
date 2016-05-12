@@ -5,5 +5,7 @@
     public interface IImagesService
     {
         void Add(Image image);
+
+        Image Get(string name);
     }
 }

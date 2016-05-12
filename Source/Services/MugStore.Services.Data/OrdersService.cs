@@ -17,5 +17,10 @@
             this.orders.Add(order);
             this.orders.Save();
         }
+
+        public Order Get(int id)
+        {
+            return this.orders.GetById(id);
+        }
     }
 }

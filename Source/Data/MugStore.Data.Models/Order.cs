@@ -17,7 +17,7 @@
 
         public PaymentMethod? PaymentMethod { get; set; }
 
-        public int DeliveryInfoId { get; set; }
+        public int? DeliveryInfoId { get; set; }
 
         public virtual DeliveryInfo DeliveryInfo { get; set; }
     }

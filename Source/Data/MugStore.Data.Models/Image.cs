@@ -18,5 +18,9 @@
         public double Rotation { get; set; }
 
         public double Y { get; set; }
+
+        public int? OrderId { get; set; }
+
+        public virtual Order Order { get; set; }
     }
 }

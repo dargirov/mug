@@ -47,6 +47,9 @@
             builder.RegisterType<OrdersService>()
                 .As<IOrdersService>();
 
+            builder.RegisterType<ImagesService>()
+                .As<IImagesService>();
+
             builder.RegisterGeneric(typeof(DbRepository<>))
                .As(typeof(IDbRepository<>))
                .InstancePerRequest();

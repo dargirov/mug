@@ -21,6 +21,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{9A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MugStore.Services.Data", "Services\MugStore.Services.Data\MugStore.Services.Data.csproj", "{8B67B092-A0FF-4A6F-983D-7324AF304706}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MugStore.Common", "MugStore.Common\MugStore.Common.csproj", "{E8734C1D-1A90-4C40-9D19-5D400555FA6C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{8B67B092-A0FF-4A6F-983D-7324AF304706}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8B67B092-A0FF-4A6F-983D-7324AF304706}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8B67B092-A0FF-4A6F-983D-7324AF304706}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E8734C1D-1A90-4C40-9D19-5D400555FA6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E8734C1D-1A90-4C40-9D19-5D400555FA6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E8734C1D-1A90-4C40-9D19-5D400555FA6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E8734C1D-1A90-4C40-9D19-5D400555FA6C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -60,5 +66,6 @@ Global
 		{C53C19B4-129C-4F5A-9DB0-4E090B26175F} = {DC384607-946D-4D86-A786-CCAACC9CEFDB}
 		{9AEEA07D-6E72-4A2D-BBBD-1DC30389F76D} = {CE9FAD52-6B5C-41D8-ADEC-FBBC8ACC12EA}
 		{8B67B092-A0FF-4A6F-983D-7324AF304706} = {9AEEA07D-6E72-4A2D-BBBD-1DC30389F76D}
+		{E8734C1D-1A90-4C40-9D19-5D400555FA6C} = {CE9FAD52-6B5C-41D8-ADEC-FBBC8ACC12EA}
 	EndGlobalSection
 EndGlobal

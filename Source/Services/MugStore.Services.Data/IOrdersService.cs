@@ -5,5 +5,7 @@
     public interface IOrdersService
     {
         void Create(Order order);
+
+        Order Get(int id);
     }
 }

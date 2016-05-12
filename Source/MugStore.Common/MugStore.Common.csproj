@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8B67B092-A0FF-4A6F-983D-7324AF304706}</ProjectGuid>
+    <ProjectGuid>{E8734C1D-1A90-4C40-9D19-5D400555FA6C}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MugStore.Services.Data</RootNamespace>
-    <AssemblyName>MugStore.Services.Data</AssemblyName>
+    <RootNamespace>MugStore.Common</RootNamespace>
+    <AssemblyName>MugStore.Common</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -39,21 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IImagesService.cs" />
-    <Compile Include="ImagesService.cs" />
-    <Compile Include="IOrdersService.cs" />
-    <Compile Include="OrdersService.cs" />
+    <Compile Include="GlobalConstants.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Data\MugStore.Data.Common\MugStore.Data.Common.csproj">
-      <Project>{f4f37be5-7d17-468e-9632-d35121fb9086}</Project>
-      <Name>MugStore.Data.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Data\MugStore.Data.Models\MugStore.Data.Models.csproj">
-      <Project>{e799d518-1b2b-451d-beda-a197966d078e}</Project>
-      <Name>MugStore.Data.Models</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

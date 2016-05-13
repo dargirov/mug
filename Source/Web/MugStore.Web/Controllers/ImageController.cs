@@ -4,8 +4,8 @@
     using System.IO;
     using System.Web.Mvc;
     using Common;
+    using Data.Models;
     using Services.Data;
-    using MugStore.Data.Models;
 
     public class ImageController : BaseController
     {
@@ -27,7 +27,7 @@
             var type = image.ContentType.Split('/');
             var dir = this.Server.MapPath(GlobalConstants.PathToUploadImages + image.Path);
             var path = Path.Combine(dir, image.Name + "." + type[1]);
-            return base.File(path, image.ContentType);
+            return this.File(path, image.ContentType);
         }
 
         public ActionResult Upload()
@@ -73,21 +73,23 @@
                 var result = new
                 {
                     status = "ok",
-                    filename = fileName,
-                    width = imageData.Width,
-                    height = imageData.Height,
-                    dpi = (int)Math.Ceiling(imageData.HorizontalResolution)
+                    filename = image.Name,
+                    width = image.Width,
+                    height = image.Height,
+                    dpi = image.Dpi
                 };
 
-                return this.Json(result);
+                return this.Json(result, JsonRequestBehavior.AllowGet);
             }
             catch (Exception ex)
             {
-                return this.Json(new
+                var result = new
                 {
                     status = "error",
                     message = ex.Message
-                });
+                };
+
+                return this.Json(result, JsonRequestBehavior.AllowGet);
             }
         }
     }

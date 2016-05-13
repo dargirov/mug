@@ -137,7 +137,7 @@ var Cart = (function($) {
 			}
 
 			data.quantity = $('#quantity-range').val();
-			data.price = $('#single-price').data('price');
+			//data.price = $('#single-price').data('price');
 			data.deliveryType = $('#delivery-type').val();
 			data.names = $('#names-field').val();
 			data.phone = $('#phone-field').val();

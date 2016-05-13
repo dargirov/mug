@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.31101.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25123.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{CE9FAD52-6B5C-41D8-ADEC-FBBC8ACC12EA}"
 EndProject
@@ -22,6 +22,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MugStore.Services.Data", "Services\MugStore.Services.Data\MugStore.Services.Data.csproj", "{8B67B092-A0FF-4A6F-983D-7324AF304706}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MugStore.Common", "MugStore.Common\MugStore.Common.csproj", "{E8734C1D-1A90-4C40-9D19-5D400555FA6C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MugStore.Web.Infrastructure", "Web\MugStore.Web.Infrastructure\MugStore.Web.Infrastructure.csproj", "{55B03FCF-855F-42AB-9CFB-9239D6663CF6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -53,6 +55,10 @@ Global
 		{E8734C1D-1A90-4C40-9D19-5D400555FA6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E8734C1D-1A90-4C40-9D19-5D400555FA6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E8734C1D-1A90-4C40-9D19-5D400555FA6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55B03FCF-855F-42AB-9CFB-9239D6663CF6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55B03FCF-855F-42AB-9CFB-9239D6663CF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55B03FCF-855F-42AB-9CFB-9239D6663CF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55B03FCF-855F-42AB-9CFB-9239D6663CF6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -67,5 +73,6 @@ Global
 		{9AEEA07D-6E72-4A2D-BBBD-1DC30389F76D} = {CE9FAD52-6B5C-41D8-ADEC-FBBC8ACC12EA}
 		{8B67B092-A0FF-4A6F-983D-7324AF304706} = {9AEEA07D-6E72-4A2D-BBBD-1DC30389F76D}
 		{E8734C1D-1A90-4C40-9D19-5D400555FA6C} = {CE9FAD52-6B5C-41D8-ADEC-FBBC8ACC12EA}
+		{55B03FCF-855F-42AB-9CFB-9239D6663CF6} = {3EF6F32E-B961-44E6-80DC-8335A9244E91}
 	EndGlobalSection
 EndGlobal

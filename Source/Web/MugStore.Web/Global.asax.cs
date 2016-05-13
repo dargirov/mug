@@ -1,12 +1,14 @@
 ﻿namespace MugStore.Web
 {
     using System.Data.Entity;
+    using System.Reflection;
     using System.Web.Mvc;
     using System.Web.Optimization;
     using System.Web.Routing;
-    using MugStore.Data;
-    using MugStore.Data.Migrations;
-    using MugStore.Web.App_Start;
+    using App_Start;
+    using Data;
+    using Data.Migrations;
+    using Infrastructure.Mapping;
 
     public class MvcApplication : System.Web.HttpApplication
     {
@@ -22,6 +24,9 @@
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            var autoMapperConfig = new AutoMapperConfig();
+            autoMapperConfig.Execute(Assembly.GetExecutingAssembly());
         }
     }
 }

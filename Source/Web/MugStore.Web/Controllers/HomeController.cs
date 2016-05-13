@@ -1,12 +1,8 @@
 ﻿namespace MugStore.Web.Controllers
 {
-    using System;
-    using System.IO;
     using System.Web.Mvc;
-    using Common;
-    using Data.Models;
     using Services.Data;
-
+    using ViewModels.Home;
     public class HomeController : BaseController
     {
         private readonly IOrdersService orders;
@@ -30,28 +26,15 @@
             return View();
         }
 
-        public ActionResult About()
+        public ActionResult Order(OrderViewModel model)
         {
-            this.ViewBag.Message = "Your application description page.";
+            if (!this.ModelState.IsValid)
+            {
+                return this.Json(new { }, JsonRequestBehavior.AllowGet);
+            }
 
-            return View();
+            return this.Json(new { }, JsonRequestBehavior.AllowGet);
         }
-
-        public ActionResult Contact()
-        {
-            this.ViewBag.Message = "Your contact page.";
-
-
-            return View();
-        }
-
-        public ActionResult Order()
-        {
-
-            return null;
-        }
-
-        
 
         //private Order CreateOrder()
         //{

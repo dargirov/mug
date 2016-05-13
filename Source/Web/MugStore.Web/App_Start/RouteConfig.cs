@@ -15,7 +15,7 @@ namespace MugStore.Web
 
             routes.MapRoute(
                 name: "Image",
-                url: "Image/{id}",
+                url: "Download/{id}",
                 defaults: new { controller = "Image", action = "Index" }
             );
 

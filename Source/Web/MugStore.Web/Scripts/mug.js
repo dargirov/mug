@@ -89,6 +89,7 @@ var Mug = (function(BABYLON) {
 	}
 
 	function addImage(imageData) {
+	    var name = imageData.name;
 		var url = imageData.url;
 		var width = imageData.width;
 		var height = imageData.height;
@@ -116,7 +117,7 @@ var Mug = (function(BABYLON) {
 		var tess = 60;
 		var step = pi2 / tess;
 		var imageCountCoef = _images.length * 0.005;
-		console.log(imageCountCoef);
+
 		for (var i = 2; i < pi2 / 1.2; i += step) {
 			path1.push(new BABYLON.Vector3(-Math.cos(i) * (1.81 + imageCountCoef), h / 2, -Math.sin(i) * (1.81 + imageCountCoef)));
 			path2.push(new BABYLON.Vector3(-Math.cos(i) * (1.81 + imageCountCoef), -h / 2, -Math.sin(i) * (1.81 + imageCountCoef)));
@@ -166,7 +167,7 @@ var Mug = (function(BABYLON) {
 				ribbon.rotation.y -= 0.1;
 			},
 			getInfo: function() {
-				return {name: url, y: ribbon.position.y, rotation: ribbon.rotation.y};
+			    return { name: name, y: ribbon.position.y, rotation: ribbon.rotation.y };
 			}
 		};
 

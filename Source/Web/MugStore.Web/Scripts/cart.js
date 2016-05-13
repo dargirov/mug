@@ -24,7 +24,7 @@ var Cart = (function($) {
 		    var data = new FormData();
 		    data.append('upload_file', $self.prop('files')[0]);
 		    // append other variables to data if you want: data.append('field_name_x', field_value_x);
-
+		    
 		    $.ajax({
 		        type: 'POST',               
 		        processData: false, // important
@@ -40,7 +40,7 @@ var Cart = (function($) {
 	}
 
 	function uploadFile(data) {
-		_mug.addImage({url: '/Image/' + data.filename, width: data.width, height: data.height, dpi: data.dpi});
+		_mug.addImage({ name: data.filename, url: '/Download/' + data.filename, width: data.width, height: data.height, dpi: data.dpi});
 		$('#customization-controls-container').removeClass('hidden');
 		var $controls = $($('.move-controls.hidden')[0]);
 		$controls.removeClass('hidden');

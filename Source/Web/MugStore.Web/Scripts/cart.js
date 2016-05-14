@@ -136,7 +136,7 @@ var Cart = (function($) {
 				data.images.push(_mug.getImage(i).getInfo());
 			}
 
-			data.quantity = $('#quantity-range').val();
+			data.quantity = parseInt($('#quantity-range').val());
 			//data.price = $('#single-price').data('price');
 			data.deliveryType = $('#delivery-type').val();
 			data.names = $('#names-field').val();
@@ -177,7 +177,7 @@ var Cart = (function($) {
 			}
 
 			if (!invalidInput) {
-			    $.ajax({ method: "POST", url: url, data: JSON.stringify(data) })
+			    $.ajax({ method: "POST", url: url, data: JSON.stringify(data), contentType: "application/json; charset=utf-8" })
                     .done(function (msg) {
                         alert("Data Saved: " + msg);
                     });

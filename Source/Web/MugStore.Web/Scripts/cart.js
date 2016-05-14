@@ -177,7 +177,7 @@ var Cart = (function($) {
 			}
 
 			if (!invalidInput) {
-			    $.ajax({ method: "POST", url: url, data: { data: JSON.stringify(data) } })
+			    $.ajax({ method: "POST", url: url, data: JSON.stringify(data) })
                     .done(function (msg) {
                         alert("Data Saved: " + msg);
                     });

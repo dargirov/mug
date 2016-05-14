@@ -2,7 +2,7 @@
 {
     using System.Web.Mvc;
     using Services.Data;
-    using ViewModels.Home;
+
     public class HomeController : BaseController
     {
         private readonly IOrdersService orders;
@@ -26,15 +26,7 @@
             return View();
         }
 
-        public ActionResult Order(OrderViewModel model)
-        {
-            if (!this.ModelState.IsValid)
-            {
-                return this.Json(new { }, JsonRequestBehavior.AllowGet);
-            }
-
-            return this.Json(new { }, JsonRequestBehavior.AllowGet);
-        }
+        
 
         //private Order CreateOrder()
         //{

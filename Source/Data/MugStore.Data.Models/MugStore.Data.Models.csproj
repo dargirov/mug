@@ -60,6 +60,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\MugStore.Common\MugStore.Common.csproj">
+      <Project>{e8734c1d-1a90-4c40-9d19-5d400555fa6c}</Project>
+      <Name>MugStore.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\MugStore.Data.Common\MugStore.Data.Common.csproj">
       <Project>{f4f37be5-7d17-468e-9632-d35121fb9086}</Project>
       <Name>MugStore.Data.Common</Name>

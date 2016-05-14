@@ -138,40 +138,41 @@ var Cart = (function($) {
 
 			data.quantity = parseInt($('#quantity-range').val());
 			//data.price = $('#single-price').data('price');
-			data.deliveryType = $('#delivery-type').val();
-			data.names = $('#names-field').val();
-			data.phone = $('#phone-field').val();
-			data.city = $('#city-dd').val();
-			data.address = $('#address-field').val();
-			data.comment = $('#comment-field').val();
+			data.paymentMethod = $('#payment-method').val();
+			data.deliveryInfo = {};
+			data.deliveryInfo.fullName = $('#names-field').val();
+			data.deliveryInfo.phone = $('#phone-field').val();
+			data.deliveryInfo.city = $('#city-dd').val();
+			data.deliveryInfo.address = $('#address-field').val();
+			data.deliveryInfo.comment = $('#comment-field').val();
 
 			var invalidInput = false;
-			if (data.names.length === 0) {
+			if (data.deliveryInfo.fullName.length === 0) {
 				$('#names-field').addClass('invalid').val('Въведи име и фамилия');
 				invalidInput = true;
 			}
 
-			if (data.names.length > 0 && data.names.length < 4) {
+			if (data.deliveryInfo.fullName.length > 0 && data.deliveryInfo.fullName.length < 4) {
 				$('#names-field').addClass('invalid').val('Въведи валидно име и фамилия');
 				invalidInput = true;
 			}
 
-			if (data.phone.length === 0) {
+			if (data.deliveryInfo.phone.length === 0) {
 				$('#phone-field').addClass('invalid').val('Въведи телефон за контакт');
 				invalidInput = true;
 			}
 
-			if (data.phone.length > 0 && data.phone.length < 5) {
+			if (data.deliveryInfo.phone.length > 0 && data.deliveryInfo.phone.length < 5) {
 				$('#phone-field').addClass('invalid').val('Въведи валиден телефон за контакт');
 				invalidInput = true;
 			}
 
-			if (data.address.length === 0) {
+			if (data.deliveryInfo.address.length === 0) {
 				$('#address-field').addClass('invalid').val('Въведи адрес за доставка');
 				invalidInput = true;
 			}
 
-			if (data.address.length > 0 && data.address.length < 8) {
+			if (data.deliveryInfo.address.length > 0 && data.deliveryInfo.address.length < 8) {
 				$('#address-field').addClass('invalid').val('Въведи валиден адрес за доставка');
 				invalidInput = true;
 			}

@@ -142,7 +142,7 @@ var Cart = (function($) {
 			data.deliveryInfo = {};
 			data.deliveryInfo.fullName = $('#names-field').val();
 			data.deliveryInfo.phone = $('#phone-field').val();
-			data.deliveryInfo.city = $('#city-dd').val();
+			data.deliveryInfo.cityId = $('#city-dd').val();
 			data.deliveryInfo.address = $('#address-field').val();
 			data.deliveryInfo.comment = $('#comment-field').val();
 

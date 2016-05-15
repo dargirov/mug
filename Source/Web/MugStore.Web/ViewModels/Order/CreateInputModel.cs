@@ -6,7 +6,7 @@
     using Infrastructure.Mapping;
     using MugStore.Common;
 
-    public class CreateViewModel /*: IMapFrom<Order>, IHaveCustomMappings*/
+    public class CreateInputModel /*: IMapFrom<Order>, IHaveCustomMappings*/
     {
         [Required]
         [Range(1, GlobalConstants.MaxOrderQuantity)]

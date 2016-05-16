@@ -33,7 +33,6 @@ namespace MugStore.Data.Migrations
                         Dpi = c.Int(nullable: false),
                         Rotation = c.Double(nullable: false),
                         Y = c.Double(nullable: false),
-                        sdasdf = c.Int(nullable: false),
                         CreatedOn = c.DateTime(nullable: false),
                         ModifiedOn = c.DateTime(),
                         IsDeleted = c.Boolean(nullable: false),

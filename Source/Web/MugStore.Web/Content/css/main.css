@@ -557,6 +557,28 @@ input.invalid, textarea.invalid {
 	padding-left: 30px;
 }
 
+#city-dd, #city-dd option {
+    text-transform: capitalize;
+}
+
+#step4 ul {
+    font-family: Tahoma;
+    font-size: 15px;
+    color: #333;
+}
+
+#step4 ul span {
+    font-weight: bold;
+}
+
+#step4 ul li {
+    margin: 10px 0;
+}
+
+#step4-price {
+    font-size: 19px;
+}
+
 @media all and (max-width: 1000px) {
 	#header > div {
 		width: 100%;

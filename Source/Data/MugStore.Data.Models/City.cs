@@ -10,7 +10,9 @@
         public string Name { get; set; }
 
         [Required]
-        [MaxLength(10)]
-        public string PostCode { get; set; }
+        public int PostCode { get; set; }
+
+        [Required]
+        public bool Highlight { get; set; }
     }
 }

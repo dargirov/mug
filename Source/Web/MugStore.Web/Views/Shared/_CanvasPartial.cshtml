@@ -79,15 +79,25 @@
             <input type="text" name="names" id="names-field" placeholder="Име и фамилия">
             <input type="text" name="phone" id="phone-field" placeholder="Тел. за контакт">
             <select name="city" id="city-dd">
-                <option value="1">София</option>
-                <option value="2">Пловдив</option>
-                <option value="3">Асеновград</option>
+                @foreach (var city in ViewBag.Cities)
+                {
+                    <option value="@city.Id">@city.Name.ToLower() (@city.PostCode)</option>
+                }
             </select>
             <textarea name="address" id="address-field" placeholder="Адрес за доставка"></textarea>
             <textarea name="comment" id="comment-field" placeholder="Коментар / забележка (незадължително)"></textarea>
 
             <a href="#" data-url="@Url.Action("Create", "Order")" class="blue-btn" id="create-order-btn">Поръчай</a>
             <i class="fa fa-long-arrow-left order-back" data-to-step="2" aria-hidden="true"></i>
+        </div>
+
+        <div id="step4" class="hidden">
+            <strong id="step4-acronym">Поръчка №<span></span></strong>
+            <ul>
+                <li id="step4-payment-method">Метод на плащане: <span></span></li>
+                <li id="step4-address">Адрес за доставка: <span></span></li>
+                <li id="step4-price">Крайна цена: <span></span></li>
+            </ul>
         </div>
     </div>
 </section>

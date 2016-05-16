@@ -7,5 +7,7 @@
         void Create(Order order);
 
         Order Get(int id);
+
+        Order Get(string acronym);
     }
 }

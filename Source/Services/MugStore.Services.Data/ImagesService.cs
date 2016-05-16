@@ -24,5 +24,11 @@
         {
             return this.images.All().Where(i => i.Name == name).FirstOrDefault();
         }
+
+
+        public void Save()
+        {
+            this.images.Save();
+        }
     }
 }

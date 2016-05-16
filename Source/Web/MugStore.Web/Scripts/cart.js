@@ -179,8 +179,15 @@ var Cart = (function($) {
 
 			if (!invalidInput) {
 			    $.ajax({ method: "POST", url: url, data: JSON.stringify(data), contentType: "application/json; charset=utf-8" })
-                    .done(function (msg) {
-                        alert("Data Saved: " + msg);
+                    .done(function (data) {
+                        var paymentMethods = ['', 'Наложен платеж', 'Банков превод'];
+                        if (data.status === 'success') {
+                            $('#step4-acronym').find('span').html(data.acronym);
+                            $('#step4-payment-method').find('span').html(paymentMethods[data.paymentMethod]);
+                            $('#step4-address').find('span').html(data.fullName + '<br>' + data.address + '<br>' + data.phone);
+                            $('#step4-price').find('span').html(data.price + 'лв');
+                            gotoStep4();
+                        }
                     });
 			}
 		}
@@ -211,6 +218,13 @@ var Cart = (function($) {
 		$('#step1').addClass('hidden');
 		$('#step2').addClass('hidden');
 		$('#step3').removeClass('hidden');
+	}
+
+	var gotoStep4 = function () {
+	    $('#step1').addClass('hidden');
+	    $('#step2').addClass('hidden');
+	    $('#step3').addClass('hidden');
+	    $('#step4').removeClass('hidden');
 	}
 
 	function init(options) {

@@ -1,27 +1,24 @@
 ﻿namespace MugStore.Web.Controllers
 {
+    using System.Linq;
     using System.Web.Mvc;
     using Services.Data;
+    using MugStore.Data.Models;
+    using System.Collections.Generic;
 
     public class HomeController : BaseController
     {
-        private readonly IOrdersService orders;
-        private readonly IImagesService images;
+        private readonly ICitiesService cities;
 
-        public HomeController(IOrdersService orders, IImagesService images)
+        public HomeController(ICitiesService cities)
         {
-            this.orders = orders;
-            this.images = images;
+            this.cities = cities;
         }
 
         public ActionResult Index()
         {
-            //var order = new Order()
-            //{
-            //    Quantity = 1
-            //};
-
-            //this.orders.Add(order);
+            var cities = this.cities.Get().ToList();
+            ViewBag.Cities = cities;
 
             return View();
         }

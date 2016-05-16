@@ -47,7 +47,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="City.cs" />
+    <Compile Include="ConfirmationStatus.cs" />
     <Compile Include="DeliveryInfo.cs" />
+    <Compile Include="OrderStatus.cs" />
     <Compile Include="PaymentMethod.cs" />
     <Compile Include="Image.cs" />
     <Compile Include="Order.cs" />

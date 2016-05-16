@@ -39,6 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CitiesService.cs" />
+    <Compile Include="ICitiesService.cs" />
     <Compile Include="IImagesService.cs" />
     <Compile Include="ImagesService.cs" />
     <Compile Include="IOrdersService.cs" />

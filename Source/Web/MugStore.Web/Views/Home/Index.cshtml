@@ -2,7 +2,7 @@
     ViewBag.Title = "Home Page";
 }
 
-@Html.Partial("_CanvasPartial")
+@Html.Partial("_CanvasPartial", ViewData["cities"])
 @Html.Partial("_MenuPartial")
 
 <section id="about-us-summary" class="site-section">

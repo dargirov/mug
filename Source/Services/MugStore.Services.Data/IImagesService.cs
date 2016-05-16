@@ -7,5 +7,7 @@
         void Add(Image image);
 
         Image Get(string name);
+
+        void Save();
     }
 }

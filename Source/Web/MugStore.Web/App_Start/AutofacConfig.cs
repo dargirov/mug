@@ -50,6 +50,9 @@
             builder.RegisterType<ImagesService>()
                 .As<IImagesService>();
 
+            builder.RegisterType<CitiesService>()
+                .As<ICitiesService>();
+
             builder.RegisterGeneric(typeof(DbRepository<>))
                .As(typeof(IDbRepository<>))
                .InstancePerRequest();

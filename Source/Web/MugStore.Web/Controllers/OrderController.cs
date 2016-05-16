@@ -2,10 +2,10 @@
 {
     using System;
     using System.Web.Mvc;
-    using MugStore.Data.Models;
-    using MugStore.Services.Data;
+    using Common;
+    using Data.Models;
+    using Services.Data;
     using ViewModels.Order;
-    using MugStore.Common;
 
     public class OrderController : Controller
     {
@@ -64,7 +64,7 @@
                 phone = order.DeliveryInfo.Phone,
                 comment = order.DeliveryInfo.Comment,
                 quantity = order.Quantity,
-                price = order.Quantity * GlobalConstants.SingleMugPrice + GlobalConstants.DeliveryPrice
+                price = (order.Quantity * GlobalConstants.SingleMugPrice) + GlobalConstants.DeliveryPrice
             };
 
             return this.Json(result, JsonRequestBehavior.AllowGet);

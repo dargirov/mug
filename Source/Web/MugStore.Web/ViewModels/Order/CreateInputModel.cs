@@ -2,10 +2,8 @@
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
-    using AutoMapper;
+    using Common;
     using Data.Models;
-    using Infrastructure.Mapping;
-    using MugStore.Common;
 
     public class CreateInputModel
     {

@@ -3,8 +3,6 @@
     using System.Linq;
     using System.Web.Mvc;
     using Services.Data;
-    using MugStore.Data.Models;
-    using System.Collections.Generic;
 
     public class HomeController : BaseController
     {
@@ -18,9 +16,9 @@
         public ActionResult Index()
         {
             var cities = this.cities.Get().ToList();
-            ViewBag.Cities = cities;
+            this.ViewBag.Cities = cities;
 
-            return View();
+            return this.View();
         }
 
         

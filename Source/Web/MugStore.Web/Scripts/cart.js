@@ -183,9 +183,9 @@ var Cart = (function($) {
                         var paymentMethods = ['', 'Наложен платеж', 'Банков превод'];
                         if (data.status === 'success') {
                             $('#step4-acronym').find('span').html(data.acronym);
-                            $('#step4-payment-method').find('span').html(paymentMethods[data.paymentMethod]);
-                            $('#step4-address').find('span').html(data.fullName + '<br>' + data.address + '<br>' + data.phone);
-                            $('#step4-price').find('span').html(data.price + 'лв');
+                            $('#step4-payment-method').html(paymentMethods[data.paymentMethod]);
+                            $('#step4-address').html(data.fullName + '<br>' + data.address + '<br>' + data.phone);
+                            $('#step4-price').html(data.price + 'лв');
                             gotoStep4();
                         }
                     });

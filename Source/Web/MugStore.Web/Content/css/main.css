@@ -561,22 +561,23 @@ input.invalid, textarea.invalid {
     text-transform: capitalize;
 }
 
-#step4 ul {
+#step4 dl {
     font-family: Tahoma;
     font-size: 15px;
     color: #333;
 }
 
-#step4 ul span {
+#step4 dd {
     font-weight: bold;
 }
 
-#step4 ul li {
-    margin: 10px 0;
+#step4 dt {
+    margin-top: 15px;
 }
 
-#step4-price {
-    font-size: 19px;
+#step4 dt:last-of-type, #step4 dd:last-of-type {
+    display: inline-block;
+    font-size: 21px;
 }
 
 @media all and (max-width: 1000px) {

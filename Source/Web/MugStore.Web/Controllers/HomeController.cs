@@ -3,6 +3,8 @@
     using System.Linq;
     using System.Web.Mvc;
     using Services.Data;
+    using System.Net.Mail;
+    using System.Net;
 
     public class HomeController : BaseController
     {
@@ -21,25 +23,29 @@
             return this.View();
         }
 
-        
+        public ActionResult Contacts()
+        {
+            var message = new MailMessage();
+            message.To.Add(new MailAddress("shinobi.away@gmail.com"));
+            message.From = new MailAddress("shinobi@mail.bg");
+            message.Subject = "Test mail";
+            message.Body = "emi de da znam";
+            message.IsBodyHtml = true;
+            using (var smtp = new SmtpClient())
+            {
+                var credential = new NetworkCredential
+                {
+                    UserName = "argirov@outlook.com",  // replace with valid value
+                    Password = "ZZZZZZZZZZ"  // replace with valid value
+                };
+                smtp.Credentials = credential;
+                smtp.Host = "smtp-mail.outlook.com";
+                smtp.Port = 587;
+                smtp.EnableSsl = true;
+                smtp.Send(message);
+            }
 
-        //private Order CreateOrder()
-        //{
-        //    var order = new Order();
-        //    this.orders.Create(order);
-        //    return order;
-        //}
-
-        //private Order GetOrderFromSession()
-        //{
-        //    var id = (int?)this.Session["orderId"];
-        //    if (id == null)
-        //    {
-        //        return null;
-        //    }
-
-        //    int idAsInt = int.Parse(id.ToString());
-        //    return this.orders.Get(idAsInt);
-        //}
+            return this.View();
+        }
     }
 }

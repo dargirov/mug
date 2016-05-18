@@ -40,10 +40,17 @@ var Cart = (function($) {
 	}
 
 	function uploadFile(data) {
-		_mug.addImage({ name: data.filename, url: '/Download/' + data.filename, width: data.width, height: data.height, dpi: data.dpi});
-		$('#customization-controls-container').removeClass('hidden');
-		var $controls = $($('.move-controls.hidden')[0]);
-		$controls.removeClass('hidden');
+	    console.log(data);
+	    if (data.success) {
+		    _mug.addImage({ name: data.filename, url: '/Download/' + data.filename, width: data.width, height: data.height, dpi: data.dpi});
+		    $('#customization-controls-container').removeClass('hidden');
+		    var $controls = $($('.move-controls.hidden')[0]);
+		    $controls.removeClass('hidden');
+	    } else {
+	        if (data.message === 'Parameter is not valid.') {
+	            alert('Моля, изберете изображение');
+	        }
+	    }
 	}
 
 	function bindMovingImages() {

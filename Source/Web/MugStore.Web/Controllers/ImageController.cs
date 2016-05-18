@@ -72,7 +72,7 @@
 
                 var result = new
                 {
-                    status = "ok",
+                    success = true,
                     filename = image.Name,
                     width = image.Width,
                     height = image.Height,
@@ -85,7 +85,7 @@
             {
                 var result = new
                 {
-                    status = "error",
+                    success = false,
                     message = ex.Message
                 };
 

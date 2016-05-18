@@ -6,5 +6,7 @@
     public interface ICitiesService
     {
         IQueryable<City> Get();
+
+        City Get(int id);
     }
 }

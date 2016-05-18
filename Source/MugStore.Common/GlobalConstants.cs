@@ -11,5 +11,7 @@
         public const decimal SingleMugPrice = 10;
 
         public const decimal DeliveryPrice = 5;
+
+        public const int EmailMaxLength = 100;
     }
 }

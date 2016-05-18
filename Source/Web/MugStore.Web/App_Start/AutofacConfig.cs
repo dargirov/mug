@@ -53,6 +53,9 @@
             builder.RegisterType<CitiesService>()
                 .As<ICitiesService>();
 
+            builder.RegisterType<BulletinsService>()
+                .As<IBulletinsService>();
+
             builder.RegisterGeneric(typeof(DbRepository<>))
                .As(typeof(IDbRepository<>))
                .InstancePerRequest();

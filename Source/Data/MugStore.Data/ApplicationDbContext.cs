@@ -19,6 +19,8 @@
 
         public IDbSet<Image> Images { get; set; }
 
+        public IDbSet<Bulletin> Bulletins { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

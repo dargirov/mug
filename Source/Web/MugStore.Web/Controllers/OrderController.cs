@@ -11,11 +11,13 @@
     {
         private readonly IOrdersService orders;
         private readonly IImagesService images;
+        private readonly ICitiesService cities;
 
-        public OrderController(IOrdersService orders, IImagesService images)
+        public OrderController(IOrdersService orders, IImagesService images, ICitiesService cities)
         {
             this.orders = orders;
             this.images = images;
+            this.cities = cities;
         }
 
         public ActionResult Create(CreateInputModel model)
@@ -23,6 +25,13 @@
             if (!this.ModelState.IsValid)
             {
                 return this.Json(new { status = "error" }, JsonRequestBehavior.AllowGet);
+            }
+
+            var city = this.cities.Get(model.DeliveryInfo.CityId);
+
+            if (city == null)
+            {
+                return this.Json(new { status = "error", message = "Invalid city id" }, JsonRequestBehavior.AllowGet);
             }
 
             var order = new Order()
@@ -54,7 +63,7 @@
 
             this.images.Save();
 
-            var result = new
+            var result = new 
             {
                 status = "success",
                 acronym = order.Acronym,
@@ -63,6 +72,7 @@
                 address = order.DeliveryInfo.Address,
                 phone = order.DeliveryInfo.Phone,
                 comment = order.DeliveryInfo.Comment,
+                city = city.Name,
                 quantity = order.Quantity,
                 price = (order.Quantity * GlobalConstants.SingleMugPrice) + GlobalConstants.DeliveryPrice
             };

@@ -54,6 +54,7 @@
     <Compile Include="Image.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Bulletin.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

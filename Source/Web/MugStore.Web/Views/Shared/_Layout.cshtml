@@ -12,8 +12,8 @@
 <body>
 
     <section id="logo-container">
-        <i class="fa fa-envira" aria-hidden="true"> Cupid</i>
-        <h2>Some random text goes here</h2>
+        <i class="fa fa-envira" aria-hidden="true"> Cup3</i>
+        <h2>Направи си чаша</h2>
     </section>
 
     @RenderBody()
@@ -31,13 +31,13 @@
         </div>
         <div>
             <h5>Бюлетин</h5>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-            tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-            quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo.
-            <form method="post" id="subscribe-to-bulletin-form">
-                <input type="email">
-                <a href="#" class="blue-btn">Запиши</a>
+            Запишете се за да бъдете сред първите получили нашите нови промоции и намаления.
+            <form method="post" id="subscribe-to-bulletin-form" data-url="@Url.Action("Add", "Bulletin")">
+                @Html.AntiForgeryToken()
+                <input type="email" placeholder="Email адрес" required="required">
+                <a href="#" class="blue-btn" id="bulletin-add-btn">Запиши</a>
             </form>
+            <div id="subscribe-success" class="status-success hidden">Успешна регистрация</div>
         </div>
         <div>
             <h5>Информация</h5>
@@ -74,6 +74,7 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/touchcarousel")
     @Scripts.Render("~/bundles/scripts")
+    @Scripts.Render("~/bundles/main")
     @RenderSection("scripts", required: false)
 
 

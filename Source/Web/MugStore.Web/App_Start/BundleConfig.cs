@@ -42,6 +42,7 @@ namespace MugStore.Web
             bundles.Add(new ScriptBundle("~/bundles/touchcarousel").Include("~/Scripts/libs/touchcarousel-1.2.min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/scripts").Include("~/Scripts/scene.js", "~/Scripts/mug.js", "~/Scripts/cart.js"));
+            bundles.Add(new ScriptBundle("~/bundles/main").Include("~/Scripts/main.js"));
         }
     }
 }

@@ -580,6 +580,21 @@ input.invalid, textarea.invalid {
     font-size: 21px;
 }
 
+.status-success {
+    overflow: hidden;
+    clear: both;
+    padding: 10px 10px 10px 40px;
+    text-align: center;
+    border: 1px solid #8ead00;
+    color: #fff;
+    margin: 5px 0;
+    text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.3);
+    background: #a4bf26 url(/Content/images/icon_success.png) 10px center no-repeat;
+    font-family: Tahoma;
+    font-size: 14px;
+    font-weight: normal;
+}
+
 @media all and (max-width: 1000px) {
 	#header > div {
 		width: 100%;

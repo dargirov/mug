@@ -2,15 +2,16 @@
 {
     using System.ComponentModel.DataAnnotations;
     using MugStore.Data.Common.Models;
+    using MugStore.Common;
 
     public class DeliveryInfo : BaseModel<int>
     {
         [Required]
-        [MaxLength(100)]
+        [MaxLength(GlobalConstants.MaxDeliveryInfoFullNameLength)]
         public string FullName { get; set; }
 
         [Required]
-        [MaxLength(20)]
+        [MaxLength(GlobalConstants.MaxDeliveryInfoPhoneLength)]
         public string Phone { get; set; }
 
         [Required]

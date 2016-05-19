@@ -46,13 +46,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Category.cs" />
     <Compile Include="City.cs" />
     <Compile Include="ConfirmationStatus.cs" />
     <Compile Include="DeliveryInfo.cs" />
+    <Compile Include="ProductImage.cs" />
     <Compile Include="OrderStatus.cs" />
     <Compile Include="PaymentMethod.cs" />
     <Compile Include="Image.cs" />
     <Compile Include="Order.cs" />
+    <Compile Include="Product.cs" />
+    <Compile Include="ProductTag.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Bulletin.cs" />
   </ItemGroup>

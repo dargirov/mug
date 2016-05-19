@@ -40,8 +40,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BulletinsService.cs" />
+    <Compile Include="CategoriesService.cs" />
     <Compile Include="CitiesService.cs" />
     <Compile Include="IBulletinsService.cs" />
+    <Compile Include="ICategoriesService.cs" />
     <Compile Include="ICitiesService.cs" />
     <Compile Include="IImagesService.cs" />
     <Compile Include="ImagesService.cs" />

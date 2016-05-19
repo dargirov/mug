@@ -595,6 +595,38 @@ input.invalid, textarea.invalid {
     font-weight: normal;
 }
 
+.status-error-block {
+    display: block;
+    overflow: hidden;
+    clear: both;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #CC4848;
+    color: #fff;
+    margin: 5px 0;
+    text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.3);
+    background: #FF5A5A;
+    font-family: Tahoma;
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.status-success-block {
+    display: block;
+    overflow: hidden;
+    clear: both;
+    padding: 10px;
+    text-align: center;
+    border: 1px solid #8ead00;
+    color: #fff;
+    margin: 5px 0;
+    text-shadow: 0px 1px 0px rgba(0, 0, 0, 0.3);
+    background: #a4bf26;
+    font-family: Tahoma;
+    font-size: 14px;
+    font-weight: normal;
+}
+
 @media all and (max-width: 1000px) {
 	#header > div {
 		width: 100%;
@@ -626,4 +658,8 @@ input.invalid, textarea.invalid {
 	#gallery > div {
 	    flex-direction: column;
 	}
+
+    #contact-form form {
+        width: auto;
+    }
 }

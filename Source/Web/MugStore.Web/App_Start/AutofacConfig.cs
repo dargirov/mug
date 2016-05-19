@@ -56,6 +56,9 @@
             builder.RegisterType<BulletinsService>()
                 .As<IBulletinsService>();
 
+            builder.RegisterType<CategoriesService>()
+                .As<ICategoriesService>();
+
             builder.RegisterGeneric(typeof(DbRepository<>))
                .As(typeof(IDbRepository<>))
                .InstancePerRequest();

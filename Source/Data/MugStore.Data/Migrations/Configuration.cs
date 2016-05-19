@@ -33,6 +33,21 @@
             //
 
             //this.SeedCities(context);
+            this.SeedCategories(context);
+        }
+
+        private void SeedCategories(ApplicationDbContext context)
+        {
+            var categories = new List<Category>();
+            categories.Add(new Category() { Name = "Европейски столици", Order = 1, Active = true });
+            categories.Add(new Category() { Name = "Културни забележителности", Order = 2, Active = true });
+
+            foreach (var category in categories)
+            {
+                context.Categories.Add(category);
+            }
+
+            context.SaveChanges();
         }
 
         private void SeedCities(ApplicationDbContext context)

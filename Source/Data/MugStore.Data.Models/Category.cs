@@ -1,19 +1,19 @@
 ﻿namespace MugStore.Data.Models
 {
     using System.ComponentModel.DataAnnotations;
-    using Common.Models;
     using MugStore.Common;
+    using MugStore.Data.Common.Models;
 
-    public class City : BaseModel<int>
+    public class Category : BaseModel<int>
     {
         [Required]
-        [MaxLength(GlobalConstants.MaxCityNameLength)]
+        [MaxLength(GlobalConstants.MaxCategoryNameLength)]
         public string Name { get; set; }
 
         [Required]
-        public int PostCode { get; set; }
+        public int Order { get; set; }
 
         [Required]
-        public bool Highlight { get; set; }
+        public bool Active { get; set; }
     }
 }

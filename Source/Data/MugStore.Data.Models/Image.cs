@@ -4,24 +4,25 @@
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using MugStore.Data.Common.Models;
+    using MugStore.Common;
 
     public class Image : BaseModel<int>
     {
         [Required]
-        [MaxLength(40)]
+        [MaxLength(GlobalConstants.MaxImageNameLength)]
         [Index(IsUnique = true)]
         public string Name { get; set; }
 
         [Required]
-        [MaxLength(200)]
+        [MaxLength(GlobalConstants.MaxImageOriginalNameLength)]
         public string OriginalName { get; set; }
 
         [Required]
-        [MaxLength(100)]
+        [MaxLength(GlobalConstants.MaxImageContentTypeLength)]
         public string ContentType { get; set; }
 
         [Required]
-        [MaxLength(10)]
+        [MaxLength(GlobalConstants.MaxImagePathLength)]
         public string Path { get; set; }
 
         [Required]

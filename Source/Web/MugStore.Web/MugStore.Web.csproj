@@ -185,6 +185,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BulletinController.cs" />
+    <Compile Include="Controllers\GalleryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImageController.cs" />
     <Compile Include="Controllers\OrderController.cs" />
@@ -194,6 +195,8 @@
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Bulletin\BulletinInputModel.cs" />
+    <Compile Include="ViewModels\Gallery\IndexViewModel.cs" />
+    <Compile Include="ViewModels\Home\ContactsInputModel.cs" />
     <Compile Include="ViewModels\Order\CreateInputModel.cs" />
     <Compile Include="ViewModels\Order\ImageInputModel.cs" />
   </ItemGroup>
@@ -231,7 +234,6 @@
   <ItemGroup>
     <Folder Include="App_Data\Images\" />
     <Folder Include="Models\" />
-    <Folder Include="ViewModels\Home\" />
     <Folder Include="Views\Bulletin\" />
     <Folder Include="Views\Image\" />
     <Folder Include="Views\Order\" />
@@ -244,6 +246,7 @@
     <None Include="Project_Readme.html" />
     <Content Include="Views\Shared\_CanvasPartial.cshtml" />
     <Content Include="Views\Shared\_MenuPartial.cshtml" />
+    <Content Include="Views\Gallery\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Data\MugStore.Data.Common\MugStore.Data.Common.csproj">

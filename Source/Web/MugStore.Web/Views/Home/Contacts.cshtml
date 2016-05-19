@@ -33,15 +33,37 @@
 <section id="contact-form">
     <div class="site-section">
         <h2>Директен контакт</h2>
-        <form>
-            <input type="text" placeholder="Име">
-            <input type="email" placeholder="Email адрес за обратна връзка">
-            <textarea placeholder="Съобщение"></textarea>
-            <a href="#" class="blue-btn">Изпрати</a>
+        <form method="post" action="@Url.Action("Contacts", "Home")">
+            @if (this.ViewBag.MailSend != null)
+            {
+                if (this.ViewBag.MailSend)
+                {
+                    <strong class="status-success-block">Съобщението е изпратено успешно</strong>
+                }
+                else
+                {
+                    <strong class="status-error-block">Попълнете всички полета коректно</strong>
+                }
+            }
+            @Html.AntiForgeryToken()
+            <input type="text" name="name" placeholder="Име" required="required">
+            <input type="email" name="email" placeholder="Email адрес за обратна връзка" required="required">
+            <textarea name="comment" placeholder="Съобщение" required="required"></textarea>
+            <a href="#" class="blue-btn" id="contacts-send-email-btn">Изпрати</a>
         </form>
     </div>
 </section>
 
 @section scripts {
+    <script>
+        $(function () {
 
+            $('#contacts-send-email-btn').on('click', sendEmailBtnClick);
+            function sendEmailBtnClick(e) {
+                e.preventDefault();
+                $('#contact-form').find('form').submit();
+            }
+
+        });
+    </script>
 }

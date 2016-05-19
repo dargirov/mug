@@ -21,6 +21,14 @@
 
         public IDbSet<Bulletin> Bulletins { get; set; }
 
+        public IDbSet<Product> Products { get; set; }
+
+        public IDbSet<ProductImage> ProductImages { get; set; }
+
+        public IDbSet<ProductTag> ProductTags { get; set; }
+
+        public IDbSet<Category> Categories { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

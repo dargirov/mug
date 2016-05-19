@@ -5,6 +5,7 @@
     using Services.Data;
     using System.Net.Mail;
     using System.Net;
+    using MugStore.Web.ViewModels.Home;
 
     public class HomeController : BaseController
     {
@@ -23,26 +24,42 @@
             return this.View();
         }
 
+        [HttpGet]
         public ActionResult Contacts()
         {
-            var message = new MailMessage();
-            message.To.Add(new MailAddress("shinobi.away@gmail.com"));
-            message.From = new MailAddress("shinobi@mail.bg");
-            message.Subject = "Test mail";
-            message.Body = "emi de da znam";
-            message.IsBodyHtml = true;
-            using (var smtp = new SmtpClient())
+            return this.View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Contacts(ContactsInputModel model)
+        {
+            if (this.ModelState.IsValid)
             {
-                var credential = new NetworkCredential
+                var message = new MailMessage();
+                message.To.Add(new MailAddress("shinobi.away@gmail.com"));
+                message.From = new MailAddress("shinobi@mail.bg");
+                message.Subject = "Test mail";
+                message.Body = "emi de da znam";
+                message.IsBodyHtml = true;
+                using (var smtp = new SmtpClient())
                 {
-                    UserName = "argirov@outlook.com",  // replace with valid value
-                    Password = "ZZZZZZZZZZ"  // replace with valid value
-                };
-                smtp.Credentials = credential;
-                smtp.Host = "smtp-mail.outlook.com";
-                smtp.Port = 587;
-                smtp.EnableSsl = true;
-                smtp.Send(message);
+                    var credential = new NetworkCredential
+                    {
+                        UserName = "argirov@outlook.com",  // replace with valid value
+                        Password = "ZZZZZZZZZZ"  // replace with valid value
+                    };
+                    smtp.Credentials = credential;
+                    smtp.Host = "smtp-mail.outlook.com";
+                    smtp.Port = 587;
+                    smtp.EnableSsl = true;
+                    //smtp.Send(message);
+                    this.ViewBag.MailSend = true;
+                }
+            }
+            else
+            {
+                this.ViewBag.MailSend = false;
             }
 
             return this.View();

@@ -185,6 +185,8 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
+    <Compile Include="Areas\Admin\ViewModels\Home\LoginInputModel.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BulletinController.cs" />
     <Compile Include="Controllers\GalleryController.cs" />
@@ -237,7 +239,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Images\" />
-    <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Bulletin\" />
     <Folder Include="Views\Image\" />
@@ -249,9 +250,12 @@
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
     <Content Include="Areas\Admin\Views\web.config" />
-    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Login.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\_SubMenuPartial.cshtml" />
     <None Include="Project_Readme.html" />
     <Content Include="Views\Shared\_CanvasPartial.cshtml" />
     <Content Include="Views\Shared\_MenuPartial.cshtml" />

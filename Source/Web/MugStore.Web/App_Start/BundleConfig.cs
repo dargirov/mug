@@ -33,7 +33,7 @@ namespace MugStore.Web
         private static void RegisterStyles(BundleCollection bundles)
         {
             bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/css/main.css", "~/Content/css/touchcarousel.css"));
-            bundles.Add(new StyleBundle("~/Content/admin/css").Include("~/Areas/Admin/Content/css/main.css"));
+            bundles.Add(new StyleBundle("~/Content/admin/css").Include("~/Areas/Admin/Content/css/main.css", "~/Areas/Admin/Content/css/bootstrap.min.css", "~/Areas/Admin/Content/css/tether.min.css"));
         }
 
         private static void RegisterScripts(BundleCollection bundles)
@@ -45,7 +45,7 @@ namespace MugStore.Web
             bundles.Add(new ScriptBundle("~/bundles/scripts").Include("~/Scripts/scene.js", "~/Scripts/mug.js", "~/Scripts/cart.js"));
             bundles.Add(new ScriptBundle("~/bundles/main").Include("~/Scripts/main.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/admin/scripts").Include("~/Areas/Admin/Scripts/main.js"));
+            bundles.Add(new ScriptBundle("~/bundles/admin/scripts").Include("~/Areas/Admin/Scripts/main.js", "~/Areas/Admin/Scripts/tether.min.js", "~/Areas/Admin/Scripts/bootstrap.min.js"));
         }
     }
 }

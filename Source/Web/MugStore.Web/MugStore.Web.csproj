@@ -183,6 +183,8 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BulletinController.cs" />
     <Compile Include="Controllers\GalleryController.cs" />
@@ -201,6 +203,8 @@
     <Compile Include="ViewModels\Order\ImageInputModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Admin\Content\css\main.css" />
+    <Content Include="Areas\Admin\Scripts\main.js" />
     <Content Include="Content\css\main.css" />
     <Content Include="Content\css\touchcarousel.css" />
     <Content Include="Content\images\controls.png" />
@@ -233,6 +237,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Images\" />
+    <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Bulletin\" />
     <Folder Include="Views\Image\" />
@@ -243,6 +248,10 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
     <Content Include="packages.config" />
+    <Content Include="Areas\Admin\Views\web.config" />
+    <Content Include="Areas\Admin\Views\Home\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
+    <Content Include="Areas\Admin\Views\_ViewStart.cshtml" />
     <None Include="Project_Readme.html" />
     <Content Include="Views\Shared\_CanvasPartial.cshtml" />
     <Content Include="Views\Shared\_MenuPartial.cshtml" />

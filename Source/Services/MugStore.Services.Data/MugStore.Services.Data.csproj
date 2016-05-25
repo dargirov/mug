@@ -48,7 +48,9 @@
     <Compile Include="IImagesService.cs" />
     <Compile Include="ImagesService.cs" />
     <Compile Include="IOrdersService.cs" />
+    <Compile Include="IProductsService.cs" />
     <Compile Include="OrdersService.cs" />
+    <Compile Include="ProductsService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

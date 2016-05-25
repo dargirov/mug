@@ -59,6 +59,9 @@
             builder.RegisterType<CategoriesService>()
                 .As<ICategoriesService>();
 
+            builder.RegisterType<ProductsService>()
+                .As<IProductsService>();
+
             builder.RegisterGeneric(typeof(DbRepository<>))
                .As(typeof(IDbRepository<>))
                .InstancePerRequest();

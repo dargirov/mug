@@ -1,0 +1,69 @@
+﻿@model MugStore.Web.Areas.Admin.ViewModels.Product.CreateViewModel
+@{
+}
+
+@Html.Partial("_SubMenuPartial")
+
+<div class="row">
+    @using (Html.BeginForm("Create", "Product", FormMethod.Post, new { area = "Admin", @class = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="row">
+            <div class="col-md-12">
+                <fieldset class="form-group">
+                    <label for="Title">Title</label>
+                    @Html.EditorFor(p => p.Title)
+                </fieldset>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <fieldset class="form-group">
+                    <label for="Description">Description</label>
+                    @Html.TextAreaFor(p => p.Description, new { @class = "form-control" })
+                </fieldset>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <fieldset class="form-group">
+                    <label for="Code">Code</label>
+                    @Html.EditorFor(p => p.Code)
+                </fieldset>
+            </div>
+            <div class="col-md-4">
+                <fieldset class="form-group">
+                    <label for="Active">Active</label>
+                    <select name="Active" id="Active" class="form-control">
+                        <option value="True">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </fieldset>
+            </div>
+            <div class="col-md-4">
+                <fieldset class="form-group">
+                    <label for="CategoryId">Category</label>
+                    <select name="CategoryId" id="CategoryId" class="form-control">
+                        @foreach (var category in Model.Categories)
+                        {
+                            <option value="@category.Id">@category.Name</option>
+                        }
+                    </select>
+                </fieldset>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <fieldset class="form-group">
+                    <label for="PreviewData">Preview Data</label>
+                    @Html.EditorFor(p => p.PreviewData)
+                </fieldset>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <input type="submit" class="btn btn-primary" value="Create">
+            </div>
+        </div>
+    }
+</div>

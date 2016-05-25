@@ -1,5 +1,18 @@
-﻿
+﻿@model MugStore.Web.Areas.Admin.ViewModels.Product.IndexViewModel
 @{
 }
 
 @Html.Partial("_SubMenuPartial")
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-bordered">
+            @foreach (var product in Model.Products)
+            {
+                <tr>
+                    <td><a href="@Url.Action("Edit", "Product", new { area = "Admin", id = product.Id })">@product.Title</a></td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

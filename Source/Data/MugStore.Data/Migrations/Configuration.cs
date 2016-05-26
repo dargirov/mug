@@ -39,8 +39,8 @@
         private void SeedCategories(ApplicationDbContext context)
         {
             var categories = new List<Category>();
-            categories.Add(new Category() { Name = "Европейски столици", Order = 1, Active = true });
-            categories.Add(new Category() { Name = "Културни забележителности", Order = 2, Active = true });
+            categories.Add(new Category() { Name = "Европейски столици", Acronym = "evropeiski-stolici", Order = 1, Active = true });
+            categories.Add(new Category() { Name = "Културни забележителности", Acronym = "kulturni-zabelejitelnosti", Order = 2, Active = true });
 
             foreach (var category in categories)
             {

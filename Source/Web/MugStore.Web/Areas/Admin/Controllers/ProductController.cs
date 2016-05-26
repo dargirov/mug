@@ -23,7 +23,7 @@
 
         public ActionResult Index()
         {
-            var products = this.products.Get();
+            var products = this.products.Get().OrderByDescending(p => p.Id).ToList();
             var model = new IndexViewModel()
             {
                 Products = products
@@ -32,6 +32,7 @@
             return this.View(model);
         }
 
+        [HttpGet]
         public ActionResult Edit(int id)
         {
             var product = this.products.Get(id);
@@ -44,6 +45,34 @@
             viewModel.Categories = this.categories.Get();
 
             return this.View("Create", viewModel);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int id, CreateViewModel model)
+        {
+            model.Categories = this.categories.Get();
+
+            if (!this.ModelState.IsValid)
+            {
+                return this.View("Create", model);
+            }
+
+            var product = this.products.Get(id);
+            if (product == null)
+            {
+                return this.HttpNotFound();
+            }
+
+            product.Title = model.Title;
+            product.Description = model.Description;
+            product.Code = model.Code;
+            product.PreviewData = model.PreviewData;
+            product.Active = model.Active;
+            product.CategoryId = model.CategoryId;
+            this.products.Save();
+
+            return RedirectToAction("Edit", "Product", new { id = id });
         }
 
         [HttpGet]

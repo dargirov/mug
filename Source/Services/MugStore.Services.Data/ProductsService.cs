@@ -36,5 +36,11 @@
         {
             return this.products.GetById(id);
         }
+
+
+        public void Save()
+        {
+            this.products.Save();
+        }
     }
 }

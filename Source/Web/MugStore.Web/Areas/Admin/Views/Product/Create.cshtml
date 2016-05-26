@@ -1,11 +1,14 @@
 ﻿@model MugStore.Web.Areas.Admin.ViewModels.Product.CreateViewModel
 @{
+    var formAction = "Create";
+    if (Model.Id > 0)
+    {
+        formAction = "Edit";
+    }
 }
 
-@Html.Partial("_SubMenuPartial")
-
 <div class="row">
-    @using (Html.BeginForm("Create", "Product", FormMethod.Post, new { area = "Admin", @class = "form" }))
+    @using (Html.BeginForm(formAction, "Product", FormMethod.Post, new { area = "Admin", @class = "form", id = Model.Id }))
     {
         @Html.AntiForgeryToken()
         <div class="row">
@@ -35,8 +38,20 @@
                 <fieldset class="form-group">
                     <label for="Active">Active</label>
                     <select name="Active" id="Active" class="form-control">
-                        <option value="True">Yes</option>
-                        <option value="No">No</option>
+                        @{
+                            var selectedTrue = "";
+                            var selectedFalse = "";
+                            if (Model.Active)
+                            {
+                                selectedTrue = " selected=\"selected\"";
+                            }
+                            else
+                            {
+                                selectedFalse = " selected=\"selected\"";
+                            }
+                        }
+                        <option value="True" @selectedTrue>Yes</option>
+                        <option value="False" @selectedFalse>No</option>
                     </select>
                 </fieldset>
             </div>
@@ -46,7 +61,12 @@
                     <select name="CategoryId" id="CategoryId" class="form-control">
                         @foreach (var category in Model.Categories)
                         {
-                            <option value="@category.Id">@category.Name</option>
+                            var selected = "";
+                            if (category.Id == Model.CategoryId)
+                            {
+                                selected = " selected=\"selected\"";
+                            }
+                            <option value="@category.Id" @selected>@category.Name</option>
                         }
                     </select>
                 </fieldset>
@@ -62,7 +82,14 @@
         </div>
         <div class="row">
             <div class="col-md-12">
-                <input type="submit" class="btn btn-primary" value="Create">
+                @if (Model.Id == 0)
+                {
+                    <input type="submit" class="btn btn-primary" value="Create">
+                }
+                else
+                {
+                    <input type="submit" class="btn btn-primary" value="Edit">
+                }
             </div>
         </div>
     }

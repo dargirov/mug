@@ -8,6 +8,8 @@
 
     public class CreateViewModel : IMapFrom<Product>
     {
+        public int Id { get; set; }
+
         [Required]
         [MaxLength(GlobalConstants.MaxProductTitleLength)]
         public string Title { get; set; }

@@ -26,6 +26,8 @@
 
         public const int MaxCategoryNameLength = 100;
 
+        public const int MaxCategoryAcronymLength = 110;
+
         public const int MaxCityNameLength = 50;
 
         public const int MaxDeliveryInfoFullNameLength = 100;

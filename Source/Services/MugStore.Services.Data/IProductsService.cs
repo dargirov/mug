@@ -12,5 +12,7 @@
         Product Get(int id);
 
         IQueryable<Product> Get();
+
+        void Save();
     }
 }

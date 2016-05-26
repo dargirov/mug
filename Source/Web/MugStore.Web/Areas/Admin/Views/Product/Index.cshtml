@@ -2,17 +2,44 @@
 @{
 }
 
-@Html.Partial("_SubMenuPartial")
-
 <div class="row">
     <div class="col-md-12">
-        <table class="table table-bordered">
-            @foreach (var product in Model.Products)
-            {
+        <table class="table table-bordered table-hover table-sm">
+            <thead class="thead-inverse">
                 <tr>
-                    <td><a href="@Url.Action("Edit", "Product", new { area = "Admin", id = product.Id })">@product.Title</a></td>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Code</th>
+                    <th>Active</th>
+                    <th>Actions</th>
                 </tr>
-            }
+            </thead>
+            <tbody>
+                @foreach (var product in Model.Products)
+                {
+                    <tr>
+                        <td>@product.Id</td>
+                        <td><a href="#">@product.Title</a></td>
+                        <td>@product.Code</td>
+                        <td>
+                            @if (product.Active)
+                            {
+                                <span class="label label-success">Yes</span>
+                            }
+                            else
+                            {
+                                <span class="label label-warning">No</span>
+                            }
+                        </td>
+                        <td>
+                            <div class="btn-group btn-group-sm" role="group" aria-label="Actions">
+                                <a href="@Url.Action("Edit", "Product", new { area = "Admin", id = product.Id })" class="btn btn-secondary">Edit</a>
+                                <a href="#" class="btn btn-secondary">Delete</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
         </table>
     </div>
 </div>

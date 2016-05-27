@@ -50,8 +50,8 @@
                                 selectedFalse = " selected=\"selected\"";
                             }
                         }
-                        <option value="True" @selectedTrue>Yes</option>
-                        <option value="False" @selectedFalse>No</option>
+                        <option value="True" @Html.Raw(selectedTrue)>Yes</option>
+                        <option value="False" @Html.Raw(selectedFalse)>No</option>
                     </select>
                 </fieldset>
             </div>
@@ -66,7 +66,7 @@
                             {
                                 selected = " selected=\"selected\"";
                             }
-                            <option value="@category.Id" @selected>@category.Name</option>
+                            <option value="@category.Id" @Html.Raw(selected)>@category.Name</option>
                         }
                     </select>
                 </fieldset>
@@ -94,3 +94,37 @@
         </div>
     }
 </div>
+
+@if (Model.Id > 0)
+{
+    <div class="row margin-top">
+        <div class="row">
+            <div class="col-md-12">
+                <h4>Images</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <ul id="images-list">
+                    @foreach (var image in Model.Images)
+                    {
+                        <li><a href="@Url.RouteUrl("ProductImage", new { name = image.Name })" target="_blank"><img src="@Url.RouteUrl("ProductImage", new { name = image.Name })" style="max-width: 200px;"></a></li>
+                    }
+                </ul>
+            </div>
+        </div>
+        <div class="row">
+            @using (Html.BeginForm("Upload", "Product", FormMethod.Post, new { area = "admin", enctype = "multipart/form-data" }))
+            {
+                <div class="col-md-12">
+                    @Html.HiddenFor(p => p.Id)
+                    @Html.AntiForgeryToken()
+                    <input type="file" name="file" id="file">
+                </div>
+                <div class="col-md-12">
+                    <input type="submit" class="btn btn-primary" value="Upload">
+                </div>
+            }
+        </div>
+    </div>
+}

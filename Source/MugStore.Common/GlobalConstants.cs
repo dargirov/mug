@@ -39,5 +39,7 @@
         public const int MaxProductAcronymLength = 310;
 
         public const int MaxProductCodeLength = 50;
+
+        public const string PathToGalleryImages = @"~\App_Data\Images\Gallery\";
     }
 }

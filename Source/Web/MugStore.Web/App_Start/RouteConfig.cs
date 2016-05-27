@@ -15,8 +15,15 @@
 
             routes.MapRoute(
                 name: "Image",
-                url: "Download/{id}",
+                url: "Download/{name}",
                 defaults: new { controller = "Image", action = "Index" },
+                namespaces: new[] { "MugStore.Web.Controllers" }
+            );
+
+            routes.MapRoute(
+                name: "ProductImage",
+                url: "DownloadProductImage/{name}",
+                defaults: new { controller = "Image", action = "ProductImage" },
                 namespaces: new[] { "MugStore.Web.Controllers" }
             );
 

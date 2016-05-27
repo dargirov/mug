@@ -240,7 +240,7 @@
     <Content Include="Views\Home\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="App_Data\Images\" />
+    <Folder Include="App_Data\Images\Gallery\" />
     <Folder Include="Models\" />
     <Folder Include="Views\Bulletin\" />
     <Folder Include="Views\Image\" />

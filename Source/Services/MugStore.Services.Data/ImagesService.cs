@@ -7,10 +7,12 @@
     public class ImagesService : IImagesService
     {
         private readonly IDbRepository<Image> images;
+        private readonly IDbRepository<ProductImage> productImages;
 
-        public ImagesService(IDbRepository<Image> images)
+        public ImagesService(IDbRepository<Image> images, IDbRepository<ProductImage> productImages)
         {
             this.images = images;
+            this.productImages = productImages;
         }
 
         public void Add(Image image)
@@ -29,6 +31,11 @@
         public void Save()
         {
             this.images.Save();
+        }
+
+        public ProductImage GetProductImage(string name)
+        {
+            return this.productImages.All().Where(i => i.Name == name).FirstOrDefault();
         }
     }
 }

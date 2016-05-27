@@ -32,6 +32,8 @@
         [Required]
         public string PreviewData { get; set; }
 
+        public virtual ICollection<ProductImage> Images { get; set; }
+
         public virtual IEnumerable<ProductTag> Tags { get; set; }
     }
 }

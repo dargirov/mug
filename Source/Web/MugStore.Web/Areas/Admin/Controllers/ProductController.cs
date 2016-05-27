@@ -9,6 +9,8 @@
     using MugStore.Services.Data;
     using MugStore.Web.Areas.Admin.ViewModels.Product;
     using MugStore.Data.Models;
+    using MugStore.Common;
+    using System.IO;
 
     public class ProductController : BaseController
     {
@@ -110,6 +112,45 @@
             model.Categories = this.categories.Get();
 
             return this.View(model);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Upload(int id, HttpPostedFileBase file)
+        {
+            var product = this.products.Get(id);
+            if (product == null)
+            {
+                return this.HttpNotFound();
+            }
+
+            if (file.ContentLength > 0)
+            {
+                var imagesPath = this.Server.MapPath(GlobalConstants.PathToGalleryImages);
+                var path = imagesPath + id.ToString();
+
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+
+                var name = Guid.NewGuid().ToString();
+                var type = file.ContentType.Split('/');
+                file.SaveAs(path + @"\" + name + "." + type[1]);
+                var image = new ProductImage()
+                {
+                    Name = name,
+                    OriginalName = file.FileName,
+                    Path = id.ToString(),
+                    ContentType = file.ContentType,
+                    ProductId = id
+                };
+
+                product.Images.Add(image);
+                this.products.Save();
+            }
+
+            return RedirectToAction("Edit", "Product", new { area = "Admin", id = id });
         }
 
         private string GenerateAcronym()

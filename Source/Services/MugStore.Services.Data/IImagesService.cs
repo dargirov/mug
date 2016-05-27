@@ -8,6 +8,8 @@
 
         Image Get(string name);
 
+        ProductImage GetProductImage(string name);
+
         void Save();
     }
 }

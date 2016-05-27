@@ -20,56 +20,14 @@
         </div>
         <div id="gallery-right">
             <ul>
-                <li>
-                    <img src="cup1.jpg">
-                    <strong>Cup name #0</strong>
-                    <a href="/mugs/details.php" class="blue-btn">Детайли</a>
-                </li>
-                <li>
-                    <img src="cup1.jpg">
-                    <strong>Cup name #1</strong>
-                    <a href="/mugs/details.php" class="blue-btn">Детайли</a>
-                </li>
-                <li>
-                    <img src="cup1.jpg">
-                    <strong>Cup name #2</strong>
-                    <a href="/mugs/details.php" class="blue-btn">Детайли</a>
-                </li>
-                <li>
-                    <img src="cup1.jpg">
-                    <strong>Cup name #3</strong>
-                    <a href="/mugs/details.php" class="blue-btn">Детайли</a>
-                </li>
-                <li>
-                    <img src="cup1.jpg">
-                    <strong>Cup name #4</strong>
-                    <a href="/mugs/details.php" class="blue-btn">Детайли</a>
-                </li>
-                <li>
-                    <img src="cup1.jpg">
-                    <strong>Cup name #5</strong>
-                    <a href="/mugs/details.php" class="blue-btn">Детайли</a>
-                </li>
-                <li>
-                    <img src="cup1.jpg">
-                    <strong>Cup name #6</strong>
-                    <a href="/mugs/details.php" class="blue-btn">Детайли</a>
-                </li>
-                <li>
-                    <img src="cup1.jpg">
-                    <strong>Cup name #7</strong>
-                    <a href="/mugs/details.php" class="blue-btn">Детайли</a>
-                </li>
-                <li>
-                    <img src="cup1.jpg">
-                    <strong>Cup name #8</strong>
-                    <a href="/mugs/details.php" class="blue-btn">Детайли</a>
-                </li>
-                <li>
-                    <img src="cup1.jpg">
-                    <strong>Cup name #9</strong>
-                    <a href="/mugs/details.php" class="blue-btn">Детайли</a>
-                </li>
+                @foreach (var product in Model.Products)
+                {
+                    <li>
+                        <img src="@Url.RouteUrl("ProductImage", new { name = product.Images.First().Name })">
+                        <strong>@product.Title</strong>
+                        <a href="/mugs/details.php" class="blue-btn">Детайли</a>
+                    </li>
+                }
             </ul>
         </div>
     </div>

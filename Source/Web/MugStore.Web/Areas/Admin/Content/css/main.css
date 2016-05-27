@@ -1,3 +1,20 @@
 ﻿body > .container {
     margin: 20px auto;
 }
+
+.margin-top {
+    margin-top: 50px;
+}
+
+#images-list {
+    list-style-type: none;
+}
+
+#images-list li {
+    display: inline-block;
+}
+
+#images-list img {
+    max-width: 200px;
+    border: 1px solid black;
+}

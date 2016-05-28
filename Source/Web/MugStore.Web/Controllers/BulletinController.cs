@@ -1,13 +1,9 @@
 ﻿namespace MugStore.Web.Controllers
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Web;
     using System.Web.Mvc;
-    using MugStore.Services.Data;
-    using MugStore.Web.ViewModels.Bulletin;
-    using MugStore.Data.Models;
+    using Data.Models;
+    using Services.Data;
+    using ViewModels.Bulletin;
 
     public class BulletinController : BaseController
     {

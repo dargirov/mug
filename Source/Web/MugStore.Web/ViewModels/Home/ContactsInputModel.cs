@@ -1,7 +1,7 @@
 ﻿namespace MugStore.Web.ViewModels.Home
 {
     using System.ComponentModel.DataAnnotations;
-    using MugStore.Common;
+    using Common;
 
     public class ContactsInputModel
     {

@@ -1,11 +1,11 @@
 ﻿namespace MugStore.Web.Controllers
 {
     using System.Linq;
+    using System.Net;
+    using System.Net.Mail;
     using System.Web.Mvc;
     using Services.Data;
-    using System.Net.Mail;
-    using System.Net;
-    using MugStore.Web.ViewModels.Home;
+    using ViewModels.Home;
 
     public class HomeController : BaseController
     {

@@ -1,10 +1,10 @@
 ﻿namespace MugStore.Web.Areas.Admin.ViewModels.Product
 {
-    using System.ComponentModel.DataAnnotations;
     using System.Collections.Generic;
-    using MugStore.Common;
-    using MugStore.Data.Models;
-    using MugStore.Web.Infrastructure.Mapping;
+    using System.ComponentModel.DataAnnotations;
+    using Common;
+    using Data.Models;
+    using Infrastructure.Mapping;
 
     public class CreateViewModel : IMapFrom<Product>
     {

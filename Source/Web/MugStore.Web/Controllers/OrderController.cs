@@ -63,7 +63,7 @@
 
             this.images.Save();
 
-            var result = new 
+            var result = new
             {
                 status = "success",
                 acronym = order.Acronym,

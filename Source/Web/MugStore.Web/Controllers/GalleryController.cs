@@ -1,13 +1,10 @@
 ﻿namespace MugStore.Web.Controllers
 {
-    using System;
-    using System.Collections.Generic;
+    using System.Data.Entity;
     using System.Linq;
-    using System.Web;
     using System.Web.Mvc;
-    using System.Data.Entity; 
-    using MugStore.Services.Data;
-    using MugStore.Web.ViewModels.Gallery;
+    using Services.Data;
+    using ViewModels.Gallery;
 
     public class GalleryController : BaseController
     {

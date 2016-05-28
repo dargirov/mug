@@ -1,16 +1,15 @@
 ﻿namespace MugStore.Web.Areas.Admin.Controllers
 {
     using System;
-    using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
     using System.Web;
     using System.Web.Mvc;
-    using MugStore.Web.Controllers;
-    using MugStore.Services.Data;
-    using MugStore.Web.Areas.Admin.ViewModels.Product;
-    using MugStore.Data.Models;
-    using MugStore.Common;
-    using System.IO;
+    using Common;
+    using Data.Models;
+    using Services.Data;
+    using ViewModels.Product;
+    using Web.Controllers;
 
     public class ProductController : BaseController
     {
@@ -74,7 +73,7 @@
             product.CategoryId = model.CategoryId;
             this.products.Save();
 
-            return RedirectToAction("Edit", "Product", new { id = id });
+            return this.RedirectToAction("Edit", "Product", new { id = id });
         }
 
         [HttpGet]
@@ -150,7 +149,7 @@
                 this.products.Save();
             }
 
-            return RedirectToAction("Edit", "Product", new { area = "Admin", id = id });
+            return this.RedirectToAction("Edit", "Product", new { area = "Admin", id = id });
         }
 
         private string GenerateAcronym()

@@ -35,5 +35,7 @@
         public virtual ICollection<ProductImage> Images { get; set; }
 
         public virtual IEnumerable<ProductTag> Tags { get; set; }
+
+        public virtual IEnumerable<ProductTag> AllTags { get; set; }
     }
 }

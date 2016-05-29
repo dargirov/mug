@@ -18,3 +18,31 @@
     max-width: 200px;
     border: 1px solid black;
 }
+
+#tag-list {
+    margin-top: 30px;
+    padding: 0;
+    list-style-type: none;
+}
+
+#tag-list li {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 5px;
+}
+
+#product-tag-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#product-tag-list li {
+    padding: 5px 10px;
+    margin: 5px;
+    display: inline-block;
+    background-color: #ddd;
+}
+
+#product-tag-list li:nth-child(2n+1) {
+    background-color: #eee;
+}

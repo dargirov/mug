@@ -2,8 +2,8 @@
 {
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
+    using Common.Models;
     using MugStore.Common;
-    using MugStore.Data.Common.Models;
 
     public class Product : BaseModel<int>
     {

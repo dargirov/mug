@@ -2,8 +2,8 @@
 {
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
+    using Common.Models;
     using MugStore.Common;
-    using MugStore.Data.Common.Models;
 
     public class ProductImage : BaseModel<int>
     {

@@ -15,11 +15,13 @@
     {
         private readonly ICategoriesService categories;
         private readonly IProductsService products;
+        private readonly ITagsService tags;
 
-        public ProductController(ICategoriesService categories, IProductsService products)
+        public ProductController(ICategoriesService categories, IProductsService products, ITagsService tags)
         {
             this.categories = categories;
             this.products = products;
+            this.tags = tags;
         }
 
         public ActionResult Index()
@@ -44,8 +46,9 @@
 
             var viewModel = this.Mapper.Map<CreateViewModel>(product);
             viewModel.Categories = this.categories.Get();
+            viewModel.AllTags = this.tags.Get().Where(t => t.Active).ToList();
 
-            return this.View("Create", viewModel);
+            return this.View(viewModel);
         }
 
         [HttpPost]

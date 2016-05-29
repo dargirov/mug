@@ -14,7 +14,9 @@
 
         public const int EmailMaxLength = 100;
 
-        public const int ProductTagMaxlength = 30;
+        public const int ProductTagMaxlength = 40;
+
+        public const int ProductTagAcronymMaxlength = 50;
 
         public const int MaxImagePathLength = 50;
 

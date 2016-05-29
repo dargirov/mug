@@ -34,6 +34,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -186,9 +187,12 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
+    <Compile Include="Areas\Admin\Controllers\TagController.cs" />
     <Compile Include="Areas\Admin\ViewModels\Home\LoginInputModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Product\CreateViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Product\IndexViewModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\Tag\CreateInputModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\Tag\IndexViewModel.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BulletinController.cs" />
     <Compile Include="Controllers\GalleryController.cs" />
@@ -241,7 +245,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\Images\Gallery\" />
-    <Folder Include="Models\" />
     <Folder Include="Views\Bulletin\" />
     <Folder Include="Views\Image\" />
     <Folder Include="Views\Order\" />
@@ -259,6 +262,9 @@
     <Content Include="Areas\Admin\Views\Product\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Product\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\EditorTemplates\String.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Product\_MainDataPartial.cshtml" />
+    <Content Include="Areas\Admin\Views\Tag\Index.cshtml" />
     <None Include="Project_Readme.html" />
     <Content Include="Views\Shared\_CanvasPartial.cshtml" />
     <Content Include="Views\Shared\_MenuPartial.cshtml" />

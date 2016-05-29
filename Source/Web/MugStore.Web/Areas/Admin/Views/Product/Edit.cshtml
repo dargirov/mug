@@ -1,0 +1,68 @@
+﻿@model MugStore.Web.Areas.Admin.ViewModels.Product.CreateViewModel
+
+@Html.Partial("_MainDataPartial")
+
+<div class="row margin-top">
+    <div class="row">
+        <div class="col-md-12">
+            <h4>Images</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <ul id="images-list">
+                @foreach (var image in Model.Images)
+                {
+                    <li><a href="@Url.RouteUrl("ProductImage", new { name = image.Name })" target="_blank"><img src="@Url.RouteUrl("ProductImage", new { name = image.Name })" style="max-width: 200px;"></a></li>
+                }
+            </ul>
+        </div>
+    </div>
+    <div class="row">
+        @using (Html.BeginForm("Upload", "Product", FormMethod.Post, new { area = "admin", enctype = "multipart/form-data" }))
+        {
+            <div class="col-md-12">
+                @Html.HiddenFor(p => p.Id)
+                @Html.AntiForgeryToken()
+                <input type="file" name="file" id="file">
+            </div>
+            <div class="col-md-12">
+                <input type="submit" class="btn btn-primary" value="Upload">
+            </div>
+        }
+    </div>
+</div>
+
+<div class="row margin-top">
+    <div class="row">
+        <div class="col-md-12">
+            <h4>Tags</h4>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <ul id="product-tag-list">
+                @foreach (var tag in Model.AllTags)
+                {
+                    <li>@tag.Name <a href="#disabled" class="btn btn-secondary btn-sm add-tag-btn" data-tag-id="@tag.Id">Add</a></li>
+                }
+            </ul>
+        </div>
+        <div class="col-md-6">
+
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        $(function () {
+
+            $('.add-tag-btn').on('click', addTagBtnClick);
+            function addTagBtnClick(e) {
+                e.preventDefault();
+            }
+
+        });
+    </script>    
+}

@@ -62,6 +62,9 @@
             builder.RegisterType<ProductsService>()
                 .As<IProductsService>();
 
+            builder.RegisterType<TagsService>()
+                .As<ITagsService>();
+
             builder.RegisterGeneric(typeof(DbRepository<>))
                .As(typeof(IDbRepository<>))
                .InstancePerRequest();

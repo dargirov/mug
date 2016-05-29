@@ -1,0 +1,33 @@
+﻿@model MugStore.Web.Areas.Admin.ViewModels.Tag.IndexViewModel
+@{
+
+}
+
+<div class="row">
+    <div class="col-md-12">
+        @using (Html.BeginForm("Create", "Tag", FormMethod.Post, new { @class = "form-inline" }))
+        {
+            @Html.AntiForgeryToken()
+            <input type="text" name="Name" placeholder="Tag Name" class="form-control">
+            <input type="text" name="Acronym" placeholder="Acronym" class="form-control">
+            <input type="submit" value="Create" class="btn btn-primary">
+        }
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <ul id="tag-list">
+            @foreach (var tag in Model.Tags)
+            {
+                var className = "table-success";
+                if (!tag.Active)
+                {
+                    className = "table-danger";
+                }
+
+                <li class="@className">@tag.Name (@tag.Products.Count)</li>
+            }
+        </ul>
+    </div>
+</div>

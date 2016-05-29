@@ -1,0 +1,14 @@
+﻿namespace MugStore.Services.Data
+{
+    using System.Linq;
+    using MugStore.Data.Models;
+
+    public interface ITagsService
+    {
+        IQueryable<ProductTag> Get();
+
+        ProductTag Get(string name);
+
+        void Create(ProductTag tag);
+    }
+}

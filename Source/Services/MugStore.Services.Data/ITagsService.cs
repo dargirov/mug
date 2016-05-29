@@ -7,6 +7,8 @@
     {
         IQueryable<ProductTag> Get();
 
+        ProductTag Get(int id);
+
         ProductTag Get(string name);
 
         void Create(ProductTag tag);

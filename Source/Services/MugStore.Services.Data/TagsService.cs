@@ -24,6 +24,11 @@
             return this.tags.All();
         }
 
+        public ProductTag Get(int id)
+        {
+            return this.tags.GetById(id);
+        }
+
         public ProductTag Get(string name)
         {
             return this.tags.All().Where(t => t.Name == name).FirstOrDefault();

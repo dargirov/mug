@@ -1,7 +1,7 @@
 ﻿namespace MugStore.Data.Common
 {
     using System.Linq;
-    using MugStore.Data.Common.Models;
+    using Models;
 
     public interface IDbRepository<T> : IDbRepository<T, int> where T : BaseModel<int>
     {

@@ -41,7 +41,7 @@
     </div>
     <div class="row">
         <div class="col-md-6">
-            <ul id="product-tag-list">
+            <ul id="product-tag-list" data-product-id="@Model.Id" data-url="@Url.Action("AddTag", "Product")">
                 @foreach (var tag in Model.AllTags)
                 {
                     <li>@tag.Name <a href="#disabled" class="btn btn-secondary btn-sm add-tag-btn" data-tag-id="@tag.Id">Add</a></li>
@@ -49,7 +49,12 @@
             </ul>
         </div>
         <div class="col-md-6">
-
+            <ul id="product-tag-list-right">
+                @foreach (var tag in Model.Tags)
+                {
+                    <li>@tag.Name <a href="#disabled" class="btn btn-secondary btn-sm remove-tag-btn" data-tag-id="@tag.Id">Remove</a></li>
+                }
+            </ul>
         </div>
     </div>
 </div>
@@ -58,11 +63,30 @@
     <script>
         $(function () {
 
-            $('.add-tag-btn').on('click', addTagBtnClick);
+            $('.add-tag-btn').on('click', { type: 'add' }, addTagBtnClick);
+            $('.remove-tag-btn').on('click', { type: 'remove' }, addTagBtnClick);
+
             function addTagBtnClick(e) {
                 e.preventDefault();
+                var $btn = $(this);
+                var tagId = $(this).data('tag-id');
+                var productId = $('#product-tag-list').data('product-id');
+                var type = e.data.type;
+                var url = $('#product-tag-list').data('url');
+                var csrf = $('input[name=__RequestVerificationToken]').first().val();
+                
+                $.ajax({ method: 'POST', url: url, data: { tagId: tagId, productId: productId, type: type, __RequestVerificationToken: csrf } })
+                    .done(function (response) {
+                        if (response.success) {
+                            if (type === 'remove') {
+                                $btn.parent().remove();
+                            } else {
+                                location.reload();
+                            }
+                        }
+                    });
             }
 
         });
-    </script>    
+    </script>
 }

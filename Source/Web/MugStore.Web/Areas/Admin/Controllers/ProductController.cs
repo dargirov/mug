@@ -155,6 +155,33 @@
             return this.RedirectToAction("Edit", "Product", new { area = "Admin", id = id });
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult AddTag(int tagId, int productId, string type)
+        {
+            var product = this.products.Get(productId);
+            var tag = this.tags.Get(tagId);
+
+            if (product == null || tag == null)
+            {
+                return this.Json(new { success = false });
+            }
+
+            switch (type)
+            {
+                case "add":
+                    product.Tags.Add(tag);
+                    break;
+                case "remove":
+                    product.Tags.Remove(tag);
+                    break;
+            }
+
+            this.products.Save();
+
+            return this.Json(new { success = true });
+        }
+
         private string GenerateAcronym()
         {
             var date = DateTime.UtcNow;

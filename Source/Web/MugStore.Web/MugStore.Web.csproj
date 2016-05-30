@@ -185,7 +185,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
-    <Compile Include="App_Start\AuthorizeUser.cs" />
+    <Compile Include="App_Start\AuthorizeUserAttribute.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\OrderController.cs" />
@@ -213,6 +213,7 @@
     <Compile Include="ViewModels\Bulletin\BulletinInputModel.cs" />
     <Compile Include="ViewModels\Gallery\IndexViewModel.cs" />
     <Compile Include="ViewModels\Home\ContactsInputModel.cs" />
+    <Compile Include="ViewModels\Home\IndexViewModel.cs" />
     <Compile Include="ViewModels\Order\CreateInputModel.cs" />
     <Compile Include="ViewModels\Order\ImageInputModel.cs" />
   </ItemGroup>

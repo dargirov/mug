@@ -7,6 +7,8 @@
     {
         IQueryable<Category> Get();
 
+        Category Get(string acronym);
+
         void Create(Category category);
     }
 }

@@ -33,7 +33,7 @@
             //
 
             //this.SeedCities(context);
-            this.SeedCategories(context);
+            //this.SeedCategories(context);
         }
 
         private void SeedCategories(ApplicationDbContext context)

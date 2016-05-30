@@ -1,8 +1,10 @@
 ﻿namespace MugStore.Web.Controllers
 {
+    using System.Linq;
     using System.Web.Mvc;
     using AutoMapper;
     using Infrastructure.Mapping;
+    using MugStore.Services.Data;
 
     public abstract class BaseController : Controller
     {
@@ -12,6 +14,11 @@
             {
                 return AutoMapperConfig.Configuration.CreateMapper();
             }
+        }
+
+        protected void AddTagsToViewBag(ITagsService tags)
+        {
+            this.ViewBag.Tags = tags.Get().Where(t => t.Active).OrderBy(t => t.Id).ToList();
         }
     }
 }

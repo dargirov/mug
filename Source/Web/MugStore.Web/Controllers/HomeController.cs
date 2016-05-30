@@ -9,24 +9,36 @@
 
     public class HomeController : BaseController
     {
+        private readonly IProductsService products;
         private readonly ICitiesService cities;
+        private readonly ITagsService tags;
 
-        public HomeController(ICitiesService cities)
+        public HomeController(IProductsService products, ICitiesService cities, ITagsService tags)
         {
+            this.products = products;
             this.cities = cities;
+            this.tags = tags;
         }
 
         public ActionResult Index()
         {
             var cities = this.cities.Get().ToList();
-            this.ViewBag.Cities = cities;
+            var products = this.products.Get().Where(c => c.Active).ToList();
+            base.AddTagsToViewBag(this.tags);
 
-            return this.View();
+            var viewModel = new IndexViewModel()
+            {
+                Cities = cities,
+                Products = products
+            };
+
+            return this.View(viewModel);
         }
 
         [HttpGet]
         public ActionResult Contacts()
         {
+            base.AddTagsToViewBag(this.tags);
             return this.View();
         }
 
@@ -34,6 +46,8 @@
         [ValidateAntiForgeryToken]
         public ActionResult Contacts(ContactsInputModel model)
         {
+            base.AddTagsToViewBag(this.tags);
+
             if (this.ModelState.IsValid)
             {
                 var message = new MailMessage();

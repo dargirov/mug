@@ -24,5 +24,11 @@
             this.categories.Add(category);
             this.categories.Save();
         }
+
+
+        public Category Get(string acronym)
+        {
+            return this.categories.All().Where(c => c.Acronym == acronym).FirstOrDefault();
+        }
     }
 }

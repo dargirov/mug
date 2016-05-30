@@ -14,7 +14,7 @@
             <ul>
                 @foreach (var category in Model.Categories)
                 {
-                    <li><a href="#">@category.Name</a></li>
+                    <li><a href="@Url.RouteUrl("GalleryCategory", new { acronym = category.Acronym })">@category.Name</a></li>
                 }
             </ul>
         </div>

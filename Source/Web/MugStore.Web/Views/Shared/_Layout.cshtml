@@ -53,19 +53,10 @@
         <div>
             <h5>Тагове</h5>
             <ul>
-                <li><a href="#">София</a></li>
-                <li><a href="#">Рим</a></li>
-                <li><a href="#">Париж</a></li>
-                <li><a href="#">Берлин</a></li>
-                <li><a href="#">Лондон</a></li>
-                <li><a href="#">Мадрид</a></li>
-                <li><a href="#">Ню Йорк</a></li>
-                <li><a href="#">Виена</a></li>
-                <li><a href="#">Токио</a></li>
-                <li><a href="#">Прага</a></li>
-                <li><a href="#">Истанбул</a></li>
-                <li><a href="#">Вашингтон</a></li>
-                <li><a href="#">Манчестър</a></li>
+                @foreach (var tag in ViewBag.Tags)
+                {
+                    <li><a href="@tag.Acronym">@tag.Name</a></li>
+                }
             </ul>
         </div>
     </footer>

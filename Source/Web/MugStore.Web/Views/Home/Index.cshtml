@@ -1,8 +1,9 @@
-﻿@{
+﻿@model MugStore.Web.ViewModels.Home.IndexViewModel
+@{
     ViewBag.Title = "Home Page";
 }
 
-@Html.Partial("_CanvasPartial", ViewData["cities"])
+@Html.Partial("_CanvasPartial")
 @Html.Partial("_MenuPartial")
 
 <section id="about-us-summary" class="site-section">
@@ -20,13 +21,13 @@
         <div class="touchcarousel">
             <div class="touchcarousel-wrapper">
                 <ul class="touchcarousel-container">
-                    @for (int i = 0; i < 15; i++)
+                    @foreach (var product in Model.Products)
                     {
-                    <li class="touchcarousel-item" style="width: 250px;">
-                        <img src="~/Content/images/cup1.jpg">
-                        <strong>Some random text @i</strong>
-                        <a href="#">Виж повече</a>
-                    </li>
+                        <li class="touchcarousel-item" style="width: 250px;">
+                            <img src="@Url.RouteUrl("ProductImage", new { name = product.Images.First().Name })">
+                            <strong>@product.Title</strong>
+                            <a href="#">Виж повече</a>
+                        </li>
                     }
                 </ul>
             </div>

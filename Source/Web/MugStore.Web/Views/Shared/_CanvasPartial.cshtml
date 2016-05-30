@@ -1,4 +1,5 @@
-﻿<section id="canvas-container">
+﻿@model MugStore.Web.ViewModels.Home.IndexViewModel
+<section id="canvas-container">
     <div>
         <canvas id="canvas"></canvas>
     </div>
@@ -78,7 +79,7 @@
             <input type="text" name="names" id="names-field" placeholder="Име и фамилия">
             <input type="text" name="phone" id="phone-field" placeholder="Тел. за контакт">
             <select name="city" id="city-dd">
-                @foreach (var city in ViewBag.Cities)
+                @foreach (var city in Model.Cities)
                 {
                     <option value="@city.Id">@city.Name.ToLower() (@city.PostCode)</option>
                 }

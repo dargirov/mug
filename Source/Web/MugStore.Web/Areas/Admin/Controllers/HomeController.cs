@@ -3,19 +3,22 @@
     using System.Web.Mvc;
     using ViewModels.Home;
     using Web.Controllers;
+    using MugStore.Web.App_Start;
 
     public class HomeController : BaseController
     {
+        [AuthorizeUser]
         public ActionResult Index()
         {
-            var loggedIn = this.Session["logged_in"];
-
-            if (loggedIn == null || !(bool)loggedIn)
-            {
-                return this.RedirectToAction("Login");
-            }
-
             return this.View();
+        }
+
+        [AuthorizeUser]
+        public ActionResult Logout()
+        {
+            this.Session.Remove("logged_in");
+            this.Session.RemoveAll();
+            return this.RedirectToAction("Login", "Home");
         }
 
         [HttpGet]

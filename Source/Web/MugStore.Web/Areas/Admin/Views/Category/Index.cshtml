@@ -1,0 +1,31 @@
+﻿@model MugStore.Web.Areas.Admin.ViewModels.Category.IndexViewModel
+
+<div class="row">
+    <div class="col-md-12">
+        @using (Html.BeginForm("Create", "Category", FormMethod.Post, new { @class = "form-inline" }))
+        {
+            @Html.AntiForgeryToken()
+            <input type="text" name="Name" placeholder="Name" class="form-control">
+            <input type="text" name="Acronym" placeholder="Acronym" class="form-control">
+            <input type="number" name="Order" placeholder="Order (number)" class="form-control">
+            <input type="submit" value="Create" class="btn btn-primary">
+        }
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <ul id="category-list">
+            @foreach (var category in Model.Categories)
+            {
+                var className = "table-success";
+                if (!category.Active)
+                {
+                    className = "table-danger";
+                }
+
+                <li class="@className">@category.Name (Order: @category.Order)</li>
+            }
+        </ul>
+    </div>
+</div>

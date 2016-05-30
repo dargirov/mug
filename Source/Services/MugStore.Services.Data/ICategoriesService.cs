@@ -6,5 +6,7 @@
     public interface ICategoriesService
     {
         IQueryable<Category> Get();
+
+        void Create(Category category);
     }
 }

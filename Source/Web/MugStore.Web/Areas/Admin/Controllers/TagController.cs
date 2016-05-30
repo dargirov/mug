@@ -8,7 +8,9 @@
     using Services.Data;
     using ViewModels.Tag;
     using Web.Controllers;
+    using MugStore.Web.App_Start;
 
+    [AuthorizeUser]
     public class TagController : BaseController
     {
         private readonly ITagsService tags;

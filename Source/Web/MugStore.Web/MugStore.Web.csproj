@@ -185,10 +185,16 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="App_Start\AuthorizeUser.cs" />
+    <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\OrderController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\TagController.cs" />
+    <Compile Include="Areas\Admin\ViewModels\Category\CreateInputModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\Category\IndexViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Home\LoginInputModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\Order\IndexViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Product\CreateViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Product\IndexViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Tag\CreateInputModel.cs" />
@@ -265,6 +271,8 @@
     <Content Include="Areas\Admin\Views\Product\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Product\_MainDataPartial.cshtml" />
     <Content Include="Areas\Admin\Views\Tag\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Category\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Order\Index.cshtml" />
     <None Include="Project_Readme.html" />
     <Content Include="Views\Shared\_CanvasPartial.cshtml" />
     <Content Include="Views\Shared\_MenuPartial.cshtml" />

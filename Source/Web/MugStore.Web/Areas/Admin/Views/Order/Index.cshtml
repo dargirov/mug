@@ -1,0 +1,163 @@
+﻿@model MugStore.Web.Areas.Admin.ViewModels.Order.IndexViewModel
+@using MugStore.Data.Models
+
+<div class="row">
+    <div class="col-md-12">
+        @Html.AntiForgeryToken()
+        <table class="table table-bordered table-striped table-sm table-orders" data-url="@Url.Action("SetStatus", "Order")">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Acronym</th>
+                    <th>Address</th>
+                    <th>Quantity</th>
+                    <th>Date</th>
+                    <th>Order Status</th>
+                    <th>Confirmation Status</th>
+                    <th>Payment Method</th>
+                </tr>
+            </thead>
+            <tbody>
+                @{
+                    var orderClass = new Dictionary<OrderStatus, string>();
+                    orderClass[OrderStatus.InProgress] = "default";
+                    orderClass[OrderStatus.Finalized] = "success";
+                    orderClass[OrderStatus.DeniedOnDelivery] = "danger";
+                    orderClass[OrderStatus.Refunded] = "warning";
+                    orderClass[OrderStatus.Returned] = "warning";
+                    orderClass[OrderStatus.Sent] = "info";
+
+                    var confirmationClass = new Dictionary<ConfirmationStatus, string>();
+                    confirmationClass[ConfirmationStatus.Confirmed] = "success";
+                    confirmationClass[ConfirmationStatus.Denied] = "danger";
+                    confirmationClass[ConfirmationStatus.Pending] = "default";
+                    confirmationClass[ConfirmationStatus.Recall] = "warning";
+                }
+                @foreach (var order in Model.Orders)
+                {
+                    <tr data-order-id="@order.Id">
+                        <td>@order.Id</td>
+                        <td>@order.Acronym</td>
+                        <td>
+                            <ul class="orders-list">
+                                <li><span class="label label-default">Name</span> @order.DeliveryInfo.FullName</li>
+                                <li><span class="label label-default">Address</span> @order.DeliveryInfo.City.Name, @order.DeliveryInfo.Address</li>
+                                <li><span class="label label-default">Phone</span> @order.DeliveryInfo.Phone</li>
+                                @if (order.DeliveryInfo.Comment != null)
+                                {
+                                    <li><span class="label label-default">Comment</span> @order.DeliveryInfo.Comment</li>
+                                }
+                            </ul>
+                        </td>
+                        <td>@order.Quantity</td>
+                        <td>@order.CreatedOn</td>
+                        <td><span class="label label-@orderClass[order.OrderStatus]">@order.OrderStatus</span> <a href="#disabled" class="btn btn-link btn-sm btn-order-status" data-toggle="modal" data-target="#order-status-modal">Edit</a></td>
+                        <td><span class="label label-@confirmationClass[order.ConfirmationStatus]">@order.ConfirmationStatus</span> <a href="#disabled" class="btn btn-link btn-sm btn-confirmation-status" data-toggle="modal" data-target="#confirmation-status-modal">Edit</a></td>
+                        <td>@order.PaymentMethod</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="confirmation-status-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Confirmation Status</h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="confirmation-status-modal-order-id">
+                <select class="form-control" id="confirmation-status-modal-status">
+                    <option value="1">Pending</option>
+                    <option value="2">Recall</option>
+                    <option value="3">Denied</option>
+                    <option value="4">Confirmed</option>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="confirmation-status-modal-save">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="order-status-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title">Order Status</h4>
+            </div>
+            <div class="modal-body">
+                <input type="hidden" id="order-status-modal-order-id">
+                <select class="form-control" id="order-status-modal-status">
+                    <option value="1">InProgress</option>
+                    <option value="2">Sent</option>
+                    <option value="3">Returned</option>
+                    <option value="4">Refunded</option>
+                    <option value="5">Finalized</option>
+                    <option value="6">DeniedOnDelivery</option>
+                </select>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="order-status-modal-save">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts {
+    <script>
+        $(function () {
+
+            $('.btn-confirmation-status').on('click', btnConfirmationStatusClick);
+            function btnConfirmationStatusClick(e) {
+                $('#confirmation-status-modal-order-id').val($(this).parent().parent().data('order-id'));
+            }
+
+            $('.btn-order-status').on('click', btnOrderStatusClick);
+            function btnOrderStatusClick(e) {
+                $('#order-status-modal-order-id').val($(this).parent().parent().data('order-id'));
+            }
+
+            $('#confirmation-status-modal-save').on('click', {type: 'confirmation'}, confirmationStatusModalSaveClick);
+            $('#order-status-modal-save').on('click', { type: 'order' }, confirmationStatusModalSaveClick);
+
+            function confirmationStatusModalSaveClick(e) {
+                e.preventDefault();
+                var orderId = $('#confirmation-status-modal-order-id').val();
+                var confirmationStatus = $('#confirmation-status-modal-status').val();
+                var orderStatus = $('#order-status-modal-status').val();
+                var csrf = $('input[name=__RequestVerificationToken]').val();
+                var url = $('.table-orders').data('url');
+                var type = 'confirmation';
+
+                if (e.data.type === 'order') {
+                    orderId = $('#order-status-modal-order-id').val();
+                    type = 'order';
+                }
+
+                $.ajax({ method: 'POST', url: url, data: { orderId: orderId, confirmationStatus: confirmationStatus, orderStatus: orderStatus, type: type, __RequestVerificationToken: csrf } })
+                    .done(function (response) {
+                        if (response.success) {
+                            location.reload();
+                        } else {
+                            alert('Error');
+                        }
+                    });
+            }
+            
+        });
+    </script>
+}

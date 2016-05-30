@@ -24,10 +24,19 @@
             return this.orders.GetById(id);
         }
 
-
         public Order Get(string acronym)
         {
             return this.orders.All().Where(o => o.Acronym == acronym).FirstOrDefault();
+        }
+
+        public IQueryable<Order> Get()
+        {
+            return this.orders.All();
+        }
+
+        public void Save()
+        {
+            this.orders.Save();
         }
     }
 }

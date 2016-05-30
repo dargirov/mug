@@ -10,7 +10,9 @@
     using Services.Data;
     using ViewModels.Product;
     using Web.Controllers;
+    using MugStore.Web.App_Start;
 
+    [AuthorizeUser]
     public class ProductController : BaseController
     {
         private readonly ICategoriesService categories;

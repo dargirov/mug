@@ -17,5 +17,12 @@
         {
             return this.categories.All().Where(c => c.Active);
         }
+
+
+        public void Create(Category category)
+        {
+            this.categories.Add(category);
+            this.categories.Save();
+        }
     }
 }

@@ -9,7 +9,7 @@
 
         ProductTag Get(int id);
 
-        ProductTag Get(string name);
+        ProductTag Get(string acronym);
 
         void Create(ProductTag tag);
     }

@@ -1,13 +1,11 @@
 var Scene = (function($) {
 	'use strict';
 
-	var _scene;
-
-	
+	var _canvasId, _scene;
 
 	function initBabylon() {
 
-		var canvas = document.getElementById('canvas');
+	    var canvas = document.getElementById(_canvasId);
 		var engine = new BABYLON.Engine(canvas, true);				
 
 		var createScene = function() {
@@ -72,7 +70,8 @@ var Scene = (function($) {
 	    zChar.position = new BABYLON.Vector3(0, 0.05 * size, 0.9 * size);
 	};
 
-	function init() {
+	function init(options) {
+	    _canvasId = options.canvasId;
 		initBabylon();
 	}
 

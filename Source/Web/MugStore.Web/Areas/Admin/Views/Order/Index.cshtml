@@ -15,6 +15,7 @@
                     <th>Order Status</th>
                     <th>Confirmation Status</th>
                     <th>Payment Method</th>
+                    <th>Preview</th>
                 </tr>
             </thead>
             <tbody>
@@ -54,6 +55,7 @@
                         <td><span class="label label-@orderClass[order.OrderStatus]">@order.OrderStatus</span> <a href="#disabled" class="btn btn-link btn-sm btn-order-status" data-toggle="modal" data-target="#order-status-modal">Edit</a></td>
                         <td><span class="label label-@confirmationClass[order.ConfirmationStatus]">@order.ConfirmationStatus</span> <a href="#disabled" class="btn btn-link btn-sm btn-confirmation-status" data-toggle="modal" data-target="#confirmation-status-modal">Edit</a></td>
                         <td>@order.PaymentMethod</td>
+                        <td><a href="@Url.Action("Preview", "Order", new { id = order.Id })" class="btn btn-secondary btn-sm">Preview</a></td>
                     </tr>
                 }
             </tbody>

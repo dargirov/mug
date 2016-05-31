@@ -40,7 +40,7 @@
 	    $(document).ready(function(){
 
 		    var scene = Scene;
-		    scene.init();
+		    scene.init({ canvasId: 'canvas' });
 
 		    var mug1 = Mug;
 		    mug1.init('lqlq', {x: 0, height: 2, z: 0}, scene.getScene());

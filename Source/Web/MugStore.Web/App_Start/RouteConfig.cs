@@ -25,8 +25,22 @@
 
             routes.MapRoute(
                 name: "GalleryCategory",
-                url: "Gallery/{acronym}",
+                url: "gallery/{acronym}",
                 defaults: new { controller = "Gallery", action = "Category" },
+                namespaces: new[] { "MugStore.Web.Controllers" }
+            );
+
+            routes.MapRoute(
+                name: "Tag",
+                url: "tag/{acronym}",
+                defaults: new { controller = "Home", action = "Tag" },
+                namespaces: new[] { "MugStore.Web.Controllers" }
+            );
+
+            routes.MapRoute(
+                name: "Product",
+                url: "p/{acronym}",
+                defaults: new { controller = "Product", action = "Index" },
                 namespaces: new[] { "MugStore.Web.Controllers" }
             );
 

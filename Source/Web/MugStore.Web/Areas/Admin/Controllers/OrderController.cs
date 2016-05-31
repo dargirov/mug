@@ -57,5 +57,18 @@
 
             return this.Json(new { success = true });
         }
+
+        public ActionResult Preview(int id)
+        {
+            var order = this.orders.Get(id);
+            if (order == null)
+            {
+                return this.HttpNotFound();
+            }
+
+            var viewModel = this.Mapper.Map<PreviewViewModel>(order);
+
+            return this.View(viewModel);
+        }
     }
 }

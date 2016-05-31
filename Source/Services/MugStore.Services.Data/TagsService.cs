@@ -29,9 +29,9 @@
             return this.tags.GetById(id);
         }
 
-        public ProductTag Get(string name)
+        public ProductTag Get(string acronym)
         {
-            return this.tags.All().Where(t => t.Name == name).FirstOrDefault();
+            return this.tags.All().Where(t => t.Acronym == acronym).FirstOrDefault();
         }
     }
 }

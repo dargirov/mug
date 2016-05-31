@@ -93,7 +93,7 @@ var Mug = (function(BABYLON) {
 		var url = imageData.url;
 		var width = imageData.width;
 		var height = imageData.height;
-		var dpi = imageData.dpi;		
+		var dpi = imageData.dpi;
 
 		var widthInCm = width / dpi * 2.54;
 		if (widthInCm > MAX_IMAGE_WIDTH_CM) {
@@ -134,6 +134,14 @@ var Mug = (function(BABYLON) {
 		ribbon.position.z = _z;
 		ribbon.rotation.y = Math.PI;
 		var rotationOffset = 0;
+
+		if (imageData.hasOwnProperty('rotation')) {
+		    ribbon.rotation.y = parseFloat(imageData.rotation.replace(',', '.'));
+		}
+
+		if (imageData.hasOwnProperty('y')) {
+		    ribbon.position.y = parseFloat(imageData.y.replace(',', '.'));
+		}
 
 		var result = {
 			moveUp: function() {

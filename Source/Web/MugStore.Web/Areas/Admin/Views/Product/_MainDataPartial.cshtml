@@ -16,10 +16,16 @@
     {
         @Html.AntiForgeryToken()
         <div class="row">
-            <div class="col-md-12">
+            <div class="col-md-6">
                 <fieldset class="form-group">
                     <label for="Title">Title</label>
                     @Html.EditorFor(p => p.Title)
+                </fieldset>
+            </div>
+            <div class="col-md-6">
+                <fieldset class="form-group">
+                    <label for="Acronym">Acronym</label>
+                    @Html.EditorFor(p => p.Acronym)
                 </fieldset>
             </div>
         </div>

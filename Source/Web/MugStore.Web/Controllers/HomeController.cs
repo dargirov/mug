@@ -12,12 +12,14 @@
         private readonly IProductsService products;
         private readonly ICitiesService cities;
         private readonly ITagsService tags;
+        private readonly ICategoriesService categories;
 
-        public HomeController(IProductsService products, ICitiesService cities, ITagsService tags)
+        public HomeController(IProductsService products, ICitiesService cities, ITagsService tags, ICategoriesService categories)
         {
             this.products = products;
             this.cities = cities;
             this.tags = tags;
+            this.categories = categories;
         }
 
         public ActionResult Index()
@@ -77,6 +79,27 @@
             }
 
             return this.View();
+        }
+
+        public ActionResult Tag(string acronym)
+        {
+            var tag = this.tags.Get(acronym);
+            if (tag == null)
+            {
+                return this.HttpNotFound();
+            }
+
+            base.AddTagsToViewBag(this.tags);
+            var products = tag.Products.Where(p => p.Active).ToList();
+            var categories = this.categories.Get().OrderBy(c => c.Order).ToList();
+
+            var viewModel = new ViewModels.Gallery.IndexViewModel()
+            {
+                Products = products,
+                Categories = categories
+            };
+
+            return this.View("~/Views/Gallery/Index.cshtml", viewModel);
         }
     }
 }

@@ -15,6 +15,10 @@
         public string Title { get; set; }
 
         [Required]
+        [MaxLength(GlobalConstants.MaxProductAcronymLength)]
+        public string Acronym { get; set; }
+
+        [Required]
         public string Description { get; set; }
 
         [Required]

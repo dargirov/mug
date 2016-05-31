@@ -41,7 +41,7 @@
     </div>
     <div class="row">
         <div class="col-md-6">
-            <ul id="product-tag-list" data-product-id="@Model.Id" data-url="@Url.Action("AddTag", "Product")">
+            <ul id="product-tag-list" data-product-id="@Model.Id" data-url="@Url.Action("EditTag", "Product")">
                 @foreach (var tag in Model.AllTags)
                 {
                     <li>@tag.Name <a href="#disabled" class="btn btn-secondary btn-sm add-tag-btn" data-tag-id="@tag.Id">Add</a></li>

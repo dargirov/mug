@@ -1,0 +1,36 @@
+﻿@model MugStore.Web.Areas.Admin.ViewModels.Order.PreviewViewModel
+@{
+
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <h4>Order @Model.Acronym</h4>
+    </div>
+    <div class="col-md-12">
+        <canvas style="width: 100%; height: 650px;" id="canvas"></canvas>
+    </div>
+</div>
+
+@section scripts {
+    @Scripts.Render("~/bundles/babylon")
+    @Scripts.Render("~/bundles/scripts")
+
+    <script>
+        $(document).ready(function () {
+
+            var scene = Scene;
+            scene.init({ canvasId: 'canvas' });
+
+            var mug1 = Mug;
+            mug1.init('lqlq', { x: 0, height: 2, z: 0 }, scene.getScene());
+            mug1.create();
+
+            @foreach (var image in Model.Images)
+            {
+                @:mug1.addImage({ name: '@image.Id.ToString()', url: '/Download/@image.Name', width: @image.Width, height: @image.Height, dpi: @image.Dpi, rotation: '@image.Rotation', y: '@image.Y' });
+            }
+
+        });
+    </script>
+}

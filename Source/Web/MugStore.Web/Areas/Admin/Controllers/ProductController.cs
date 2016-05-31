@@ -76,6 +76,7 @@
             product.PreviewData = model.PreviewData;
             product.Active = model.Active;
             product.CategoryId = model.CategoryId;
+            product.Acronym = model.Acronym;
             this.products.Save();
 
             return this.RedirectToAction("Edit", "Product", new { id = id });
@@ -109,7 +110,7 @@
                 Description = model.Description,
                 Title = model.Title,
                 PreviewData = model.PreviewData,
-                Acronym = this.GenerateAcronym()
+                Acronym = model.Acronym
             };
 
             this.products.Create(product);
@@ -159,7 +160,7 @@
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AddTag(int tagId, int productId, string type)
+        public ActionResult EditTag(int tagId, int productId, string type)
         {
             var product = this.products.Get(productId);
             var tag = this.tags.Get(tagId);
@@ -182,23 +183,6 @@
             this.products.Save();
 
             return this.Json(new { success = true });
-        }
-
-        private string GenerateAcronym()
-        {
-            var date = DateTime.UtcNow;
-            var rand = new Random();
-
-            var acronym = string.Format("{0}{1}", date.ToString("yyMMdd"), rand.Next(1000, 9999));
-            var product = this.products.Get(acronym);
-
-            while (product != null)
-            {
-                acronym = string.Format("{0}{1}", date.ToString("yyMMdd"), rand.Next(1000, 9999));
-                product = this.products.Get(acronym);
-            }
-
-            return acronym;
         }
     }
 }

@@ -55,7 +55,7 @@
             <ul>
                 @foreach (var tag in ViewBag.Tags)
                 {
-                    <li><a href="@tag.Acronym">@tag.Name</a></li>
+                    <li><a href="@Url.RouteUrl("Tag", new { acronym = tag.Acronym })">@tag.Name</a></li>
                 }
             </ul>
         </div>

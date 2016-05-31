@@ -25,7 +25,7 @@
                     <li>
                         <img src="@Url.RouteUrl("ProductImage", new { name = product.Images.First().Name })">
                         <strong>@product.Title</strong>
-                        <a href="/mugs/details.php" class="blue-btn">Детайли</a>
+                        <a href="@Url.RouteUrl("Product", new { acronym = product.Acronym })" class="blue-btn">Детайли</a>
                     </li>
                 }
             </ul>

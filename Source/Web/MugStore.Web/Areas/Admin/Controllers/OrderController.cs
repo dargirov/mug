@@ -1,16 +1,13 @@
 ﻿namespace MugStore.Web.Areas.Admin.Controllers
 {
-    using System;
-    using System.Collections.Generic;
     using System.Data.Entity;
     using System.Linq;
-    using System.Web;
     using System.Web.Mvc;
-    using MugStore.Data.Models;
-    using MugStore.Services.Data;
-    using MugStore.Web.Areas.Admin.ViewModels.Order;
-    using MugStore.Web.App_Start;
-    using MugStore.Web.Controllers;
+    using App_Start;
+    using Data.Models;
+    using Services.Data;
+    using ViewModels.Order;
+    using Web.Controllers;
 
     [AuthorizeUser]
     public class OrderController : BaseController

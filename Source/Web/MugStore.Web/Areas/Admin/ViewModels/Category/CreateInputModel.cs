@@ -1,7 +1,7 @@
 ﻿namespace MugStore.Web.Areas.Admin.ViewModels.Category
 {
     using System.ComponentModel.DataAnnotations;
-    using MugStore.Common;
+    using Common;
 
     public class CreateInputModel
     {

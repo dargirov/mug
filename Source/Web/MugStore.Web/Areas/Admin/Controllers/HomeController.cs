@@ -1,9 +1,9 @@
 ﻿namespace MugStore.Web.Areas.Admin.Controllers
 {
     using System.Web.Mvc;
+    using App_Start;
     using ViewModels.Home;
     using Web.Controllers;
-    using MugStore.Web.App_Start;
 
     public class HomeController : BaseController
     {

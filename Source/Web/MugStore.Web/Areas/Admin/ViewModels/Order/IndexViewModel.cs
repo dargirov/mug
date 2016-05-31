@@ -1,8 +1,7 @@
 ﻿namespace MugStore.Web.Areas.Admin.ViewModels.Order
 {
     using System.Collections.Generic;
-    using MugStore.Common;
-    using MugStore.Data.Models;
+    using Data.Models;
 
     public class IndexViewModel
     {

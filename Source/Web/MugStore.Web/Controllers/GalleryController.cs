@@ -24,7 +24,7 @@
         {
             var categories = this.categories.Get().OrderBy(c => c.Order).ToList();
             var products = this.products.Get().Where(p => p.Active).Include(p => p.Images).OrderByDescending(p => p.Id).ToList();
-            base.AddTagsToViewBag(this.tags);
+            this.AddTagsToViewBag(this.tags);
 
             var viewModel = new IndexViewModel()
             {
@@ -45,7 +45,7 @@
 
             var categories = this.categories.Get().OrderBy(c => c.Order).ToList();
             var products = this.products.Get().Where(p => p.Active && p.CategoryId == category.Id).Include(p => p.Images).OrderByDescending(p => p.Id).ToList();
-            base.AddTagsToViewBag(this.tags);
+            this.AddTagsToViewBag(this.tags);
 
             var viewModel = new IndexViewModel()
             {

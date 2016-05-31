@@ -4,11 +4,11 @@
     using System.Linq;
     using System.Net;
     using System.Web.Mvc;
+    using App_Start;
     using Data.Models;
     using Services.Data;
     using ViewModels.Tag;
     using Web.Controllers;
-    using MugStore.Web.App_Start;
 
     [AuthorizeUser]
     public class TagController : BaseController

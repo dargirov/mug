@@ -1,7 +1,7 @@
 ﻿namespace MugStore.Web.Areas.Admin.ViewModels.Category
 {
     using System.Collections.Generic;
-    using MugStore.Data.Models;
+    using Data.Models;
 
     public class IndexViewModel
     {

@@ -5,12 +5,12 @@
     using System.Linq;
     using System.Web;
     using System.Web.Mvc;
+    using App_Start;
     using Common;
     using Data.Models;
     using Services.Data;
     using ViewModels.Product;
     using Web.Controllers;
-    using MugStore.Web.App_Start;
 
     [AuthorizeUser]
     public class ProductController : BaseController

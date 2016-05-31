@@ -1,16 +1,13 @@
 ﻿namespace MugStore.Web.Areas.Admin.Controllers
 {
-    using System;
-    using System.Collections.Generic;
     using System.Linq;
     using System.Net;
-    using System.Web;
     using System.Web.Mvc;
-    using MugStore.Data.Models;
-    using MugStore.Services.Data;
-    using MugStore.Web.Areas.Admin.ViewModels.Category;
-    using MugStore.Web.Controllers;
-    using MugStore.Web.App_Start;
+    using App_Start;
+    using Data.Models;
+    using Services.Data;
+    using ViewModels.Category;
+    using Web.Controllers;
 
     [AuthorizeUser]
     public class CategoryController : BaseController

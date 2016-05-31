@@ -1,12 +1,8 @@
 ﻿namespace MugStore.Web.Controllers
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Web;
     using System.Web.Mvc;
-    using MugStore.Services.Data;
-    using MugStore.Web.ViewModels.Product;
+    using Services.Data;
+    using ViewModels.Product;
 
     public class ProductController : BaseController
     {
@@ -27,7 +23,7 @@
                 return this.HttpNotFound();
             }
 
-            base.AddTagsToViewBag(tags);
+            this.AddTagsToViewBag(this.tags);
             var viewModel = this.Mapper.Map<IndexViewModel>(product);
 
             return this.View(viewModel);

@@ -26,7 +26,7 @@
         {
             var cities = this.cities.Get().ToList();
             var products = this.products.Get().Where(c => c.Active).ToList();
-            base.AddTagsToViewBag(this.tags);
+            this.AddTagsToViewBag(this.tags);
 
             var viewModel = new IndexViewModel()
             {
@@ -40,7 +40,7 @@
         [HttpGet]
         public ActionResult Contacts()
         {
-            base.AddTagsToViewBag(this.tags);
+            this.AddTagsToViewBag(this.tags);
             return this.View();
         }
 
@@ -48,7 +48,7 @@
         [ValidateAntiForgeryToken]
         public ActionResult Contacts(ContactsInputModel model)
         {
-            base.AddTagsToViewBag(this.tags);
+            this.AddTagsToViewBag(this.tags);
 
             if (this.ModelState.IsValid)
             {
@@ -89,7 +89,7 @@
                 return this.HttpNotFound();
             }
 
-            base.AddTagsToViewBag(this.tags);
+            this.AddTagsToViewBag(this.tags);
             var products = tag.Products.Where(p => p.Active).ToList();
             var categories = this.categories.Get().OrderBy(c => c.Order).ToList();
 

@@ -1,8 +1,8 @@
 ﻿namespace MugStore.Web.ViewModels.Product
 {
     using System.Collections.Generic;
-    using MugStore.Data.Models;
-    using MugStore.Web.Infrastructure.Mapping;
+    using Data.Models;
+    using Infrastructure.Mapping;
 
     public class IndexViewModel : IMapFrom<Product>
     {

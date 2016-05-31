@@ -4,7 +4,7 @@
     using System.Web.Mvc;
     using AutoMapper;
     using Infrastructure.Mapping;
-    using MugStore.Services.Data;
+    using Services.Data;
 
     public abstract class BaseController : Controller
     {

@@ -24,13 +24,13 @@
 
         public ActionResult Index()
         {
-            var cities = this.cities.Get().ToList();
             var products = this.products.Get().Where(c => c.Active).ToList();
+            this.ViewBag.Cities = this.cities.Get().ToList();
+            this.ViewBag.ShowRight = true;
             this.AddTagsToViewBag(this.tags);
 
             var viewModel = new IndexViewModel()
             {
-                Cities = cities,
                 Products = products
             };
 

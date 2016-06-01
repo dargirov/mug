@@ -6,7 +6,5 @@
     public class IndexViewModel
     {
         public IEnumerable<Product> Products { get; set; }
-
-        public IEnumerable<City> Cities { get; set; }
     }
 }

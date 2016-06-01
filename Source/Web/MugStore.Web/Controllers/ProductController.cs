@@ -1,5 +1,6 @@
 ﻿namespace MugStore.Web.Controllers
 {
+    using System.Linq;
     using System.Web.Mvc;
     using Services.Data;
     using ViewModels.Product;
@@ -8,11 +9,13 @@
     {
         private readonly IProductsService products;
         private readonly ITagsService tags;
+        private readonly ICitiesService cities;
 
-        public ProductController(IProductsService products, ITagsService tags)
+        public ProductController(IProductsService products, ITagsService tags, ICitiesService cities)
         {
             this.products = products;
             this.tags = tags;
+            this.cities = cities;
         }
 
         public ActionResult Index(string acronym)
@@ -23,6 +26,8 @@
                 return this.HttpNotFound();
             }
 
+            this.ViewBag.Cities = this.cities.Get().ToList();
+            this.ViewBag.ShowRight = false;
             this.AddTagsToViewBag(this.tags);
             var viewModel = this.Mapper.Map<IndexViewModel>(product);
 

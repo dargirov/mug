@@ -1,107 +1,109 @@
-﻿@model MugStore.Web.ViewModels.Home.IndexViewModel
-<section id="canvas-container">
+﻿<section id="canvas-container">
     <div>
         <canvas id="canvas"></canvas>
     </div>
-    <div id="canvas-container-right">
-        <div data-url="@Url.Action("Upload", "Image")" id="step1">
-            <strong><span class="circle">1</span> Качи изображение</strong>
-            <input type="file">
+    @if ((bool)ViewBag.ShowRight)
+    {
+        <div id="canvas-container-right">
+            <div data-url="@Url.Action("Upload", "Image")" id="step1">
+                <strong><span class="circle">1</span> Качи изображение</strong>
+                <input type="file">
 
-            <div id="customization-controls-container" class="hidden">
-                <strong><span class="circle">2</span> Задай разположение</strong>
-                <div data-image="0" class="move-controls hidden">
-                    <img src="~/Content/images/controls.png" usemap="#controls0">
-                    <map name="controls0">
-                        <area class="move" data-direction="right" href="#disabled" shape="poly" coords="80,26,75,65,47,42" style="outline:none;">
-                        <area class="move" data-direction="up" href="#disabled" shape="poly" coords="25,5,62,7,41,36">
-                        <area class="move" data-direction="left" href="#disabled" shape="poly" coords="5,23,4,59,36,41">
-                        <area class="move" data-direction="down" href="#disabled" shape="poly" coords="22,77,57,81,42,48">
-                    </map>
-                </div>
-                <div data-image="1" class="move-controls hidden">
-                    <img src="~/Content/images/controls.png" usemap="#controls1">
-                    <map name="controls1">
-                        <area class="move" data-direction="right" href="#disabled" shape="poly" coords="80,26,75,65,47,42" style="outline:none;">
-                        <area class="move" data-direction="up" href="#disabled" shape="poly" coords="25,5,62,7,41,36">
-                        <area class="move" data-direction="left" href="#disabled" shape="poly" coords="5,23,4,59,36,41">
-                        <area class="move" data-direction="down" href="#disabled" shape="poly" coords="22,77,57,81,42,48">
-                    </map>
-                </div>
-                <div data-image="2" class="move-controls hidden">
-                    <img src="~/Content/images/controls.png" usemap="#controls2">
-                    <map name="controls2">
-                        <area class="move" data-direction="right" href="#disabled" shape="poly" coords="80,26,75,65,47,42" style="outline:none;">
-                        <area class="move" data-direction="up" href="#disabled" shape="poly" coords="25,5,62,7,41,36">
-                        <area class="move" data-direction="left" href="#disabled" shape="poly" coords="5,23,4,59,36,41">
-                        <area class="move" data-direction="down" href="#disabled" shape="poly" coords="22,77,57,81,42,48">
-                    </map>
-                </div>
+                <div id="customization-controls-container" class="hidden">
+                    <strong><span class="circle">2</span> Задай разположение</strong>
+                    <div data-image="0" class="move-controls hidden">
+                        <img src="~/Content/images/controls.png" usemap="#controls0">
+                        <map name="controls0">
+                            <area class="move" data-direction="right" href="#disabled" shape="poly" coords="80,26,75,65,47,42" style="outline:none;">
+                            <area class="move" data-direction="up" href="#disabled" shape="poly" coords="25,5,62,7,41,36">
+                            <area class="move" data-direction="left" href="#disabled" shape="poly" coords="5,23,4,59,36,41">
+                            <area class="move" data-direction="down" href="#disabled" shape="poly" coords="22,77,57,81,42,48">
+                        </map>
+                    </div>
+                    <div data-image="1" class="move-controls hidden">
+                        <img src="~/Content/images/controls.png" usemap="#controls1">
+                        <map name="controls1">
+                            <area class="move" data-direction="right" href="#disabled" shape="poly" coords="80,26,75,65,47,42" style="outline:none;">
+                            <area class="move" data-direction="up" href="#disabled" shape="poly" coords="25,5,62,7,41,36">
+                            <area class="move" data-direction="left" href="#disabled" shape="poly" coords="5,23,4,59,36,41">
+                            <area class="move" data-direction="down" href="#disabled" shape="poly" coords="22,77,57,81,42,48">
+                        </map>
+                    </div>
+                    <div data-image="2" class="move-controls hidden">
+                        <img src="~/Content/images/controls.png" usemap="#controls2">
+                        <map name="controls2">
+                            <area class="move" data-direction="right" href="#disabled" shape="poly" coords="80,26,75,65,47,42" style="outline:none;">
+                            <area class="move" data-direction="up" href="#disabled" shape="poly" coords="25,5,62,7,41,36">
+                            <area class="move" data-direction="left" href="#disabled" shape="poly" coords="5,23,4,59,36,41">
+                            <area class="move" data-direction="down" href="#disabled" shape="poly" coords="22,77,57,81,42,48">
+                        </map>
+                    </div>
 
-                <a href="#disabled" id="goto-step2" class="blue-btn">Напред</a>
-            </div>
-        </div>
-
-        <div id="step2" class="hidden">
-            <strong><span class="circle">3</span> Избери количество</strong>
-            <input type="range" min="1" max="10" step="1" value="1" id="quantity-range">
-            <table>
-                <tr>
-                    <td>Цена:</td>
-                    <td id="single-price" data-price="10">10.00лв</td>
-                </tr>
-                <tr>
-                    <td>Количество:</td>
-                    <td id="selected-quantity">1</td>
-                </tr>
-                <tr>
-                    <td>Доставка:</td>
-                    <td id="delivery-fee" data-fee="5">5.00лв</td>
-                </tr>
-            </table>
-            <div id="price-container">
-                <h3>15,</h3>
-                <span>00</span>
-                <span>лв</span>
+                    <a href="#disabled" id="goto-step2" class="blue-btn">Напред</a>
+                </div>
             </div>
 
-            <strong><span class="circle">4</span> Определи метод на плащане</strong>
-            <select id="payment-method">
-                <option value="1">Наложен платеж (плащане при доставка)</option>
-            </select>
+            <div id="step2" class="hidden">
+                <strong><span class="circle">3</span> Избери количество</strong>
+                <input type="range" min="1" max="10" step="1" value="1" id="quantity-range">
+                <table>
+                    <tr>
+                        <td>Цена:</td>
+                        <td id="single-price" data-price="10">10.00лв</td>
+                    </tr>
+                    <tr>
+                        <td>Количество:</td>
+                        <td id="selected-quantity">1</td>
+                    </tr>
+                    <tr>
+                        <td>Доставка:</td>
+                        <td id="delivery-fee" data-fee="5">5.00лв</td>
+                    </tr>
+                </table>
+                <div id="price-container">
+                    <h3>15,</h3>
+                    <span>00</span>
+                    <span>лв</span>
+                </div>
 
-            <a href="#" id="goto-step3" class="blue-btn">Напред</a>
-            <i class="fa fa-long-arrow-left order-back" data-to-step="1" aria-hidden="true"></i>
+                <strong><span class="circle">4</span> Определи метод на плащане</strong>
+                <select id="payment-method">
+                    <option value="1">Наложен платеж (плащане при доставка)</option>
+                </select>
+
+                <a href="#" id="goto-step3" class="blue-btn">Напред</a>
+                <i class="fa fa-long-arrow-left order-back" data-to-step="1" aria-hidden="true"></i>
+            </div>
+
+            <div id="step3" class="hidden">
+                <strong><span class="circle">5</span> Попълни данни за доставка</strong>
+                <input type="text" name="names" id="names-field" placeholder="Име и фамилия">
+                <input type="text" name="phone" id="phone-field" placeholder="Тел. за контакт">
+                <select name="city" id="city-dd">
+                    @foreach (var city in ViewBag.Cities)
+                    {
+                        <option value="@city.Id">@city.Name.ToLower() (@city.PostCode)</option>
+                    }
+                </select>
+                <textarea name="address" id="address-field" placeholder="Адрес за доставка"></textarea>
+                <textarea name="comment" id="comment-field" placeholder="Коментар / забележка (незадължително)"></textarea>
+
+                <a href="#" data-url="@Url.Action("Create", "Order")" class="blue-btn" id="create-order-btn">Поръчай</a>
+                <i class="fa fa-long-arrow-left order-back" data-to-step="2" aria-hidden="true"></i>
+            </div>
+
+            <div id="step4" class="hidden">
+                <div class="status-success">Успешно завършихте вашата поръчка</div>
+                <strong id="step4-acronym">Поръчка №<span></span></strong>
+                <dl>
+                    <dt>Метод на плащане:</dt>
+                    <dd id="step4-payment-method"></dd>
+                    <dt>Адрес за доставка:</dt>
+                    <dd id="step4-address"></dd>
+                    <dt>Крайна цена:</dt>
+                    <dd id="step4-price"></dd>
+                </dl>
+            </div>
         </div>
-
-        <div id="step3" class="hidden">
-            <strong><span class="circle">5</span> Попълни данни за доставка</strong>
-            <input type="text" name="names" id="names-field" placeholder="Име и фамилия">
-            <input type="text" name="phone" id="phone-field" placeholder="Тел. за контакт">
-            <select name="city" id="city-dd">
-                @foreach (var city in Model.Cities)
-                {
-                    <option value="@city.Id">@city.Name.ToLower() (@city.PostCode)</option>
-                }
-            </select>
-            <textarea name="address" id="address-field" placeholder="Адрес за доставка"></textarea>
-            <textarea name="comment" id="comment-field" placeholder="Коментар / забележка (незадължително)"></textarea>
-
-            <a href="#" data-url="@Url.Action("Create", "Order")" class="blue-btn" id="create-order-btn">Поръчай</a>
-            <i class="fa fa-long-arrow-left order-back" data-to-step="2" aria-hidden="true"></i>
-        </div>
-
-        <div id="step4" class="hidden">
-            <div class="status-success">Успешно завършихте вашата поръчка</div>
-            <strong id="step4-acronym">Поръчка №<span></span></strong>
-            <dl>
-                <dt>Метод на плащане:</dt>
-                <dd id="step4-payment-method"></dd>
-                <dt>Адрес за доставка:</dt>
-                <dd id="step4-address"></dd>
-                <dt>Крайна цена:</dt>
-                <dd id="step4-price"></dd>
-            </dl>
-        </div>
-    </div>
+    }
 </section>

@@ -1,3 +1,66 @@
 ﻿@model MugStore.Web.ViewModels.Product.IndexViewModel
 
-@Model.Title
+@Html.Partial("_CanvasPartial")
+@Html.Partial("_MenuPartial")
+
+<section id="product-details" class="site-section">
+    <div id="image-gallery">
+        <img src="@Url.RouteUrl("ProductImage", new { name = @Model.Images.First().Name })">
+        <ul>
+            @foreach (var image in Model.Images)
+            {
+                <li><img src="@Url.RouteUrl("ProductImage", new { name = @image.Name })"></li>
+            }
+        </ul>
+    </div>
+    <div id="product-details-info">
+        <h1>@Model.Title</h1>
+        <h2>@Model.Description</h2>
+        <strong>Код на продукт: @Model.Code</strong>
+        <ul>
+            @foreach (var tag in Model.Tags)
+            {
+                <li><a href="@Url.RouteUrl("Tag", new { acronym = tag.Acronym })">@tag.Name</a></li>
+            }
+        </ul>
+    </div>
+    <div id="product-details-order">   
+        <div class="hidden">
+            <strong><span class="circle">1</span> Попълни данни за доставка</strong>
+            <input type="text" name="names" id="names-field" placeholder="Име и фамилия">
+            <input type="text" name="phone" id="phone-field" placeholder="Тел. за контакт">
+            <select name="city" id="city-dd">
+                @foreach (var city in ViewBag.Cities)
+                {
+                    <option value="@city.Id">@city.Name.ToLower() (@city.PostCode)</option>
+                }
+            </select>
+            <textarea name="address" id="address-field" placeholder="Адрес за доставка"></textarea>
+            <textarea name="comment" id="comment-field" placeholder="Коментар / забележка (незадължително)"></textarea>
+        </div>
+        <a href="#" class="blue-btn" id="order-create-btn">Поръчай</a>
+    </div>
+</section>
+
+@section scripts {
+    <script>
+	    $(document).ready(function(){
+
+		    var scene = Scene;
+		    scene.init({ canvasId: 'canvas' });
+
+		    var mug1 = Mug;
+		    mug1.init('mugPreview', {x: 0, height: 2, z: 0}, scene.getScene());
+		    mug1.create();
+
+		    $('#order-create-btn').on('click', orderCreateBtnClick);
+		    function orderCreateBtnClick(e) {
+		        e.preventDefault();
+
+		        var $orderDataContainer = $('#product-details-order').find('.hidden');
+		        $orderDataContainer.removeClass('hidden');
+		    }
+
+	    });
+    </script>
+}

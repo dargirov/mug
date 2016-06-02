@@ -49,13 +49,17 @@ canvas {
 	/*height: 400px;*/
 }
 
-#canvas-container-right strong {
+#canvas-container-right strong, #product-details-order strong {
 	font-family: 'Comfortaa', cursive;
 	font-size: 19px;
 	color: black;
 	font-weight: normal;
 	margin: 30px 0 5px 0;
 	display: block;
+}
+
+#product-details-order strong {
+    margin: 0;
 }
 
 #price-container {
@@ -198,7 +202,7 @@ canvas {
 input[type=text], input[type=email], textarea, select {
 	width: 100%;
 	background-color: white;
-	border: 1px solid #eee;
+	border: 1px solid #D4D4D4;
 	height: 35px;
 	margin: 8px 0;
 	box-sizing: border-box;
@@ -581,7 +585,7 @@ input.invalid, textarea.invalid {
 }
 
 #product-details-order {
-	min-width: 150px;
+	min-width: 300px;
 	padding-left: 30px;
 }
 

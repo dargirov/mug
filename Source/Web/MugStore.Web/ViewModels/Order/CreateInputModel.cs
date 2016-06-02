@@ -17,5 +17,7 @@
         public DeliveryInfo DeliveryInfo { get; set; }
 
         public List<ImageInputModel> Images { get; set; }
+
+        public string ProductAcronym { get; set; }
     }
 }

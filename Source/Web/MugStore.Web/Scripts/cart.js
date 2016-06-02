@@ -1,7 +1,7 @@
 var Cart = (function($) {
 	'use strict';
 
-	var _selector, _mug, _skipCustomization = false, _currentStep = 1;
+	var _mug, _skipCustomization = false, _currentStep = 1;
 
 	function bindCarousel() {
 		$('#recommended-products').touchCarousel({
@@ -146,6 +146,10 @@ var Cart = (function($) {
 			data.quantity = parseInt($('#quantity-range').val());
 			//data.price = $('#single-price').data('price');
 			data.paymentMethod = $('#payment-method').val();
+			if ($('#product-acronym') !== null) {
+			    data.productAcronym = $('#product-acronym').val();
+			}
+
 			data.deliveryInfo = {};
 			data.deliveryInfo.fullName = $('#names-field').val();
 			data.deliveryInfo.phone = $('#phone-field').val();
@@ -235,7 +239,6 @@ var Cart = (function($) {
 	}
 
 	function init(options) {
-		_selector = options.selector;
 		_mug = options.mug;
 		if (options.mug === undefined) {
 			_skipCustomization = true;

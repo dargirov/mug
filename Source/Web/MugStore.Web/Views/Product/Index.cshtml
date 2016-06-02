@@ -25,7 +25,7 @@
         </ul>
     </div>
     <div id="product-details-order">   
-        <div class="hidden">
+        <div id="step3" class="hidden">
             <strong><span class="circle">1</span> Попълни данни за доставка</strong>
             <input type="text" name="names" id="names-field" placeholder="Име и фамилия">
             <input type="text" name="phone" id="phone-field" placeholder="Тел. за контакт">
@@ -37,8 +37,24 @@
             </select>
             <textarea name="address" id="address-field" placeholder="Адрес за доставка"></textarea>
             <textarea name="comment" id="comment-field" placeholder="Коментар / забележка (незадължително)"></textarea>
+            <input type="hidden" id="quantity-range" value="1">
+            <input type="hidden" id="payment-method" value="1">
+            <input type="hidden" id="product-acronym" value="@Model.Acronym">
+            <a href="#disabled" class="blue-btn hidden" id="create-order-btn" data-url="@Url.Action("Create", "Order")">Поръчай</a>
         </div>
-        <a href="#" class="blue-btn" id="order-create-btn">Поръчай</a>
+        <div id="step4" class="hidden">
+            <div class="status-success">Успешно завършихте вашата поръчка</div>
+            <strong id="step4-acronym">Поръчка №<span></span></strong>
+            <dl>
+                <dt>Метод на плащане:</dt>
+                <dd id="step4-payment-method"></dd>
+                <dt>Адрес за доставка:</dt>
+                <dd id="step4-address"></dd>
+                <dt>Крайна цена:</dt>
+                <dd id="step4-price"></dd>
+            </dl>
+        </div>
+        <a href="#disabled" class="blue-btn" id="show-form-btn">Поръчай</a>
     </div>
 </section>
 
@@ -53,12 +69,17 @@
 		    mug1.init('mugPreview', {x: 0, height: 2, z: 0}, scene.getScene());
 		    mug1.create();
 
-		    $('#order-create-btn').on('click', orderCreateBtnClick);
+		    var cart = Cart;
+		    cart.init({ mug: mug1 });
+
+		    $('#show-form-btn').on('click', orderCreateBtnClick);
 		    function orderCreateBtnClick(e) {
 		        e.preventDefault();
 
-		        var $orderDataContainer = $('#product-details-order').find('.hidden');
+		        var $orderDataContainer = $('#product-details-order').find('.hidden').first();
 		        $orderDataContainer.removeClass('hidden');
+		        $(this).remove();
+		        $('#create-order-btn').removeClass('hidden');
 		    }
 
 	    });

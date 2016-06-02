@@ -34,5 +34,9 @@
         public virtual OrderStatus OrderStatus { get; set; }
 
         public virtual ConfirmationStatus ConfirmationStatus { get; set; }
+
+        public int? ProductId { get; set; }
+
+        public virtual Product Product { get; set; }
     }
 }

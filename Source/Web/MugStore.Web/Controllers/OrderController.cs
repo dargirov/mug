@@ -12,12 +12,14 @@
         private readonly IOrdersService orders;
         private readonly IImagesService images;
         private readonly ICitiesService cities;
+        private readonly IProductsService products;
 
-        public OrderController(IOrdersService orders, IImagesService images, ICitiesService cities)
+        public OrderController(IOrdersService orders, IImagesService images, ICitiesService cities, IProductsService products)
         {
             this.orders = orders;
             this.images = images;
             this.cities = cities;
+            this.products = products;
         }
 
         public ActionResult Create(CreateInputModel model)
@@ -51,17 +53,31 @@
                 OrderStatus = OrderStatus.InProgress
             };
 
-            this.orders.Create(order);
-
-            foreach (var imageInfo in model.Images)
+            if (model.ProductAcronym != null)
             {
-                var image = this.images.Get(imageInfo.Name);
-                image.OrderId = order.Id;
-                image.Rotation = imageInfo.Rotation;
-                image.Y = imageInfo.Y;
+                var product = this.products.Get(model.ProductAcronym);
+                if (product == null)
+                {
+                    return this.HttpNotFound();
+                }
+
+                order.Product = product;
             }
 
-            this.images.Save();
+            this.orders.Create(order);
+
+            if (model.ProductAcronym == null)
+            {
+                foreach (var imageInfo in model.Images)
+                {
+                    var image = this.images.Get(imageInfo.Name);
+                    image.OrderId = order.Id;
+                    image.Rotation = imageInfo.Rotation;
+                    image.Y = imageInfo.Y;
+                }
+
+                this.images.Save();
+            }
 
             var result = new
             {

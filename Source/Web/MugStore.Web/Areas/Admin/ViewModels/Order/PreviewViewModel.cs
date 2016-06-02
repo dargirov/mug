@@ -9,5 +9,7 @@
         public string Acronym { get; set; }
 
         public IEnumerable<Image> Images { get; set; }
+
+        public Product Product { get; set; }
     }
 }

@@ -7,6 +7,12 @@
     <div class="col-md-12">
         <h4>Order @Model.Acronym</h4>
     </div>
+    @if (Model.Product != null)
+    {
+        <div class="col-md-12">
+            <strong>Product: <a href="@Url.RouteUrl("Product", new { acronym = Model.Product.Acronym })" target="_blank">@Model.Product.Title</a></strong>
+        </div>
+    }
     <div class="col-md-12">
         <canvas style="width: 100%; height: 650px;" id="canvas"></canvas>
     </div>

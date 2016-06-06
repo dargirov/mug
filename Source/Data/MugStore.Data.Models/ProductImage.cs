@@ -26,5 +26,8 @@
 
         [Required]
         public int ProductId { get; set; }
+
+        [Required]
+        public bool Preview3d { get; set; }
     }
 }

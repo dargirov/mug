@@ -6,6 +6,8 @@
 
     public class IndexViewModel : IMapFrom<Product>
     {
+        public int Id { get; set; }
+
         public string Title { get; set; }
 
         public string Acronym { get; set; }

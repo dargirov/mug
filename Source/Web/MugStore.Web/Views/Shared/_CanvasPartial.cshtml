@@ -82,7 +82,13 @@
                 <select name="city" id="city-dd">
                     @foreach (var city in ViewBag.Cities)
                     {
-                        <option value="@city.Id">@city.Name.ToLower() (@city.PostCode)</option>
+                        var cityType = "гр.";
+                        if (city.Type == MugStore.Data.Models.CityType.Village)
+                        {
+                            cityType = "с.";
+                        }
+                        
+                        <option value="@city.Id">@city.Name (п.к. @city.PostCode)</option>
                     }
                 </select>
                 <textarea name="address" id="address-field" placeholder="Адрес за доставка"></textarea>

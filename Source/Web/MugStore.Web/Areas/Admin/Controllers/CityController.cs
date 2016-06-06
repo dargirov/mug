@@ -22,7 +22,7 @@
 
         public ActionResult Index()
         {
-            var cities = this.cities.Get().OrderByDescending(c => c.Highlight).ThenBy(c => c.Id).ToList();
+            var cities = this.cities.Get().ToList();
             var viewModel = new IndexViewModel()
             {
                 Cities = cities
@@ -48,7 +48,7 @@
 
                     var city = new City()
                     {
-                        Name = values[3],
+                        Name = this.UppercaseFirst(values[3]),
                         Type = cityType,
                         Highlight = false,
                         PostCode = int.Parse(values[4])
@@ -59,6 +59,16 @@
             }
 
             return this.RedirectToAction("Index", "City");
+        }
+
+        private string UppercaseFirst(string s)
+        {
+            if (string.IsNullOrEmpty(s))
+            {
+                return string.Empty;
+            }
+
+            return char.ToUpper(s[0]) + s.ToLower().Substring(1);
         }
     }
 }

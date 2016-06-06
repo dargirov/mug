@@ -3,13 +3,24 @@
 @Html.Partial("_CanvasPartial")
 @Html.Partial("_MenuPartial")
 
-<section id="product-details" class="site-section">
+@{
+    var previewImagesList = new List<string>();
+    foreach (var image in Model.Images)
+    {
+        if (image.Preview3d)
+        {
+            previewImagesList.Add(image.Name);
+        }
+    }
+}
+
+<section id="product-details" class="site-section" data-preview-images="@string.Join(",", previewImagesList)">
     <div id="image-gallery">
         <img src="@Url.RouteUrl("ProductImage", new { name = @Model.Images.First().Name })">
         <ul>
             @foreach (var image in Model.Images)
             {
-                <li><img src="@Url.RouteUrl("ProductImage", new { name = @image.Name })"></li>
+                <li><a class="gallery-img" href="@Url.RouteUrl("ProductImage", new { name = @image.Name })"><img src="@Url.RouteUrl("ProductImage", new { name = @image.Name })" alt=""></a></li>
             }
         </ul>
     </div>
@@ -32,7 +43,7 @@
             <select name="city" id="city-dd">
                 @foreach (var city in ViewBag.Cities)
                 {
-                    <option value="@city.Id">@city.Name.ToLower() (@city.PostCode)</option>
+                    <option value="@city.Id">@city.Name (п.к. @city.PostCode)</option>
                 }
             </select>
             <textarea name="address" id="address-field" placeholder="Адрес за доставка"></textarea>
@@ -59,29 +70,6 @@
 </section>
 
 @section scripts {
-    <script>
-	    $(document).ready(function(){
-
-		    var scene = Scene;
-		    scene.init({ canvasId: 'canvas' });
-
-		    var mug1 = Mug;
-		    mug1.init('mugPreview', {x: 0, height: 2, z: 0}, scene.getScene());
-		    mug1.create();
-
-		    var cart = Cart;
-		    cart.init({ mug: mug1 });
-
-		    $('#show-form-btn').on('click', orderCreateBtnClick);
-		    function orderCreateBtnClick(e) {
-		        e.preventDefault();
-
-		        var $orderDataContainer = $('#product-details-order').find('.hidden').first();
-		        $orderDataContainer.removeClass('hidden');
-		        $(this).remove();
-		        $('#create-order-btn').removeClass('hidden');
-		    }
-
-	    });
-    </script>
+    @Scripts.Render("~/bundles/colorbox")
+    @Scripts.Render("~/bundles/product")
 }

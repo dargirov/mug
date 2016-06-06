@@ -589,10 +589,6 @@ input.invalid, textarea.invalid {
 	padding-left: 30px;
 }
 
-#city-dd, #city-dd option {
-    text-transform: capitalize;
-}
-
 #step4 dl {
     font-family: Tahoma;
     font-size: 15px;
@@ -657,6 +653,22 @@ input.invalid, textarea.invalid {
     font-family: Tahoma;
     font-size: 14px;
     font-weight: normal;
+}
+
+#cboxClose {
+    background-color: #217E79;
+    text-align: center;
+    text-decoration: none;
+    height: 35px;
+    text-transform: uppercase;
+    box-sizing: border-box;
+    font-weight: bold;
+    font-size: 12px;
+    line-height: 16px;
+    color: white;
+    font-family: Arial;
+    border: 0;
+    cursor: pointer;
 }
 
 @media all and (max-width: 1000px) {

@@ -148,7 +148,8 @@
                     OriginalName = file.FileName,
                     Path = id.ToString(),
                     ContentType = file.ContentType,
-                    ProductId = id
+                    ProductId = id,
+                    Preview3d = false
                 };
 
                 product.Images.Add(image);

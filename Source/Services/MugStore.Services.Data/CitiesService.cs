@@ -23,5 +23,12 @@
         {
             return this.cities.GetById(id);
         }
+
+
+        public void Create(City city)
+        {
+            this.cities.Add(city);
+            this.cities.Save();
+        }
     }
 }

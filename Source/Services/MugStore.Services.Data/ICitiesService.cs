@@ -8,5 +8,7 @@
         IQueryable<City> Get();
 
         City Get(int id);
+
+        void Create(City city);
     }
 }

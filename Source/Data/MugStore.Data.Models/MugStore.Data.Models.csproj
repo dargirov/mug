@@ -49,6 +49,7 @@
   <ItemGroup>
     <Compile Include="Category.cs" />
     <Compile Include="City.cs" />
+    <Compile Include="CityType.cs" />
     <Compile Include="ConfirmationStatus.cs" />
     <Compile Include="DeliveryInfo.cs" />
     <Compile Include="ProductImage.cs" />

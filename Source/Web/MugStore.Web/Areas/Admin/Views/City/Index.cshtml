@@ -1,0 +1,25 @@
+﻿@model MugStore.Web.Areas.Admin.ViewModels.City.IndexViewModel
+
+
+<div class="row">
+    <div class="col-md-12">
+        <a href="@Url.Action("Import", "City")" class="btn btn-danger">Import cities from csv</a>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <ul id="city-list">
+            @foreach (var city in Model.Cities)
+            {
+                var className = "table-success";
+                if (!city.Highlight)
+                {
+                    className = "table-danger";
+                }
+                
+                <li class="@className">@city.Name (@city.Type)</li>
+            }
+        </ul>
+    </div>
+</div>

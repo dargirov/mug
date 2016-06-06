@@ -187,12 +187,14 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="App_Start\AuthorizeUserAttribute.cs" />
     <Compile Include="Areas\Admin\Controllers\CategoryController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CityController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\OrderController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\Admin\Controllers\TagController.cs" />
     <Compile Include="Areas\Admin\ViewModels\Category\CreateInputModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Category\IndexViewModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\City\IndexViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Home\LoginInputModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Order\IndexViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Order\PreviewViewModel.cs" />
@@ -277,6 +279,7 @@
     <Content Include="Areas\Admin\Views\Category\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Order\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Order\Preview.cshtml" />
+    <Content Include="Areas\Admin\Views\City\Index.cshtml" />
     <None Include="Project_Readme.html" />
     <Content Include="Views\Shared\_CanvasPartial.cshtml" />
     <Content Include="Views\Shared\_MenuPartial.cshtml" />

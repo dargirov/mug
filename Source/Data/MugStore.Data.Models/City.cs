@@ -14,6 +14,9 @@
         public int PostCode { get; set; }
 
         [Required]
+        public CityType Type { get; set; }
+
+        [Required]
         public bool Highlight { get; set; }
     }
 }

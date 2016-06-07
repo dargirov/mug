@@ -23,10 +23,12 @@
                 <ul class="touchcarousel-container">
                     @foreach (var product in Model.Products)
                     {
-                        <li class="touchcarousel-item" style="width: 250px;">
-                            <img src="@Url.RouteUrl("ProductImage", new { name = product.Images.First().Name })">
+                        <li class="touchcarousel-item">
+                            <a href="@Url.RouteUrl("Product", new { acronym = product.Acronym })">
+                                <img src="@Url.RouteUrl("ProductImage", new { name = product.Images.First().Name })">
+                            </a>
                             <strong>@product.Title</strong>
-                            <a href="#">Виж повече</a>
+                            <a href="@Url.RouteUrl("Product", new { acronym = product.Acronym })">Виж повече</a>
                         </li>
                     }
                 </ul>
@@ -37,18 +39,18 @@
 
 @section scripts {
     <script>
-	    $(document).ready(function(){
+        $(document).ready(function () {
 
-		    var scene = Scene;
-		    scene.init({ canvasId: 'canvas' });
+            var scene = Scene;
+            scene.init({ canvasId: 'canvas' });
 
-		    var mug1 = Mug;
-		    mug1.init('lqlq', {x: 0, height: 2, z: 0}, scene.getScene());
-		    mug1.create();
+            var mug1 = Mug;
+            mug1.init('lqlq', { x: 0, height: 2, z: 0 }, scene.getScene());
+            mug1.create();
 
-		    var cart = Cart;
-		    cart.init({ selector: 'canvas-container-right', mug: mug1});
+            var cart = Cart;
+            cart.init({ mug: mug1 });
 
-	    });
+        });
     </script>
 }

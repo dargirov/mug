@@ -280,6 +280,18 @@ textarea {
 	width: 250px;
 }
 
+.touchcarousel-item {
+    width: 250px;
+}
+
+.touchcarousel-container a {
+    text-decoration: none;
+    color: #555;
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: bold;
+}
+
 #recommended-products strong {
 	display: block;
 }
@@ -512,7 +524,7 @@ input.invalid, textarea.invalid {
     justify-content: space-between;
 }
 
-#image-gallery > img {
+#image-gallery > a > img {
 	width: 300px;
 	border: 1px solid #E4E4E4;
 	padding: 3px;

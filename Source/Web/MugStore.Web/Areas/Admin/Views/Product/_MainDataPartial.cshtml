@@ -88,14 +88,17 @@
                 </fieldset>
             </div>
         </div>
-        <div class="row">
-            <div class="col-md-12">
-                <fieldset class="form-group">
-                    <label for="PreviewData">Preview Data</label>
-                    @Html.EditorFor(p => p.PreviewData)
-                </fieldset>
+        if (Model.Id > 0)
+        {
+            <div class="row">
+                <div class="col-md-12">
+                    <fieldset class="form-group">
+                        <label for="PreviewData">Preview Data</label>
+                        @Html.EditorFor(p => p.PreviewData)
+                    </fieldset>
+                </div>
             </div>
-        </div>
+        }
         <div class="row">
             <div class="col-md-12">
                 @if (Model.Id == 0)

@@ -21,12 +21,10 @@
             this.images.Save();
         }
 
-
         public Image Get(string name)
         {
             return this.images.All().Where(i => i.Name == name).FirstOrDefault();
         }
-
 
         public void Save()
         {

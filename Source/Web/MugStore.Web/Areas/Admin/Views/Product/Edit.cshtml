@@ -10,10 +10,21 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <ul id="images-list">
+            <ul id="images-list" data-edit-url="@Url.Action("EditPreview", "Product")" data-product-id="@Model.Id">
                 @foreach (var image in Model.Images)
                 {
-                    <li><a href="@Url.RouteUrl("ProductImage", new { name = image.Name })" target="_blank"><img src="@Url.RouteUrl("ProductImage", new { name = image.Name })" style="max-width: 200px;"></a></li>
+                    var className = "btn-secondary";
+                    var type = "add";
+                    if (image.Preview3d)
+                    {
+                        className = "btn-danger";
+                        type = "remove";
+                    }
+                    <li>
+                        <a href="@Url.RouteUrl("ProductImage", new { name = image.Name })" target="_blank"><img src="@Url.RouteUrl("ProductImage", new { name = image.Name })" style="max-width: 200px;"></a>
+                        <br>
+                        <a href="#disabled" data-image-id="@image.Id" data-type="@type" class="btn @className btn-sm btn-preview">Preview 3D</a>
+                    </li>
                 }
             </ul>
         </div>
@@ -83,6 +94,26 @@
                             } else {
                                 location.reload();
                             }
+                        }
+                    });
+            }
+
+
+            $('.btn-preview').on('click', btnPreviewClick);
+            function btnPreviewClick(e) {
+                e.preventDefault();
+                var url = $('#images-list').data('edit-url');
+                var productId = $('#images-list').data('product-id');
+                var imageId = $(this).data('image-id');
+                var type = $(this).data('type');
+                var csrf = $('input[name=__RequestVerificationToken]').first().val();
+
+                $.ajax({ method: 'POST', url: url, data: { productId: productId, imageId: imageId, type: type, __RequestVerificationToken: csrf } })
+                    .done(function (response) {
+                        if (response.success) {
+                            location.reload();
+                        } else {
+                            alert('Error');
                         }
                     });
             }

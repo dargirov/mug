@@ -11,6 +11,8 @@
     using Services.Data;
     using ViewModels.Product;
     using Web.Controllers;
+    using Newtonsoft.Json;
+    using System.Collections.Generic;
 
     [AuthorizeUser]
     public class ProductController : BaseController
@@ -179,6 +181,84 @@
                 case "remove":
                     product.Tags.Remove(tag);
                     break;
+            }
+
+            this.products.Save();
+
+            return this.Json(new { success = true });
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditPreview(int productId, int imageId, string type)
+        {
+            var product = this.products.Get(productId);
+            if (product == null)
+            {
+                return this.Json(new { success = false });
+            }
+
+            ProductImage image = null;
+            foreach (var item in product.Images)
+	        {
+		        if (item.Id == imageId)
+                {
+                    image = item;
+                }
+	        }
+
+            if (image == null)
+            {
+                return this.Json(new { success = false });
+            }
+
+            switch (type)
+            {
+                case "add":
+                    {
+                        var images = new List<object>();
+
+                        if (product.PreviewData != null)
+                        {
+                            var jsonData = JsonConvert.DeserializeObject<dynamic>(product.PreviewData);
+                            images = jsonData.images.ToObject<List<object>>();
+                        }
+
+                        images.Add(new { id = imageId, name = image.Name, width = "full", height = "full" });
+
+                        var data = new
+                        {
+                            version = 1,
+                            images = images
+                        };
+
+                        product.PreviewData = JsonConvert.SerializeObject(data);
+                        image.Preview3d = true;
+                        break;
+                    }
+                case "remove":
+                    {
+                        var images = new List<object>();
+                        var jsonData = JsonConvert.DeserializeObject<dynamic>(product.PreviewData);
+                        var imagesData = jsonData.images.ToObject<List<object>>();
+                        foreach (var i in imagesData)
+                        {
+                            if (i.id != imageId)
+                            {
+                                images.Add(new { id = i.id, name = i.name, width = i.width, height = i.height });
+                            }
+                        }
+
+                        var data = new
+                        {
+                            version = 1,
+                            images = images
+                        };
+
+                        product.PreviewData = JsonConvert.SerializeObject(data);
+                        image.Preview3d = false;
+                        break;
+                    }
             }
 
             this.products.Save();

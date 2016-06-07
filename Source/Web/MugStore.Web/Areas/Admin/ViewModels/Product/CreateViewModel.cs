@@ -33,7 +33,6 @@
 
         public IEnumerable<Category> Categories { get; set; }
 
-        [Required]
         public string PreviewData { get; set; }
 
         public virtual ICollection<ProductImage> Images { get; set; }

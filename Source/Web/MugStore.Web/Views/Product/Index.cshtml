@@ -16,11 +16,19 @@
 
 <section id="product-details" class="site-section" data-preview-images="@string.Join(",", previewImagesList)">
     <div id="image-gallery">
-        <img src="@Url.RouteUrl("ProductImage", new { name = @Model.Images.First().Name })">
+        <a class="gallery-img" href="@Url.RouteUrl("ProductImage", new { name = Model.Images.First().Name })"><img src="@Url.RouteUrl("ProductImage", new { name = Model.Images.First().Name })"></a>
         <ul>
-            @foreach (var image in Model.Images)
-            {
-                <li><a class="gallery-img" href="@Url.RouteUrl("ProductImage", new { name = @image.Name })"><img src="@Url.RouteUrl("ProductImage", new { name = @image.Name })" alt=""></a></li>
+            @{
+                var count = 0;
+                foreach (var image in Model.Images)
+                {
+                    if (count++ == 0)
+                    {
+                        continue;
+                    }
+
+                    <li><a class="gallery-img" href="@Url.RouteUrl("ProductImage", new { name = image.Name })"><img src="@Url.RouteUrl("ProductImage", new { name = image.Name })" alt=""></a></li>
+                }
             }
         </ul>
     </div>
@@ -35,7 +43,7 @@
             }
         </ul>
     </div>
-    <div id="product-details-order">   
+    <div id="product-details-order">
         <div id="step3" class="hidden">
             <strong><span class="circle">1</span> Попълни данни за доставка</strong>
             <input type="text" name="names" id="names-field" placeholder="Име и фамилия">

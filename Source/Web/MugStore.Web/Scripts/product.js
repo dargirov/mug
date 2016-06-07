@@ -1,11 +1,16 @@
 ﻿$(document).ready(function () {
 
     $('.gallery-img').colorbox({
-        rel: 'gallery-img', transition: "fade", photo: true, close: 'Затвори', onLoad: function () {
+        rel: 'gallery-img', transition: "fade", photo: true, close: 'Затвори',
+        onLoad: function () {
+            $('#cboxClose').hide();
             $('#cboxPrevious').remove();
             $('#cboxNext').remove();
             $('#cboxSlideshow').remove();
             $('#cboxCurrent').remove();
+        },
+        onComplete: function () {
+            $('#cboxClose').show();
         }
     });
 
@@ -22,7 +27,9 @@
     var previewImages = $('#product-details').data('preview-images').split(',');
 
     for (var i in previewImages) {
-        mug1.addImage({ name: previewImages[i], url: '/DownloadProductImage/' + previewImages[i], width: 1111, height: 1111, dpi: 72 });
+        if (previewImages[i].length > 0) {
+            mug1.addImage({ name: previewImages[i], url: '/DownloadProductImage/' + previewImages[i], width: 1111, height: 1111, dpi: 72 });
+        }
     }
 
     $('#show-form-btn').on('click', orderCreateBtnClick);

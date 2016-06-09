@@ -1,12 +1,8 @@
 ﻿namespace MugStore.Data.Migrations
 {
-    using System;
     using System.Collections.Generic;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
-    using System.Linq;
-    using MugStore.Data.Models;
-    using System.IO;
+    using Models;
 
     public sealed class Configuration : DbMigrationsConfiguration<ApplicationDbContext>
     {
@@ -60,8 +56,7 @@
 
             context.Cities.AddOrUpdate(
                 c => c.PostCode,
-                cities
-            );
+                cities);
 
             //var reader = new StreamReader(File.OpenRead(Directory.GetCurrentDirectory() + @"speedy_sites.csv"));
             //while (!reader.EndOfStream)

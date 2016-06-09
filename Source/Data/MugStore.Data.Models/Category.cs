@@ -2,7 +2,7 @@
 {
     using System.ComponentModel.DataAnnotations;
     using MugStore.Common;
-    using MugStore.Data.Common.Models;
+    using Common.Models;
 
     public class Category : BaseModel<int>
     {

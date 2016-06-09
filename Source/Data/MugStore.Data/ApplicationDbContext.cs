@@ -1,10 +1,10 @@
 ﻿namespace MugStore.Data
 {
     using System;
-    using System.Linq;
     using System.Data.Entity;
-    using MugStore.Data.Models;
-    using MugStore.Data.Common.Models;
+    using System.Linq;
+    using Common.Models;
+    using Models;
 
     public class ApplicationDbContext : DbContext
     {

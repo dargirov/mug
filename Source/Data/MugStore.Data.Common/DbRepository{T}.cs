@@ -1,11 +1,12 @@
 ﻿namespace MugStore.Data.Common
 {
     using System;
-    using System.Linq;
     using System.Data.Entity;
-    using MugStore.Data.Common.Models;
+    using System.Linq;
+    using Models;
 
-    public class DbRepository<T> : IDbRepository<T> where T : BaseModel<int>
+    public class DbRepository<T> : IDbRepository<T>
+        where T : BaseModel<int>
     {
         public DbRepository(DbContext context)
         {

@@ -39,7 +39,7 @@
                 mapperConfiguration.CreateMap(map.Source, map.Destination);
             }
         }
-        
+
         private static void LoadCustomMappings(IEnumerable<Type> types, IMapperConfiguration mapperConfiguration)
         {
             var maps = (from t in types

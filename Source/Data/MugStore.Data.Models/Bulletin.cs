@@ -3,7 +3,7 @@
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using MugStore.Common;
-    using MugStore.Data.Common.Models;
+    using Common.Models;
 
     public class Bulletin : BaseModel<int>
     {

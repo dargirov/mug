@@ -19,24 +19,20 @@
             this.products.Save();
         }
 
-
         public Product Get(string acronym)
         {
             return this.products.All().Where(p => p.Acronym == acronym).FirstOrDefault();
         }
-
 
         public IQueryable<Product> Get()
         {
             return this.products.All();
         }
 
-
         public Product Get(int id)
         {
             return this.products.GetById(id);
         }
-
 
         public void Save()
         {

@@ -3,11 +3,13 @@
     using System.Linq;
     using Models;
 
-    public interface IDbRepository<T> : IDbRepository<T, int> where T : BaseModel<int>
+    public interface IDbRepository<T> : IDbRepository<T, int>
+        where T : BaseModel<int>
     {
     }
 
-    public interface IDbRepository<T, in TKey> where T : BaseModel<int>
+    public interface IDbRepository<T, in TKey>
+        where T : BaseModel<int>
     {
         IQueryable<T> All();
 

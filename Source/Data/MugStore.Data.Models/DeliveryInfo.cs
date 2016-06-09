@@ -1,7 +1,7 @@
 ﻿namespace MugStore.Data.Models
 {
     using System.ComponentModel.DataAnnotations;
-    using MugStore.Data.Common.Models;
+    using Common.Models;
     using MugStore.Common;
 
     public class DeliveryInfo : BaseModel<int>

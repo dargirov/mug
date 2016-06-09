@@ -8,5 +8,7 @@
         public IEnumerable<Category> Categories { get; set; }
 
         public IEnumerable<Product> Products { get; set; }
+
+        public string CategoryName { get; set; }
     }
 }

@@ -49,8 +49,31 @@
 
             var viewModel = new IndexViewModel()
             {
+                CategoryName = category.Name,
                 Categories = categories,
                 Products = products
+            };
+
+            return this.View("Index", viewModel);
+        }
+
+        public ActionResult Tag(string acronym)
+        {
+            var tag = this.tags.Get(acronym);
+            if (tag == null)
+            {
+                return this.HttpNotFound();
+            }
+
+            this.AddTagsToViewBag(this.tags);
+            var products = tag.Products.Where(p => p.Active).ToList();
+            var categories = this.categories.Get().OrderBy(c => c.Order).ToList();
+
+            var viewModel = new IndexViewModel()
+            {
+                CategoryName = tag.Name,
+                Products = products,
+                Categories = categories
             };
 
             return this.View("Index", viewModel);

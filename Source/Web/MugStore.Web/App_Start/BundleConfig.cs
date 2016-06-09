@@ -32,8 +32,8 @@ namespace MugStore.Web
 
         private static void RegisterStyles(BundleCollection bundles)
         {
-            bundles.Add(new StyleBundle("~/Content/css").Include("~/Content/css/main.css", "~/Content/css/touchcarousel.css"));
-            bundles.Add(new StyleBundle("~/Content/admin/css").Include("~/Areas/Admin/Content/css/main.css", "~/Areas/Admin/Content/css/bootstrap.min.css", "~/Areas/Admin/Content/css/tether.min.css"));
+            bundles.Add(new StyleBundle("~/Content/main").Include("~/Content/css/main.css", "~/Content/css/touchcarousel.css", "~/Content/font_awesome_4_6_3/css/font-awesome.min.css"));
+            bundles.Add(new StyleBundle("~/Content/admin/main").Include("~/Areas/Admin/Content/css/main.css", "~/Areas/Admin/Content/css/bootstrap.min.css", "~/Areas/Admin/Content/css/tether.min.css"));
         }
 
         private static void RegisterScripts(BundleCollection bundles)

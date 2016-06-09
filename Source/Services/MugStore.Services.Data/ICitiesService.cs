@@ -10,5 +10,7 @@
         City Get(int id);
 
         void Create(City city);
+
+        void Save();
     }
 }

@@ -18,7 +18,7 @@
                     className = "table-danger";
                 }
                 
-                <li class="@className">@city.Name (@city.Type)</li>
+                <li class="@className">@city.Name (@city.Type) <a href="@Url.Action("EditHighlight", "City", new { id = city.Id })">٭</a></li>
             }
         </ul>
     </div>

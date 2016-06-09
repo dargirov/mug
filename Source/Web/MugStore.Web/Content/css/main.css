@@ -299,7 +299,7 @@ textarea {
 #logo-container {
 	text-align: center;
 	background-color: #E4E4E4;
-	padding-top: 20px;
+	padding: 20px 0 10px 0;
 }
 
 #logo-container .fa {
@@ -307,8 +307,8 @@ textarea {
 }
 
 #logo-container h2 {
-	font-family: 'PT Sans', sans-serif;
-	font-size: 18px;
+	font-family: 'Roboto Condensed', sans-serif;
+	font-size: 21px;
 	font-weight: normal;
 }
 
@@ -683,6 +683,35 @@ input.invalid, textarea.invalid {
     cursor: pointer;
 }
 
+#image-help {
+    cursor: pointer;
+}
+
+.image-help-colorbox {
+    background-color: white;
+}
+
+.image-help-colorbox h1 {
+    font-size: 23px;
+    margin: 10px 0;
+}
+
+.image-help-container {
+    text-align: center;
+    font-family: Tahoma;
+    color: #333;
+    border: 1px solid #E4E4E4;
+    height: 99%;
+}
+
+.image-help-colorbox ul {
+    list-style-type: none;
+}
+
+.image-help-colorbox li {
+    font-size: 16px;
+}
+
 @media all and (max-width: 1000px) {
 	#header > div {
 		width: 100%;
@@ -709,6 +738,7 @@ input.invalid, textarea.invalid {
 	#footer > div {
 		width: 100%;
 		padding: 0;
+        margin: 10px 0;
 	}
 
 	#gallery > div {
@@ -725,5 +755,18 @@ input.invalid, textarea.invalid {
 
     #product-details-info, #product-details-order {
         padding-left: 0;
+    }
+
+    #contacts ul {
+	    flex-direction: column;
+    }
+
+    #contacts li {
+        width: 100%;
+    }
+
+    #contacts li:nth-child(2n+1) {
+        text-align: left;
+        margin-top: 10px;
     }
 }

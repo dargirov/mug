@@ -5,15 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title</title>
 
-    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/main")
     @RenderSection("styles", required: false)
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css" rel="stylesheet">
 
 </head>
 <body>
 
     <section id="logo-container">
-        <i class="fa fa-envira" aria-hidden="true"> Cup3</i>
+        <img src="~/Content/images/logo.png">
         <h2>Направи си чаша</h2>
     </section>
 
@@ -44,10 +43,10 @@
             <h5>Информация</h5>
             <nav>
                 <ol>
-                    <li><a href="#">Начало</a></li>
-                    <li><a href="#">Галерия</a></li>
+                    <li><a href="@Url.Action("index", "home")">Начало</a></li>
+                    <li><a href="@Url.Action("index", "gallery")">Галерия</a></li>
                     @*<li><a href="#">За нас</a></li>*@
-                    <li><a href="#">Контакти</a></li>
+                    <li><a href="@Url.Action("contacts", "home")">Контакти</a></li>
                 </ol>
             </nav>
         </div>

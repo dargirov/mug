@@ -33,7 +33,7 @@
             routes.MapRoute(
                 name: "Tag",
                 url: "tag/{acronym}",
-                defaults: new { controller = "Home", action = "Tag" },
+                defaults: new { controller = "Gallery", action = "Tag" },
                 namespaces: new[] { "MugStore.Web.Controllers" }
             );
 

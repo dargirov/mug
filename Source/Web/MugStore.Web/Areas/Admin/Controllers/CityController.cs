@@ -10,7 +10,9 @@
     using MugStore.Services.Data;
     using MugStore.Web.Areas.Admin.ViewModels.City;
     using MugStore.Data.Models;
+    using MugStore.Web.App_Start;
 
+    [AuthorizeUser]
     public class CityController : BaseController
     {
         private readonly ICitiesService cities;
@@ -57,6 +59,20 @@
                     this.cities.Create(city);
                 }
             }
+
+            return this.RedirectToAction("Index", "City");
+        }
+
+        public ActionResult EditHighlight(int id)
+        {
+            var city = this.cities.Get(id);
+            if (city == null)
+            {
+                return this.HttpNotFound();
+            }
+
+            city.Highlight = !city.Highlight;
+            this.cities.Save();
 
             return this.RedirectToAction("Index", "City");
         }

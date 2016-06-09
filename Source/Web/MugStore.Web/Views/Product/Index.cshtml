@@ -1,4 +1,7 @@
 ﻿@model MugStore.Web.ViewModels.Product.IndexViewModel
+@{
+    ViewBag.Title = string.Format("Чаша със снимка на {0}", Model.Title);              
+}
 
 @Html.Partial("_CanvasPartial")
 @Html.Partial("_MenuPartial")

@@ -1,6 +1,13 @@
 ﻿@model MugStore.Web.ViewModels.Gallery.IndexViewModel
 @{
-    ViewBag.Title = "Index";
+    if (Model.CategoryName != null)
+    {
+        ViewBag.Title = "Чаши със снимки на " + Model.CategoryName.ToLower();
+    }
+    else
+    {
+        ViewBag.Title = "Чаши със снимка";
+    }
 }
 
 @Html.Partial("_MenuPartial")

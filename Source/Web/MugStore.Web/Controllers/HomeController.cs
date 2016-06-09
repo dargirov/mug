@@ -81,25 +81,9 @@
             return this.View();
         }
 
-        public ActionResult Tag(string acronym)
+        public ActionResult ImageHelp()
         {
-            var tag = this.tags.Get(acronym);
-            if (tag == null)
-            {
-                return this.HttpNotFound();
-            }
-
-            this.AddTagsToViewBag(this.tags);
-            var products = tag.Products.Where(p => p.Active).ToList();
-            var categories = this.categories.Get().OrderBy(c => c.Order).ToList();
-
-            var viewModel = new ViewModels.Gallery.IndexViewModel()
-            {
-                Products = products,
-                Categories = categories
-            };
-
-            return this.View("~/Views/Gallery/Index.cshtml", viewModel);
+            return this.View();
         }
     }
 }

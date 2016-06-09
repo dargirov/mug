@@ -223,14 +223,23 @@
     <Compile Include="ViewModels\Product\IndexViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Areas\Admin\Content\css\bootstrap.min.css" />
     <Content Include="Areas\Admin\Content\css\main.css" />
+    <Content Include="Areas\Admin\Content\css\tether.min.css" />
+    <Content Include="Areas\Admin\Scripts\bootstrap.min.js" />
     <Content Include="Areas\Admin\Scripts\main.js" />
+    <Content Include="Areas\Admin\Scripts\tether.min.js" />
     <Content Include="Content\css\main.css" />
     <Content Include="Content\css\touchcarousel.css" />
+    <Content Include="Content\font_awesome_4_6_3\css\font-awesome.min.css" />
+    <Content Include="Content\font_awesome_4_6_3\fonts\fontawesome-webfont.svg" />
     <Content Include="Content\images\controls.png" />
     <Content Include="Content\images\cup1.jpg" />
     <Content Include="Content\images\icon_success.png" />
+    <Content Include="Content\images\image_size_preview.jpg" />
+    <Content Include="Content\images\logo.png" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\libs\babylon.2.3.js" />
@@ -282,11 +291,26 @@
     <Content Include="Areas\Admin\Views\Order\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Order\Preview.cshtml" />
     <Content Include="Areas\Admin\Views\City\Index.cshtml" />
+    <Content Include="App_Data\speedy_sites.csv" />
+    <Content Include="Content\font_awesome_4_6_3\fonts\fontawesome-webfont.eot" />
+    <Content Include="Content\font_awesome_4_6_3\fonts\fontawesome-webfont.ttf" />
+    <Content Include="Content\font_awesome_4_6_3\fonts\fontawesome-webfont.woff" />
+    <Content Include="Content\font_awesome_4_6_3\fonts\fontawesome-webfont.woff2" />
+    <Content Include="Content\font_awesome_4_6_3\fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\FontAwesome.otf" />
     <None Include="Project_Readme.html" />
     <Content Include="Views\Shared\_CanvasPartial.cshtml" />
     <Content Include="Views\Shared\_MenuPartial.cshtml" />
     <Content Include="Views\Gallery\Index.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
+    <Content Include="Views\Home\ImageHelp.cshtml" />
+    <None Include="Properties\PublishProfiles\mug.pubxml">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Data\MugStore.Data.Common\MugStore.Data.Common.csproj">

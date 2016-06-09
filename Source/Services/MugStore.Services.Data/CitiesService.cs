@@ -30,5 +30,11 @@
             this.cities.Add(city);
             this.cities.Save();
         }
+
+
+        public void Save()
+        {
+            this.cities.Save();
+        }
     }
 }

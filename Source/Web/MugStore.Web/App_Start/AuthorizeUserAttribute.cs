@@ -3,9 +3,9 @@
     using System.Web.Mvc;
     using System.Web.Routing;
 
-    public class AuthorizeUserAttribute : ActionFilterAttribute
+    public class AuthorizeUserAttribute : AuthorizeAttribute
     {
-        public override void OnActionExecuting(ActionExecutingContext filterContext)
+        public override void OnAuthorization(AuthorizationContext filterContext)
         {
             var logged = filterContext.HttpContext.Session["logged_in"];
             if (logged == null || !(bool)logged)

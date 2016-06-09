@@ -32,4 +32,11 @@
             });
     }
 
+    $('#image-help').on('click', imageHelpClick);
+    function imageHelpClick(e) {
+        e.preventDefault();
+        var url = $(this).data('url');
+        $.colorbox({ href: url, opacity: 1, transition: "none", className: 'image-help-colorbox', close: 'Затвори', width: 900, height: 620 });
+    }
+
 });

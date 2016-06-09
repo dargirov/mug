@@ -96,13 +96,21 @@ var Mug = (function(BABYLON) {
 		var dpi = imageData.dpi;
 
 		var widthInCm = width / dpi * 2.54;
-		if (widthInCm > MAX_IMAGE_WIDTH_CM) {
-			widthInCm = MAX_IMAGE_WIDTH_CM;
-		}
-
 		var heightInCm = height / dpi * 2.54;
-		if (heightInCm > MAX_IMAGE_HEIGHT_CM) {
-			heightInCm = MAX_IMAGE_HEIGHT_CM;
+
+        // check if the image is too big and needs to be resized
+		if (widthInCm > MAX_IMAGE_WIDTH_CM || heightInCm > MAX_IMAGE_HEIGHT_CM) {
+		    var percent = MAX_IMAGE_WIDTH_CM / widthInCm * 100;
+		    var newHeightInCm = percent / 100 * heightInCm;	    
+
+		    if (newHeightInCm > MAX_IMAGE_HEIGHT_CM) {
+		        percent = MAX_IMAGE_HEIGHT_CM / heightInCm * 100;
+		        var newWidthInCm = percent / 100 * widthInCm;
+		        widthInCm = newWidthInCm;
+		        heightInCm = MAX_IMAGE_HEIGHT_CM;
+		    } else {
+		        widthInCm = MAX_IMAGE_WIDTH_CM;
+		    }
 		}
 
 		// this coefficient sets the width of the image

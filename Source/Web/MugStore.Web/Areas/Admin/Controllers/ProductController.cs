@@ -118,7 +118,7 @@
             this.products.Create(product);
             model.Categories = this.categories.Get();
 
-            return this.View(model);
+            return this.RedirectToAction("Edit", "Product", new { id = product.Id });
         }
 
         [HttpPost]

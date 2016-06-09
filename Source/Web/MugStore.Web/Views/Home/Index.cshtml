@@ -1,6 +1,6 @@
 ﻿@model MugStore.Web.ViewModels.Home.IndexViewModel
 @{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Направи си чаша със снимка";
 }
 
 @Html.Partial("_CanvasPartial")
@@ -38,6 +38,7 @@
 </section>
 
 @section scripts {
+    @Scripts.Render("~/bundles/colorbox")
     <script>
         $(document).ready(function () {
 

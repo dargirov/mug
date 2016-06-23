@@ -28,7 +28,7 @@
 
     for (var i in previewImages) {
         if (previewImages[i].length > 0) {
-            mug1.addImage({ name: previewImages[i], url: '/DownloadProductImage/' + previewImages[i], width: 1111, height: 1111, dpi: 72 });
+            mug1.addImage({ name: previewImages[i], url: '/DownloadProductImage/' + previewImages[i], width: 2362, height: 1004, dpi: 300 });
         }
     }
 

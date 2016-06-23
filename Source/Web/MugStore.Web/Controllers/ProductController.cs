@@ -26,7 +26,7 @@
                 return this.HttpNotFound();
             }
 
-            this.ViewBag.Cities = this.cities.Get().ToList();
+            this.ViewBag.Cities = this.cities.Get().Where(c => c.Highlight).ToList();
             this.ViewBag.ShowRight = false;
             this.AddTagsToViewBag(this.tags);
             var viewModel = this.Mapper.Map<IndexViewModel>(product);

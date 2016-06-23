@@ -25,7 +25,7 @@
         public ActionResult Index()
         {
             var products = this.products.Get().Where(c => c.Active).ToList();
-            this.ViewBag.Cities = this.cities.Get().ToList();
+            this.ViewBag.Cities = this.cities.Get().Where(c => c.Highlight).ToList();
             this.ViewBag.ShowRight = true;
             this.AddTagsToViewBag(this.tags);
 

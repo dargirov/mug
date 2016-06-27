@@ -25,7 +25,7 @@
                 var count = 0;
                 foreach (var image in Model.Images)
                 {
-                    if (count++ == 0)
+                    if (count++ == 0 || image.Preview3d)
                     {
                         continue;
                     }

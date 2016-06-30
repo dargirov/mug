@@ -529,6 +529,8 @@ input.invalid, textarea.invalid {
 	text-align: center;
 	display: block;
 	color: #555;
+    line-height: 20px;
+    min-height: 40px;
 	margin-bottom: 10px;
 }
 

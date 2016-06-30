@@ -19,13 +19,18 @@
 
 <section id="product-details" class="site-section" data-preview-images="@string.Join(",", previewImagesList)">
     <div id="image-gallery">
-        <a class="gallery-img" href="@Url.RouteUrl("ProductImage", new { name = Model.Images.First().Name })"><img src="@Url.RouteUrl("ProductImage", new { name = Model.Images.First().Name })"></a>
+        <a class="gallery-img" href="@Url.RouteUrl("ProductImage", new { name = Model.Images.Where(i => !i.Thumb && !i.Preview3d).First().Name })"><img src="@Url.RouteUrl("ProductImage", new { name = Model.Images.Where(i => !i.Thumb && !i.Preview3d).First().Name })"></a>
         <ul>
             @{
                 var count = 0;
                 foreach (var image in Model.Images)
                 {
-                    if (count++ == 0 || image.Preview3d)
+                    if (image.Preview3d || image.Thumb)
+                    {
+                        continue;
+                    }
+                    
+                    if (count++ == 0)
                     {
                         continue;
                     }

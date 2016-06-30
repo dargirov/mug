@@ -29,5 +29,8 @@
 
         [Required]
         public bool Preview3d { get; set; }
+
+        [Required]
+        public bool Thumb { get; set; }
     }
 }

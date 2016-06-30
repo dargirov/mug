@@ -10,20 +10,29 @@
     </div>
     <div class="row">
         <div class="col-md-12">
-            <ul id="images-list" data-edit-url="@Url.Action("EditPreview", "Product")" data-product-id="@Model.Id">
+            <ul id="images-list" data-edit-url="@Url.Action("EditImage", "Product")" data-product-id="@Model.Id">
                 @foreach (var image in Model.Images)
                 {
-                    var className = "btn-secondary";
-                    var type = "add";
+                    var classNamePreview = "btn-secondary";
+                    var typePreview = "add";
                     if (image.Preview3d)
                     {
-                        className = "btn-danger";
-                        type = "remove";
+                        classNamePreview = "btn-danger";
+                        typePreview = "remove";
+                    }
+
+                    var classNameThumb = "btn-secondary";
+                    var typeThumb = "add";
+                    if (image.Thumb)
+                    {
+                        classNameThumb = "btn-danger";
+                        typeThumb = "remove";
                     }
                     <li>
                         <a href="@Url.RouteUrl("ProductImage", new { name = image.Name })" target="_blank"><img src="@Url.RouteUrl("ProductImage", new { name = image.Name })" style="max-width: 200px;"></a>
                         <br>
-                        <a href="#disabled" data-image-id="@image.Id" data-type="@type" class="btn @className btn-sm btn-preview">Preview 3D</a>
+                        <a href="#disabled" data-image-id="@image.Id" data-type="@typePreview" class="btn @classNamePreview btn-sm btn-preview">Preview 3D</a>
+                        <a href="#disabled" data-image-id="@image.Id" data-type="@typeThumb" class="btn @classNameThumb btn-sm btn-thumb">Thumb</a>
                     </li>
                 }
             </ul>
@@ -98,17 +107,18 @@
                     });
             }
 
-
-            $('.btn-preview').on('click', btnPreviewClick);
-            function btnPreviewClick(e) {
+            $('.btn-thumb').on('click', { type: 'thumb' }, btnPreviewThumbClick);
+            $('.btn-preview').on('click', { type: 'preview' }, btnPreviewThumbClick);
+            function btnPreviewThumbClick(e) {
                 e.preventDefault();
                 var url = $('#images-list').data('edit-url');
                 var productId = $('#images-list').data('product-id');
                 var imageId = $(this).data('image-id');
                 var type = $(this).data('type');
+                var imageType = e.data.type;
                 var csrf = $('input[name=__RequestVerificationToken]').first().val();
 
-                $.ajax({ method: 'POST', url: url, data: { productId: productId, imageId: imageId, type: type, __RequestVerificationToken: csrf } })
+                $.ajax({ method: 'POST', url: url, data: { productId: productId, imageId: imageId, type: type, imageType: imageType, __RequestVerificationToken: csrf } })
                     .done(function (response) {
                         if (response.success) {
                             location.reload();

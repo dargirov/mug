@@ -151,7 +151,8 @@
                     Path = id.ToString(),
                     ContentType = file.ContentType,
                     ProductId = id,
-                    Preview3d = false
+                    Preview3d = false,
+                    Thumb = false
                 };
 
                 product.Images.Add(image);
@@ -190,7 +191,7 @@
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult EditPreview(int productId, int imageId, string type)
+        public ActionResult EditImage(int productId, int imageId, string type, string imageType)
         {
             var product = this.products.Get(productId);
             if (product == null)
@@ -212,53 +213,68 @@
                 return this.Json(new { success = false });
             }
 
-            switch (type)
+            if (imageType == "preview")
             {
-                case "add":
-                    {
-                        var images = new List<object>();
-
-                        if (product.PreviewData != null)
+                switch (type)
+                {
+                    case "add":
                         {
-                            var jsonData = JsonConvert.DeserializeObject<dynamic>(product.PreviewData);
-                            images = jsonData.images.ToObject<List<object>>();
-                        }
+                            var images = new List<object>();
 
-                        images.Add(new { id = imageId, name = image.Name, width = "full", height = "full" });
-
-                        var data = new
-                        {
-                            version = 1,
-                            images = images
-                        };
-
-                        product.PreviewData = JsonConvert.SerializeObject(data);
-                        image.Preview3d = true;
-                        break;
-                    }
-                case "remove":
-                    {
-                        var images = new List<object>();
-                        var jsonData = JsonConvert.DeserializeObject<dynamic>(product.PreviewData);
-                        var imagesData = jsonData.images.ToObject<List<object>>();
-                        foreach (var i in imagesData)
-                        {
-                            if (i.id != imageId)
+                            if (product.PreviewData != null)
                             {
-                                images.Add(new { id = i.id, name = i.name, width = i.width, height = i.height });
+                                var jsonData = JsonConvert.DeserializeObject<dynamic>(product.PreviewData);
+                                images = jsonData.images.ToObject<List<object>>();
                             }
+
+                            images.Add(new { id = imageId, name = image.Name, width = "full", height = "full" });
+
+                            var data = new
+                            {
+                                version = 1,
+                                images = images
+                            };
+
+                            product.PreviewData = JsonConvert.SerializeObject(data);
+                            image.Preview3d = true;
+                            break;
                         }
-
-                        var data = new
+                    case "remove":
                         {
-                            version = 1,
-                            images = images
-                        };
+                            var images = new List<object>();
+                            var jsonData = JsonConvert.DeserializeObject<dynamic>(product.PreviewData);
+                            var imagesData = jsonData.images.ToObject<List<object>>();
+                            foreach (var i in imagesData)
+                            {
+                                if (i.id != imageId)
+                                {
+                                    images.Add(new { id = i.id, name = i.name, width = i.width, height = i.height });
+                                }
+                            }
 
-                        product.PreviewData = JsonConvert.SerializeObject(data);
-                        image.Preview3d = false;
+                            var data = new
+                            {
+                                version = 1,
+                                images = images
+                            };
+
+                            product.PreviewData = JsonConvert.SerializeObject(data);
+                            image.Preview3d = false;
+                            break;
+                        }
+                }
+            }
+            else
+            {
+                switch (type)
+                {
+                    case "add":
+                        image.Thumb = true;
                         break;
-                    }
+                    case "remove":
+                        image.Thumb = false;
+                        break;
+                }
             }
 
             this.products.Save();

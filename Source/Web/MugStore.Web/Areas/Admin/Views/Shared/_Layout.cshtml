@@ -34,8 +34,13 @@
                 <li class="nav-item">
                     <a class="nav-link" href="@Url.Action("Index", "City", new { area = "Admin" })">Cities</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="@Url.Action("Index", "Order", new { area = "Admin" })">Orders</a>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Orders</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item" href="@Url.Action("Index", "Order", new { area = "Admin" })">List</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="@Url.Action("UploadedImages", "Order", new { area = "Admin" })">Uploaded Images</a>
+                    </div>
                 </li>
                 <li class="nav-item  pull-xs-right">
                     <a class="nav-link" href="@Url.Action("Logout", "Home", new { area = "Admin" })">Logout</a>

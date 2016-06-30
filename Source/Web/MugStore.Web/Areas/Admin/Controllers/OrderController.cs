@@ -13,10 +13,12 @@
     public class OrderController : BaseController
     {
         private readonly IOrdersService orders;
+        private readonly IImagesService images;
 
-        public OrderController(IOrdersService orders)
+        public OrderController(IOrdersService orders, IImagesService images)
         {
             this.orders = orders;
+            this.images = images;
         }
 
         public ActionResult Index()
@@ -64,6 +66,17 @@
             }
 
             var viewModel = this.Mapper.Map<PreviewViewModel>(order);
+
+            return this.View(viewModel);
+        }
+
+        public ActionResult UploadedImages()
+        {
+            var images = this.images.Get().OrderByDescending(i => i.Id).ToList();
+            var viewModel = new UploadedImagesViewModel()
+            {
+                Images = images
+            };
 
             return this.View(viewModel);
         }

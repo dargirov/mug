@@ -35,5 +35,10 @@
         {
             return this.productImages.All().Where(i => i.Name == name).FirstOrDefault();
         }
+
+        public IQueryable<Image> Get()
+        {
+            return this.images.All();
+        }
     }
 }

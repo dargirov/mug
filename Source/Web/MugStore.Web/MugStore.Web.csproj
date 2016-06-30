@@ -196,6 +196,7 @@
     <Compile Include="Areas\Admin\ViewModels\Category\IndexViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\City\IndexViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Home\LoginInputModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\Order\UploadedImagesViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Order\IndexViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Order\PreviewViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Product\CreateViewModel.cs" />
@@ -299,6 +300,7 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="Areas\Admin\Views\Order\UploadedImages.cshtml" />
     <None Include="Project_Readme.html" />
     <Content Include="Views\Shared\_CanvasPartial.cshtml" />
     <Content Include="Views\Shared\_MenuPartial.cshtml" />

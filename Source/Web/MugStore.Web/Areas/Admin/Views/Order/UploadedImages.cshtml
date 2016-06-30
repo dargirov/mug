@@ -1,0 +1,53 @@
+﻿@model MugStore.Web.Areas.Admin.ViewModels.Order.UploadedImagesViewModel
+@{
+    
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-bordered table-striped table-sm">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Width</th>
+                    <th>Height</th>
+                    <th>Dpi</th>
+                    <th>Rotation</th>
+                    <th>Y</th>
+                    <th>Created on</th>
+                    <th>Order id</th>
+                    <th>Original name</th>
+                    <th>Content type</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var image in Model.Images)
+                {
+                    <tr>
+                        <td>@image.Id</td>
+                        <td><a href="@Url.RouteUrl("Image", new { name = image.Name, area = string.Empty } )" target="_blank">@image.Name</a></td>
+                        <td>@image.Width</td>
+                        <td>@image.Height</td>
+                        <td>@image.Dpi</td>
+                        <td>@image.Rotation</td>
+                        <td>@image.Y</td>
+                        <td>@image.CreatedOn</td>
+                        <td>@image.OrderId</td>
+                        <td>
+                            @{
+                                var name = image.OriginalName;
+                                if (image.OriginalName.Length > 20)
+                                {
+                                    name = image.OriginalName.Substring(0, 20) + "...";
+                                }
+                                @name
+                            }
+                        </td>
+                        <td>@image.ContentType</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

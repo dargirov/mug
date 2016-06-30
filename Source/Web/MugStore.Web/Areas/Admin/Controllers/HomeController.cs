@@ -4,6 +4,7 @@
     using App_Start;
     using ViewModels.Home;
     using Web.Controllers;
+    using MugStore.Services.Data;
 
     public class HomeController : BaseController
     {

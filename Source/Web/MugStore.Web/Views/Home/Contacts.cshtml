@@ -7,7 +7,7 @@
 <section id="contacts" class="site-section">
     <h2>Контакти</h2>
     <h4>За всякакви въпроси и коментари може да използвате контактите посочени по-долу</h4>
-    <div style="width: 100%; height: 400px; background-color: #ccc; margin-bottom: 30px;">
+    <div style="width: 100%; height: 400px; background-color: #ccc; margin-bottom: 30px;" id="map">
 
     </div>
     <div>
@@ -20,7 +20,7 @@
             <li>Телефон:</li>
             <li>0885 022 352</li>
             <li>Email:</li>
-            <li>dasfsdf</li>
+            <li>info@mug3.eu</li>
         </ul>
     </div>
 </section>
@@ -49,6 +49,8 @@
     </div>
 </section>
 
+
+
 @section scripts {
     <script>
         $(function () {
@@ -60,5 +62,24 @@
             }
 
         });
+
+        var map;
+        function initialize() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                zoom: 16,
+                center: new google.maps.LatLng(42.014304, 24.867672),
+            });
+
+            function addMarker(feature) {
+                var marker = new google.maps.Marker({
+                    position: feature.position,
+                    map: map
+                });
+            }
+
+            addMarker({ position: new google.maps.LatLng(42.014304, 24.867672), type: 'info' });
+        }
     </script>
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxPmPN3oueCJAXWbJC3rfHgNSDvfs6Bhg&callback=initialize"></script>
 }

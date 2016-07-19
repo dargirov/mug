@@ -1,5 +1,6 @@
 ﻿namespace MugStore.Web.Areas.Admin.Controllers
 {
+    using System.Configuration;
     using System.Web.Mvc;
     using App_Start;
     using ViewModels.Home;
@@ -37,7 +38,10 @@
                 return this.RedirectToAction("Index");
             }
 
-            if (model.Email.CompareTo("argirov@outlook.com") == 0 && model.Password.CompareTo("argirov") == 0)
+            var email = ConfigurationManager.AppSettings["AdminLoginEmail"];
+            var pass = ConfigurationManager.AppSettings["AdminLoginPassword"];
+
+            if (model.Email.CompareTo(email) == 0 && model.Password.CompareTo(pass) == 0)
             {
                 this.Session.Add("logged_in", true);
             }

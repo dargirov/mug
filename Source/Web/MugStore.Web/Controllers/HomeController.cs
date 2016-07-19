@@ -1,5 +1,6 @@
 ﻿namespace MugStore.Web.Controllers
 {
+    using System.Configuration;
     using System.Linq;
     using System.Net;
     using System.Net.Mail;
@@ -53,23 +54,27 @@
             if (this.ModelState.IsValid)
             {
                 var message = new MailMessage();
-                message.To.Add(new MailAddress("shinobi.away@gmail.com"));
-                message.From = new MailAddress("shinobi@mail.bg");
-                message.Subject = "Test mail";
-                message.Body = "emi de da znam";
+                message.To.Add(new MailAddress("argirov@outlook.com"));
+                message.From = new MailAddress("info@mug3.eu");
+                message.Subject = "Съобщение от mug3.eu";
+                message.Body = string.Format("Name: {0}<br>Email: {1}<br><hr>Comment: {2}", model.Name, model.Email, model.Comment);
                 message.IsBodyHtml = true;
                 using (var smtp = new SmtpClient())
                 {
+                    var email = ConfigurationManager.AppSettings["ContactsEmailFrom"];
+                    var password = ConfigurationManager.AppSettings["ContactsEmailPassword"];
+
                     var credential = new NetworkCredential
                     {
-                        UserName = "argirov@outlook.com",  // replace with valid value
-                        Password = "ZZZZZZZZZZ"  // replace with valid value
+                        UserName = email,
+                        Password = password
                     };
+
                     smtp.Credentials = credential;
                     smtp.Host = "smtp-mail.outlook.com";
                     smtp.Port = 587;
                     smtp.EnableSsl = true;
-                    //smtp.Send(message);
+                    smtp.Send(message);
                     this.ViewBag.MailSend = true;
                 }
             }

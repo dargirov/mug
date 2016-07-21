@@ -1,4 +1,4 @@
-var Scene = (function($) {
+var Scene = (function ($, BABYLON) {
 	'use strict';
 
 	var _canvasId, _scene;
@@ -79,7 +79,12 @@ var Scene = (function($) {
 		return _scene;
 	}
 
+	function isSupported() {
+	    return BABYLON.Engine.isSupported();
+	}
+
 	return {
+        isSupported: isSupported,
 		init: init,
 		getScene: getScene,
 		showAxis: showAxis

@@ -817,4 +817,17 @@ input.invalid, textarea.invalid {
         padding: 0;
         padding-top: 20px;
     }
+
+    #footer nav li {
+        padding: 6px 0;
+        display: block;
+    }
+
+    #footer nav li:first-of-type {
+        padding-top: 0;
+    }
+
+    #footer nav li:last-of-type {
+        padding-bottom: 0;
+    }
 }

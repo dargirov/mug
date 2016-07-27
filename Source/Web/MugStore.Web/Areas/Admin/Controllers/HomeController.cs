@@ -4,9 +4,9 @@
     using System.Linq;
     using System.Web.Mvc;
     using App_Start;
+    using Services.Data;
     using ViewModels.Home;
     using Web.Controllers;
-    using MugStore.Services.Data;
 
     public class HomeController : BaseController
     {

@@ -29,6 +29,10 @@
             <ul>
                 @foreach (var product in Model.Products)
                 {
+                    if (product.Images.Where(i => i.Thumb).Count() == 0)
+                    {
+                        continue;
+                    }
                     <li>
                         <a href="@Url.RouteUrl("Product", new { acronym = product.Acronym })">
                             <img src="@Url.RouteUrl("ProductImage", new { name = product.Images.Where(i => i.Thumb).First().Name })">

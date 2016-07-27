@@ -1,6 +1,7 @@
 ﻿namespace MugStore.Web.Areas.Admin.Controllers
 {
     using System;
+    using System.Collections.Generic;
     using System.IO;
     using System.Linq;
     using System.Web;
@@ -8,11 +9,10 @@
     using App_Start;
     using Common;
     using Data.Models;
+    using Newtonsoft.Json;
     using Services.Data;
     using ViewModels.Product;
     using Web.Controllers;
-    using Newtonsoft.Json;
-    using System.Collections.Generic;
 
     [AuthorizeUser]
     public class ProductController : BaseController
@@ -201,12 +201,12 @@
 
             ProductImage image = null;
             foreach (var item in product.Images)
-	        {
-		        if (item.Id == imageId)
+            {
+                if (item.Id == imageId)
                 {
                     image = item;
                 }
-	        }
+            }
 
             if (image == null)
             {
@@ -239,6 +239,7 @@
                             image.Preview3d = true;
                             break;
                         }
+
                     case "remove":
                         {
                             var images = new List<object>();

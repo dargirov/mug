@@ -1,16 +1,13 @@
 ﻿namespace MugStore.Web.Areas.Admin.Controllers
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
     using System.IO;
-    using System.Web;
+    using System.Linq;
     using System.Web.Mvc;
-    using MugStore.Web.Controllers;
-    using MugStore.Services.Data;
-    using MugStore.Web.Areas.Admin.ViewModels.City;
-    using MugStore.Data.Models;
-    using MugStore.Web.App_Start;
+    using App_Start;
+    using Data.Models;
+    using Services.Data;
+    using ViewModels.City;
+    using Web.Controllers;
 
     [AuthorizeUser]
     public class CityController : BaseController
@@ -35,7 +32,7 @@
 
         public ActionResult Import()
         {
-            var path = Server.MapPath("~/App_Data");
+            var path = this.Server.MapPath("~/App_Data");
             using (var reader = new StreamReader(path + @"\speedy_sites.csv"))
             {
                 while (!reader.EndOfStream)

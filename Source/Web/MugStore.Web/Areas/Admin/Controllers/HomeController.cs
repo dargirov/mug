@@ -1,6 +1,7 @@
 ﻿namespace MugStore.Web.Areas.Admin.Controllers
 {
     using System.Configuration;
+    using System.Linq;
     using System.Web.Mvc;
     using App_Start;
     using ViewModels.Home;
@@ -9,6 +10,13 @@
 
     public class HomeController : BaseController
     {
+        private readonly IBulletinsService bulletin;
+
+        public HomeController(IBulletinsService bulletin)
+        {
+            this.bulletin = bulletin;
+        }
+
         [AuthorizeUser]
         public ActionResult Index()
         {
@@ -47,6 +55,18 @@
             }
 
             return this.RedirectToAction("Index");
+        }
+
+        [AuthorizeUser]
+        public ActionResult Bulletin()
+        {
+            var bulletins = this.bulletin.Get().OrderByDescending(b => b.Id).ToList();
+            var viewModel = new BulletinViewModel()
+            {
+                Bulletins = bulletins
+            };
+
+            return this.View(viewModel);
         }
     }
 }

@@ -6,22 +6,27 @@
 
     public class BulletinsService : IBulletinsService
     {
-        private readonly IDbRepository<Bulletin> bulletins;
+        private readonly IDbRepository<Bulletin> bulletin;
 
-        public BulletinsService(IDbRepository<Bulletin> bulletins)
+        public BulletinsService(IDbRepository<Bulletin> bulletin)
         {
-            this.bulletins = bulletins;
+            this.bulletin = bulletin;
         }
 
         public void Add(Bulletin bulletin)
         {
-            this.bulletins.Add(bulletin);
-            this.bulletins.Save();
+            this.bulletin.Add(bulletin);
+            this.bulletin.Save();
         }
 
         public Bulletin Get(string email)
         {
-            return this.bulletins.All().Where(b => b.Email == email).FirstOrDefault();
+            return this.bulletin.All().Where(b => b.Email == email).FirstOrDefault();
+        }
+
+        public IQueryable<Bulletin> Get()
+        {
+            return this.bulletin.All();
         }
     }
 }

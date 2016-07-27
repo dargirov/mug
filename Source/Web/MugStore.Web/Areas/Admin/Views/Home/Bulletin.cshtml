@@ -1,0 +1,25 @@
+﻿@model MugStore.Web.Areas.Admin.ViewModels.Home.BulletinViewModel
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-bordered table-striped table-sm">
+            <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>Verified</th>
+                    <th>Date created</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var bulletin in Model.Bulletins)
+                {
+                    <tr>
+                        <td>@bulletin.Email</td>
+                        <td>@bulletin.Verified</td>
+                        <td>@bulletin.CreatedOn</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

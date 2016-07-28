@@ -29,7 +29,16 @@
                         typeThumb = "remove";
                     }
                     <li>
-                        <a href="@Url.RouteUrl("ProductImage", new { name = image.Name })" target="_blank"><img src="@Url.RouteUrl("ProductImage", new { name = image.Name })" style="max-width: 200px;"></a>
+                        <a href="@Url.RouteUrl("ProductImage", new { name = image.Name })" target="_blank">
+                            @if (image.Preview3d)
+                            {
+                                @:Click to open
+                            }
+                            else
+                            {
+                                <img src="@Url.RouteUrl("ProductImage", new { name = image.Name })" style="max-width: 200px;">
+                            }
+                        </a>
                         <br>
                         <a href="#disabled" data-image-id="@image.Id" data-type="@typePreview" class="btn @classNamePreview btn-sm btn-preview">Preview 3D</a>
                         <a href="#disabled" data-image-id="@image.Id" data-type="@typeThumb" class="btn @classNameThumb btn-sm btn-thumb">Thumb</a>

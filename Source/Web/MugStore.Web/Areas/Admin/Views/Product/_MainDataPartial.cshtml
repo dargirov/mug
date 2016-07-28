@@ -5,7 +5,7 @@
             <h4>Product</h4>
         </div>
     </div>
-    @{ 
+    @{
         var action = "Create";
         if (Model.Id > 0)
         {
@@ -49,22 +49,22 @@
                     <label for="Active">Active</label>
                     <select name="Active" id="Active" class="form-control">
                         @{
-                            var selectedTrue = "";
-                            var selectedFalse = "";
-                            if (Model.Active)
-                            {
-                                selectedTrue = " selected=\"selected\"";
-                            }
-                            else
-                            {
-                                selectedFalse = " selected=\"selected\"";
-                            }
+                        var selectedTrue = "";
+                        var selectedFalse = "";
+                        if (Model.Active)
+                        {
+                            selectedTrue = " selected=\"selected\"";
+                        }
+                        else
+                        {
+                            selectedFalse = " selected=\"selected\"";
+                        }
 
-                            var disabled = "";
-                            if (Model.Id == 0 || Model.Images.Count == 0)
-                            {
-                                disabled = " disabled=\"disabled\"";
-                            }
+                        var disabled = "";
+                        if (Model.Id == 0 || Model.Images.Count == 0)
+                        {
+                            disabled = " disabled=\"disabled\"";
+                        }
                         }
                         <option value="True" @Html.Raw(selectedTrue) @Html.Raw(disabled)>Yes</option>
                         <option value="False" @Html.Raw(selectedFalse)>No</option>
@@ -85,6 +85,14 @@
                             <option value="@category.Id" @Html.Raw(selected)>@category.Name</option>
                         }
                     </select>
+                </fieldset>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <fieldset class="form-group">
+                    <label for="Acronym">Link to Source Image</label>
+                    @Html.EditorFor(p => p.LinkToSource)
                 </fieldset>
             </div>
         </div>

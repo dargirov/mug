@@ -79,6 +79,7 @@
             product.Active = model.Active;
             product.CategoryId = model.CategoryId;
             product.Acronym = model.Acronym;
+            product.LinkToSource = model.LinkToSource;
             this.products.Save();
 
             return this.RedirectToAction("Edit", "Product", new { id = id });
@@ -112,7 +113,8 @@
                 Description = model.Description,
                 Title = model.Title,
                 PreviewData = model.PreviewData,
-                Acronym = model.Acronym
+                Acronym = model.Acronym,
+                LinkToSource = model.LinkToSource
             };
 
             this.products.Create(product);

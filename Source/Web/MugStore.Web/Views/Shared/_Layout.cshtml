@@ -41,13 +41,13 @@
                 <nav>
                     <ol>
                         <li><a href="@Url.Action("index", "home")">Начало</a></li>
-                        @*<li><a href="@Url.Action("index", "gallery")">Галерия</a></li>*@
+                        <li><a href="@Url.Action("index", "gallery")">Галерия</a></li>
                         @*<li><a href="#">За нас</a></li>*@
                         <li><a href="@Url.Action("contacts", "home")">Контакти</a></li>
                     </ol>
                 </nav>
             </div>
-            @*<div>
+            <div>
                 <h5>Тагове</h5>
                 <ul>
                     @foreach (var tag in ViewBag.Tags)
@@ -55,7 +55,7 @@
                         <li><a href="@Url.RouteUrl("Tag", new { acronym = tag.Acronym })">@tag.Name</a></li>
                     }
                 </ul>
-            </div>*@
+            </div>
         </div>
     </footer>
 

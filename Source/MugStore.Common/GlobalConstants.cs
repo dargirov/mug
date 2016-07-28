@@ -43,5 +43,7 @@
         public const int MaxProductCodeLength = 50;
 
         public const string PathToGalleryImages = @"~\App_Data\Images\Gallery\";
+
+        public const int LinkToProductImageMaxLength = 300;
     }
 }

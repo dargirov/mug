@@ -41,5 +41,8 @@
         public virtual ICollection<ProductImage> Images { get; set; }
 
         public virtual ICollection<ProductTag> Tags { get; set; }
+
+        [MaxLength(GlobalConstants.LinkToProductImageMaxLength)]
+        public string LinkToSource { get; set; }
     }
 }

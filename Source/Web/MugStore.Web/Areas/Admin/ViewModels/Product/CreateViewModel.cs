@@ -40,5 +40,8 @@
         public virtual IEnumerable<ProductTag> Tags { get; set; }
 
         public virtual IEnumerable<ProductTag> AllTags { get; set; }
+
+        [MaxLength(GlobalConstants.LinkToProductImageMaxLength)]
+        public string LinkToSource { get; set; }
     }
 }

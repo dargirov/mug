@@ -43,5 +43,9 @@
 
         [MaxLength(GlobalConstants.LinkToProductImageMaxLength)]
         public string LinkToSource { get; set; }
+
+        [Required]
+        [MaxLength(GlobalConstants.MaxProductPageTitleLength)]
+        public string PageTitle { get; set; }
     }
 }

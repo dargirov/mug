@@ -23,5 +23,7 @@
         public virtual IEnumerable<ProductImage> Images { get; set; }
 
         public virtual IEnumerable<ProductTag> Tags { get; set; }
+
+        public string PageTitle { get; set; }
     }
 }

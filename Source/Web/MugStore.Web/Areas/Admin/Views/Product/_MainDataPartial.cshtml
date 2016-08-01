@@ -32,6 +32,14 @@
         <div class="row">
             <div class="col-md-12">
                 <fieldset class="form-group">
+                    <label for="PageTitle">Page Title</label>
+                    @Html.EditorFor(p => p.PageTitle)
+                </fieldset>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <fieldset class="form-group">
                     <label for="Description">Description</label>
                     @Html.TextAreaFor(p => p.Description, new { @class = "form-control" })
                 </fieldset>

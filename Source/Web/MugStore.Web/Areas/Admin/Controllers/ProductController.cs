@@ -73,6 +73,7 @@
             }
 
             product.Title = model.Title;
+            product.PageTitle = model.PageTitle;
             product.Description = model.Description;
             product.Code = model.Code;
             product.PreviewData = model.PreviewData;
@@ -108,6 +109,7 @@
             var product = new Product()
             {
                 Active = model.Active,
+                PageTitle = model.PageTitle,
                 CategoryId = model.CategoryId,
                 Code = model.Code,
                 Description = model.Description,

@@ -45,5 +45,7 @@
         public const string PathToGalleryImages = @"~\App_Data\Images\Gallery\";
 
         public const int LinkToProductImageMaxLength = 300;
+
+        public const int MaxProductPageTitleLength = 300;
     }
 }

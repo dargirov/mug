@@ -15,14 +15,19 @@
     });
 
     var scene = Scene;
-    scene.init({ canvasId: 'canvas' });
 
-    var mug1 = Mug;
-    mug1.init('mugPreview', { x: 0, height: 2, z: 0 }, scene.getScene());
-    mug1.create();
+    if (!scene.isSupported()) {
+        $('#canvas-container').remove();
+    } else {
+        scene.init({ canvasId: 'canvas' });
 
-    var cart = Cart;
-    cart.init({ mug: mug1 });
+        var mug1 = Mug;
+        mug1.init('mugPreview', { x: 0, height: 2, z: 0 }, scene.getScene());
+        mug1.create();
+
+        var cart = Cart;
+        cart.init({ mug: mug1 });
+    }
 
     var previewImages = $('#product-details').data('preview-images').split(',');
 

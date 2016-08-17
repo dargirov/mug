@@ -101,7 +101,7 @@ canvas {
 .site-section {
 	width: 1000px;
 	margin: 0 auto;
-	padding: 40px 0 50px 0;
+	padding: 40px 0;
 	box-sizing: border-box;
 	color: #A5A5A5;
 	font-family: Tahoma;
@@ -297,20 +297,31 @@ textarea {
 	width: 250px;
 }
 
+.touchcarousel {
+    height: 320px;
+}
+
 .touchcarousel-item {
     width: 250px;
 }
 
-.touchcarousel-container a {
+/*.touchcarousel-container a {
     text-decoration: none;
     color: #555;
     text-transform: uppercase;
     font-size: 12px;
     font-weight: bold;
-}
+}*/
 
 #recommended-products strong {
 	display: block;
+    color: #636363;
+    font-weight: normal;
+    font-size: 17px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 5px 0;
 }
 
 #logo-container {
@@ -371,6 +382,10 @@ textarea {
 	width: auto;
 	height: auto;
 }*/
+
+.move {
+    outline: none;
+}
 
 .move-controls {
 	/*height: 40px;*/
@@ -755,6 +770,19 @@ input.invalid, textarea.invalid {
 
 #footer nav li:last-of-type {
     padding-bottom: 0;
+}
+
+#product-price {
+    margin: 0;
+    font-size: 27px;
+}
+
+#product-price-info {
+    text-align: center;
+    font-weight: normal;
+    color: #666;
+    font-size: 15px;
+    margin-bottom: 10px;
 }
 
 @media all and (max-width: 1000px) {

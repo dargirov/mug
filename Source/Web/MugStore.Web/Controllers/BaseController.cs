@@ -18,7 +18,7 @@
 
         protected void AddTagsToViewBag(ITagsService tags)
         {
-            this.ViewBag.Tags = tags.Get().Where(t => t.Active).OrderBy(t => t.Id).ToList();
+            this.ViewBag.Tags = tags.Get().Where(t => t.Active).OrderByDescending(t => t.Id).ToList();
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿@model MugStore.Web.ViewModels.Home.IndexViewModel
 @{
-    ViewBag.Title = "Чаша със снимка";
+    ViewBag.Title = "Чаша със снимка - направи си сам чаша";
 }
 
 @Html.Partial("_CanvasPartial")
@@ -15,9 +15,9 @@
     </div>
 </section>
 
-@*<section id="recommended-products">
+<section id="recommended-products">
     <div class="site-section">
-        <h2>Препоръчани продукти</h2>
+        <h2>Последни продукти</h2>
         <div class="touchcarousel">
             <div class="touchcarousel-wrapper">
                 <ul class="touchcarousel-container">
@@ -25,17 +25,17 @@
                     {
                         <li class="touchcarousel-item">
                             <a href="@Url.RouteUrl("Product", new { acronym = product.Acronym })">
-                                <img src="@Url.RouteUrl("ProductImage", new { name = product.Images.First().Name })">
+                                <img src="@Url.RouteUrl("ProductImage", new { name = product.Images.Where(i => i.Thumb).First().Name })">
                             </a>
                             <strong>@product.Title</strong>
-                            <a href="@Url.RouteUrl("Product", new { acronym = product.Acronym })">Виж повече</a>
+                            <a href="@Url.RouteUrl("Product", new { acronym = product.Acronym })" class="blue-btn">Виж повече</a>
                         </li>
                     }
                 </ul>
             </div>
         </div>
     </div>
-</section>*@
+</section>
 
 @section scripts {
     @Scripts.Render("~/bundles/colorbox")
@@ -50,12 +50,25 @@
                 scene.init({ canvasId: 'canvas' });
 
                 var mug1 = Mug;
-                mug1.init('lqlq', { x: 0, height: 2, z: 0 }, scene.getScene());
+                mug1.init('createMug', { x: 0, height: 2, z: 0 }, scene.getScene());
                 mug1.create();
 
                 var cart = Cart;
                 cart.init({ mug: mug1 });
             }
+
+            $('#recommended-products').touchCarousel({
+                itemsPerPage: 4,
+                scrollbar: false,
+                scrollbarAutoHide: true,
+                pagingNav: false,
+                snapToItems: false,
+                scrollToLast: true,
+                useWebkit3d: true,
+                loopItems: false,
+                autoplay: true,
+                autoplayDelay: 1500
+            });
 
         });
     </script>

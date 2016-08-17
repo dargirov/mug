@@ -3,6 +3,7 @@
     using System;
     using System.Configuration;
     using System.Collections.Generic;
+    using System.Data.Entity;
     using System.Globalization;
     using System.Linq;
     using System.Net;
@@ -13,6 +14,7 @@
     using System.Xml.Linq;
     using Services.Data;
     using ViewModels.Home;
+    using MugStore.Common;
 
     [RoutePrefix("")]
     public class HomeController : BaseController
@@ -32,7 +34,7 @@
 
         public ActionResult Index()
         {
-            var products = this.products.Get().Where(c => c.Active).ToList();
+            var products = this.products.Get().Where(c => c.Active).Include(p => p.Images).OrderByDescending(p => p.Id).Take(GlobalConstants.MaxProductsInHomePage).ToList();
             this.ViewBag.Cities = this.cities.Get().Where(c => c.Highlight).ToList();
             this.ViewBag.ShowRight = true;
             this.AddTagsToViewBag(this.tags);

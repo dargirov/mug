@@ -66,7 +66,7 @@
             }
 
             this.AddTagsToViewBag(this.tags);
-            var products = tag.Products.Where(p => p.Active).ToList();
+            var products = tag.Products.Where(p => p.Active).AsQueryable().Include(p => p.Images).OrderByDescending(p => p.Id).ToList();
             var categories = this.categories.Get().OrderBy(c => c.Order).ToList();
 
             var viewModel = new IndexViewModel()

@@ -47,5 +47,7 @@
         public const int LinkToProductImageMaxLength = 300;
 
         public const int MaxProductPageTitleLength = 300;
+
+        public const int MaxProductsInHomePage = 20;
     }
 }

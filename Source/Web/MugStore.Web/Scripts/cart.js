@@ -3,21 +3,6 @@ var Cart = (function($) {
 
 	var _mug, _skipCustomization = false, _currentStep = 1;
 
-	function bindCarousel() {
-		$('#recommended-products').touchCarousel({
-			itemsPerPage: 4,
-			scrollbar: false,
-			scrollbarAutoHide: true,
-			pagingNav: false,
-			snapToItems: true,
-			scrollToLast: false,
-			useWebkit3d: true,
-			loopItems: true,
-			autoplay: true,
-			autoplayDelay: 1500
-	    });
-	}
-
 	function bindUpload() {
 		$('#step1').find('input[type=file]').on('change', function(){    
 	    	var $self = $(this);
@@ -40,7 +25,6 @@ var Cart = (function($) {
 	}
 
 	function uploadFile(data) {
-	    console.log(data);
 	    if (data.success) {
 		    _mug.addImage({ name: data.filename, url: '/Download/' + data.filename, width: data.width, height: data.height, dpi: data.dpi});
 		    $('#customization-controls-container').removeClass('hidden');
@@ -80,8 +64,6 @@ var Cart = (function($) {
 	}
 
 	function bindEvents() {
-
-		bindCarousel();
 
 		if (!_skipCustomization) {
 			bindUpload();

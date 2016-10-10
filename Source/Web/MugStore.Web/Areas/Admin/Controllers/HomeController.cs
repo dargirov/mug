@@ -4,23 +4,39 @@
     using System.Linq;
     using System.Web.Mvc;
     using App_Start;
+    using Data.Models;
     using Services.Data;
     using ViewModels.Home;
     using Web.Controllers;
 
     public class HomeController : BaseController
     {
+        private readonly IOrdersService orders;
         private readonly IBulletinsService bulletin;
+        private readonly IImagesService images;
 
-        public HomeController(IBulletinsService bulletin)
+        public HomeController(IOrdersService orders, IBulletinsService bulletin, IImagesService images)
         {
+            this.orders = orders;
             this.bulletin = bulletin;
+            this.images = images;
         }
 
         [AuthorizeUser]
         public ActionResult Index()
         {
-            return this.View();
+            var orders = this.orders.Get().Where(o => o.ConfirmationStatus != ConfirmationStatus.Denied).ToList();
+            var bulletins = this.bulletin.Get().OrderByDescending(b => b.Id).ToList();
+            var images = this.images.Get().OrderByDescending(i => i.Id).ToList();
+
+            var viewModel = new IndexViewModel()
+            {
+                Orders = orders,
+                Bulletin = bulletins,
+                Images = images
+            };
+
+            return this.View(viewModel);
         }
 
         [AuthorizeUser]

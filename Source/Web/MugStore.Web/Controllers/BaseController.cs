@@ -1,8 +1,10 @@
 ﻿namespace MugStore.Web.Controllers
 {
+    using System;
     using System.Linq;
     using System.Web.Mvc;
     using AutoMapper;
+    using Common;
     using Infrastructure.Mapping;
     using Services.Data;
 
@@ -18,7 +20,7 @@
 
         protected void AddTagsToViewBag(ITagsService tags)
         {
-            this.ViewBag.Tags = tags.Get().Where(t => t.Active).OrderByDescending(t => t.Id).ToList();
+            this.ViewBag.Tags = tags.Get().Where(t => t.Active).OrderBy(t => Guid.NewGuid()).Take(GlobalConstants.MaxTagsInFooter).ToList();
         }
     }
 }

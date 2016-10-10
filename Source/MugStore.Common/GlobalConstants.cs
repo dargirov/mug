@@ -49,5 +49,7 @@
         public const int MaxProductPageTitleLength = 300;
 
         public const int MaxProductsInHomePage = 20;
+
+        public const int MaxTagsInFooter = 10;
     }
 }

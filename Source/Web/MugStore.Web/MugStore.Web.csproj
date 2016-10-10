@@ -196,6 +196,7 @@
     <Compile Include="Areas\Admin\ViewModels\Category\IndexViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\City\IndexViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Home\BulletinViewModel.cs" />
+    <Compile Include="Areas\Admin\ViewModels\Home\IndexViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Home\LoginInputModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Order\UploadedImagesViewModel.cs" />
     <Compile Include="Areas\Admin\ViewModels\Order\IndexViewModel.cs" />
@@ -311,6 +312,7 @@
     <Content Include="Views\Gallery\Index.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Home\ImageHelp.cshtml" />
+    <None Include="Properties\PublishProfiles\icn.pubxml" />
     <None Include="Properties\PublishProfiles\mug.pubxml">
       <SubType>Designer</SubType>
     </None>

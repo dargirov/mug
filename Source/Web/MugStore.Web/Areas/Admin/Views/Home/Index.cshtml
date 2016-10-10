@@ -1,7 +1,25 @@
-﻿
+﻿@model MugStore.Web.Areas.Admin.ViewModels.Home.IndexViewModel
 @{
     ViewBag.Title = "Index";
 }
 
-<h2>Index</h2>
-
+<div class="row">
+    <div class="col-md-4">
+        <h3>Summary</h3>
+        <ul class="list-group">
+            <li class="list-group-item">
+                <span class="tag tag-default tag-pill pull-xs-right">@Model.Orders.Count()</span>
+                <h6 class="list-group-item-heading">Orders</h6>
+                <p class="list-group-item-text">Excluding denied</p>
+            </li>
+            <li class="list-group-item">
+                <span class="tag tag-default tag-pill pull-xs-right">@Model.Images.Count()</span>
+                <h6 class="list-group-item-heading">Uploaded images</h6>
+            </li>
+            <li class="list-group-item">
+                <span class="tag tag-default tag-pill pull-xs-right">@Model.Bulletin.Count()</span>
+                <h6 class="list-group-item-heading">Emails for bulletin</h6>
+            </li>
+        </ul>
+    </div>
+</div>

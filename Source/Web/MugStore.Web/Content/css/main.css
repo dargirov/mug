@@ -51,7 +51,7 @@ canvas {
 
 #canvas-container-right strong, #product-details-order strong {
 	font-family: 'Comfortaa', cursive;
-	font-size: 19px;
+	font-size: 18px;
 	color: black;
 	font-weight: normal;
 	margin: 30px 0 5px 0;
@@ -336,7 +336,7 @@ textarea {
 
 #logo-container h1 {
 	font-family: 'Comfortaa', sans-serif;
-	font-size: 22px;
+	font-size: 24px;
 	font-weight: normal;
     /*text-transform: uppercase;*/
 }

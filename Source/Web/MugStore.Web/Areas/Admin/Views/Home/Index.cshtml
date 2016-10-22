@@ -1,16 +1,37 @@
 ﻿@model MugStore.Web.Areas.Admin.ViewModels.Home.IndexViewModel
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Mug3 Admin";
 }
+@using MugStore.Data.Models;
 
 <div class="row">
     <div class="col-md-4">
         <h3>Summary</h3>
         <ul class="list-group">
             <li class="list-group-item">
-                <span class="tag tag-default tag-pill pull-xs-right">@Model.Orders.Count()</span>
-                <h6 class="list-group-item-heading">Orders</h6>
-                <p class="list-group-item-text">Excluding denied</p>
+                <span class="tag tag-default tag-pill pull-xs-right">@Model.Orders.Where(o => (o.ConfirmationStatus == ConfirmationStatus.Pending || o.ConfirmationStatus == ConfirmationStatus.Confirmed) && o.OrderStatus == OrderStatus.InProgress).Count()</span>
+                <h6 class="list-group-item-heading">Orders new</h6>
+                <p class="list-group-item-text">Pending or confirmed and in progress</p>
+            </li>
+            <li class="list-group-item">
+                <span class="tag tag-default tag-pill pull-xs-right">@Model.Orders.Where(o => o.OrderStatus == OrderStatus.Finalized).Count()</span>
+                <h6 class="list-group-item-heading">Orders finalized</h6>
+                <p class="list-group-item-text">Finalized</p>
+            </li>
+            <li class="list-group-item">
+                <span class="tag tag-default tag-pill pull-xs-right">@Model.Orders.Where(o => o.OrderStatus == OrderStatus.DeniedOnDelivery).Count()</span>
+                <h6 class="list-group-item-heading">Orders denied</h6>
+                <p class="list-group-item-text">Denied on delivery</p>
+            </li>
+            <li class="list-group-item">
+                <span class="tag tag-default tag-pill pull-xs-right">@Model.Orders.Where(o => o.OrderStatus == OrderStatus.Refunded).Count()</span>
+                <h6 class="list-group-item-heading">Orders refunded</h6>
+                <p class="list-group-item-text">Refunded</p>
+            </li>
+            <li class="list-group-item">
+                <span class="tag tag-default tag-pill pull-xs-right">@Model.Orders.Where(o => o.OrderStatus == OrderStatus.Returned).Count()</span>
+                <h6 class="list-group-item-heading">Orders returned</h6>
+                <p class="list-group-item-text">Returned</p>
             </li>
             <li class="list-group-item">
                 <span class="tag tag-default tag-pill pull-xs-right">@Model.Images.Count()</span>

@@ -1,4 +1,7 @@
-﻿<!DOCTYPE html>
+﻿@{ 
+    var controllerName = (string)ViewContext.RouteData.Values["controller"];
+    var actionName = (string)ViewContext.RouteData.Values["action"];
+}<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -13,10 +16,10 @@
     <nav class="navbar navbar-light bg-faded">
         <div class="container">
             <ul class="nav navbar-nav">
-                <li class="nav-item active">
+                <li class="nav-item@(controllerName == "Home" && actionName != "Bulletin" ? " active" : "")">
                     <a class="nav-link" href="@Url.Action("Index", "Home", new { area = "Admin" })">Home <span class="sr-only">(current)</span></a>
                 </li>
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown@(controllerName == "Product" ? " active" : "")">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Products</a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="@Url.Action("Index", "Product", new { area = "Admin" })">List</a>
@@ -25,16 +28,16 @@
                         <a class="dropdown-item" href="#">Stats</a>
                     </div>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item@(controllerName == "Tag" ? " active" : "")">
                     <a class="nav-link" href="@Url.Action("Index", "Tag", new { area = "Admin" })">Tags</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item@(controllerName == "Category" ? " active" : "")">
                     <a class="nav-link" href="@Url.Action("Index", "Category", new { area = "Admin" })">Categories</a>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item@(controllerName == "City" ? " active" : "")">
                     <a class="nav-link" href="@Url.Action("Index", "City", new { area = "Admin" })">Cities</a>
                 </li>
-                <li class="nav-item dropdown">
+                <li class="nav-item dropdown@(controllerName == "Order" ? " active" : "")">
                     <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Orders</a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item" href="@Url.Action("Index", "Order", new { area = "Admin" })">List</a>
@@ -42,7 +45,7 @@
                         <a class="dropdown-item" href="@Url.Action("UploadedImages", "Order", new { area = "Admin" })">Uploaded Images</a>
                     </div>
                 </li>
-                <li class="nav-item">
+                <li class="nav-item@(controllerName == "Home" && actionName == "Bulletin" ? " active" : "")">
                     <a class="nav-link" href="@Url.Action("Bulletin", "Home", new { area = "Admin" })">Bulletin</a>
                 </li>
                 <li class="nav-item  pull-xs-right">

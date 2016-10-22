@@ -294,15 +294,14 @@ textarea {
 
 #recommended-products img {
 	display: block;
-	width: 250px;
 }
 
 .touchcarousel {
-    height: 320px;
+    height: 310px;
 }
 
 .touchcarousel-item {
-    width: 250px;
+    width: 200px;
 }
 
 /*.touchcarousel-container a {
@@ -317,7 +316,7 @@ textarea {
 	display: block;
     color: #636363;
     font-weight: normal;
-    font-size: 17px;
+    font-size: 15px;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
@@ -414,7 +413,7 @@ textarea {
 }
 
 .order-back {
-	font-size: 29px;
+	font-size: 28px !important;
 	cursor: pointer;
 }
 

@@ -1,5 +1,6 @@
 ﻿@model MugStore.Web.Areas.Admin.ViewModels.Product.IndexViewModel
 @{
+    ViewBag.Title = "Mug3 Products";
 }
 
 <div class="row">
@@ -19,7 +20,7 @@
                 {
                     <tr>
                         <td>@product.Id</td>
-                        <td><a href="#">@product.Title</a></td>
+                        <td><a href="/p/@product.Acronym" target="_blank">@product.Title</a></td>
                         <td>@product.Code</td>
                         <td>
                             @if (product.Active)

@@ -8,7 +8,7 @@
 
         public const int OrderAcronymLength = 15;
 
-        public const decimal SingleMugPrice = 10;
+        public const decimal SingleMugPrice = 8;
 
         public const decimal DeliveryPrice = 5;
 

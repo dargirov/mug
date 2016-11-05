@@ -2,6 +2,7 @@
 {
     using System.Linq;
     using System.Web.Mvc;
+    using Common;
     using Services.Data;
     using ViewModels.Product;
 
@@ -29,6 +30,8 @@
             this.ViewBag.Cities = this.cities.Get().Where(c => c.Highlight).ToList();
             this.ViewBag.ShowRight = false;
             this.ViewBag.PageHeading = product.Title;
+            this.ViewBag.SingleMugPrice = GlobalConstants.SingleMugPrice;
+            this.ViewBag.DeliveryPrice = GlobalConstants.DeliveryPrice;
             this.AddTagsToViewBag(this.tags);
             var viewModel = this.Mapper.Map<IndexViewModel>(product);
 

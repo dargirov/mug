@@ -37,6 +37,8 @@
             var products = this.products.Get().Where(c => c.Active).Include(p => p.Images).OrderByDescending(p => p.Id).Take(GlobalConstants.MaxProductsInHomePage).ToList();
             this.ViewBag.Cities = this.cities.Get().Where(c => c.Highlight).ToList();
             this.ViewBag.ShowRight = true;
+            this.ViewBag.SingleMugPrice = GlobalConstants.SingleMugPrice;
+            this.ViewBag.DeliveryPrice = GlobalConstants.DeliveryPrice;
             this.AddTagsToViewBag(this.tags);
 
             var viewModel = new IndexViewModel()

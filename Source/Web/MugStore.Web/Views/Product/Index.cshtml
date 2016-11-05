@@ -52,7 +52,7 @@
         </ul>
     </div>
     <div id="product-details-order">
-        <h2 id="product-price">Цена: 15,00 лв.</h2>
+        <h2 id="product-price">Цена: @string.Format("{0:0.00}", ViewBag.SingleMugPrice + ViewBag.DeliveryPrice) лв.</h2>
         <h3 id="product-price-info">(в цената е включена доставка)</h3>
         <div id="step3" class="hidden">
             <strong><span class="circle">1</span> Попълни данни за доставка</strong>

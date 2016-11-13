@@ -69,7 +69,6 @@ var Cart = (function($) {
 			bindUpload();
 			bindMovingImages();
 		}
-		
 
 		// next step buttons
 		$('#goto-step2').on('click', gotoStep2BtnClick);
@@ -118,7 +117,7 @@ var Cart = (function($) {
 		function createOrderBtnClick(e) {
 		    e.preventDefault();
 		    var url = $(this).data('url');
-			var count = _mug.getImagesCount();
+		    var count = !_skipCustomization ? _mug.getImagesCount() : 0;
 			var data = {};
 			data.images = [];
 			for (var i = 0; i < count; i++) {
@@ -221,9 +220,11 @@ var Cart = (function($) {
 	}
 
 	function init(options) {
-		_mug = options.mug;
+
 		if (options.mug === undefined) {
 			_skipCustomization = true;
+		} else {
+		    _mug = options.mug;
 		}
 
 		bindEvents();

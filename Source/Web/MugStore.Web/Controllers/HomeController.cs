@@ -1,20 +1,18 @@
 ﻿namespace MugStore.Web.Controllers
 {
-    using System;
-    using System.Configuration;
     using System.Collections.Generic;
+    using System.Configuration;
     using System.Data.Entity;
     using System.Globalization;
     using System.Linq;
     using System.Net;
     using System.Net.Mail;
-    using System.Net.Mime;
     using System.Text;
     using System.Web.Mvc;
     using System.Xml.Linq;
+    using Common;
     using Services.Data;
     using ViewModels.Home;
-    using MugStore.Common;
 
     [RoutePrefix("")]
     public class HomeController : BaseController
@@ -40,6 +38,13 @@
             this.ViewBag.SingleMugPrice = GlobalConstants.SingleMugPrice;
             this.ViewBag.DeliveryPrice = GlobalConstants.DeliveryPrice;
             this.AddTagsToViewBag(this.tags);
+
+            this.ViewBag.HideGoogleAnalytics = false;
+            var ping = this.Request.QueryString["ping"];
+            if (ping != null && ping.CompareTo(GlobalConstants.PingParam) == 0)
+            {
+                this.ViewBag.HideGoogleAnalytics = true;
+            }
 
             var viewModel = new IndexViewModel()
             {
@@ -107,9 +112,9 @@
         {
             var nodes = new List<SitemapNode>();
 
-            nodes.Add(new SitemapNode() { Priority = 1, Url = Url.RouteUrl("Default", new { action = "Index" }, this.Request.Url.Scheme) });
-            nodes.Add(new SitemapNode() { Priority = 0.5, Url = Url.RouteUrl("Default", new { action = "Contacts" }, this.Request.Url.Scheme) });
-            nodes.Add(new SitemapNode() { Priority = 0.6, Url = Url.RouteUrl("Default", new { controller = "Gallery", action = "Index" }, this.Request.Url.Scheme) });
+            nodes.Add(new SitemapNode() { Priority = 1, Url = this.Url.RouteUrl("Default", new { action = "Index" }, this.Request.Url.Scheme) });
+            nodes.Add(new SitemapNode() { Priority = 0.5, Url = this.Url.RouteUrl("Default", new { action = "Contacts" }, this.Request.Url.Scheme) });
+            nodes.Add(new SitemapNode() { Priority = 0.6, Url = this.Url.RouteUrl("Default", new { controller = "Gallery", action = "Index" }, this.Request.Url.Scheme) });
 
             var products = this.products.Get().Where(p => p.Active).OrderByDescending(p => p.Id).ToList();
             foreach (var product in products)
@@ -118,7 +123,7 @@
                     {
                         Priority = 0.8,
                         Frequency = SitemapFrequency.Monthly,
-                        Url = Url.RouteUrl("Product", new { acronym = product.Acronym }, this.Request.Url.Scheme)
+                        Url = this.Url.RouteUrl("Product", new { acronym = product.Acronym }, this.Request.Url.Scheme)
                     });
             }
 
@@ -129,7 +134,7 @@
                 {
                     Priority = 0.6,
                     Frequency = SitemapFrequency.Weekly,
-                    Url = Url.RouteUrl("GalleryCategory", new { acronym = category.Acronym }, this.Request.Url.Scheme)
+                    Url = this.Url.RouteUrl("GalleryCategory", new { acronym = category.Acronym }, this.Request.Url.Scheme)
                 });
             }
 

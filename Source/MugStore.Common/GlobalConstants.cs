@@ -51,5 +51,7 @@
         public const int MaxProductsInHomePage = 20;
 
         public const int MaxTagsInFooter = 10;
+
+        public const string PingParam = "abcdefg8642";
     }
 }

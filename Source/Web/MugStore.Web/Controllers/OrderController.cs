@@ -40,6 +40,8 @@
             {
                 Acronym = this.GenerateAcronym(),
                 Quantity = model.Quantity,
+                PriceCustomer = GlobalConstants.SingleMugPrice,
+                PriceSupplier = GlobalConstants.SungleMugPriceSupplier,
                 PaymentMethod = model.PaymentMethod,
                 DeliveryInfo = new DeliveryInfo()
                 {

@@ -23,6 +23,12 @@
         public int Quantity { get; set; }
 
         [Required]
+        public decimal PriceCustomer { get; set; }
+
+        [Required]
+        public decimal PriceSupplier { get; set; }
+
+        [Required]
         public PaymentMethod PaymentMethod { get; set; }
 
         [Required]

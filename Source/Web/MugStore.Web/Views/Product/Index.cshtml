@@ -1,6 +1,6 @@
 ﻿@model MugStore.Web.ViewModels.Product.IndexViewModel
 @{
-    ViewBag.Title = Model.PageTitle;              
+    ViewBag.Title = Model.PageTitle;
 }
 
 @Html.Partial("_CanvasPartial")
@@ -18,72 +18,118 @@
 }
 
 <section id="product-details" class="site-section" data-preview-images="@string.Join(",", previewImagesList)">
-    <div id="image-gallery">
-        <a class="gallery-img" href="@Url.RouteUrl("ProductImage", new { name = Model.Images.Where(i => !i.Thumb && !i.Preview3d).First().Name })"><img src="@Url.RouteUrl("ProductImage", new { name = Model.Images.Where(i => !i.Thumb && !i.Preview3d).First().Name })"></a>
-        <ul>
-            @{
-                var count = 0;
-                foreach (var image in Model.Images)
-                {
-                    if (image.Preview3d || image.Thumb)
-                    {
-                        continue;
-                    }
-                    
-                    if (count++ == 0)
-                    {
-                        continue;
-                    }
+    <div>
+        <div id="product-details-upper-container">
+            <div id="image-gallery">
+                <a class="gallery-img" href="@Url.RouteUrl("ProductImage", new { name = Model.Images.Where(i => !i.Thumb && !i.Preview3d).First().Name })"><img src="@Url.RouteUrl("ProductImage", new { name = Model.Images.Where(i => !i.Thumb && !i.Preview3d).First().Name })"></a>
+                <ul>
+                    @{
+                        var count = 0;
+                        foreach (var image in Model.Images)
+                        {
+                            if (image.Preview3d || image.Thumb)
+                            {
+                                continue;
+                            }
 
-                    <li><a class="gallery-img" href="@Url.RouteUrl("ProductImage", new { name = image.Name })"><img src="@Url.RouteUrl("ProductImage", new { name = image.Name })" alt=""></a></li>
-                }
-            }
-        </ul>
-    </div>
-    <div id="product-details-info">
-        <h1>@Model.Title</h1>
-        <h2>@Model.Description</h2>
-        <strong>Код на продукт: @Model.Code</strong>
-        <ul>
-            @foreach (var tag in Model.Tags)
-            {
-                <li><a href="@Url.RouteUrl("Tag", new { acronym = tag.Acronym })">@tag.Name</a></li>
-            }
-        </ul>
-    </div>
-    <div id="product-details-order">
-        <h2 id="product-price">Цена: @string.Format("{0:0.00}", ViewBag.SingleMugPrice + ViewBag.DeliveryPrice) лв.</h2>
-        <h3 id="product-price-info">(в цената е включена доставка)</h3>
-        <div id="step3" class="hidden">
-            <strong><span class="circle">1</span> Попълни данни за доставка</strong>
-            <input type="text" name="names" id="names-field" placeholder="Име и фамилия">
-            <input type="text" name="phone" id="phone-field" placeholder="Тел. за контакт">
-            <select name="city" id="city-dd">
-                @foreach (var city in ViewBag.Cities)
-                {
-                    <option value="@city.Id">@city.Name (п.к. @city.PostCode)</option>
-                }
-            </select>
-            <textarea name="address" id="address-field" placeholder="Адрес за доставка"></textarea>
-            <textarea name="comment" id="comment-field" placeholder="Коментар / забележка (незадължително)"></textarea>
-            <input type="hidden" id="quantity-range" value="1">
-            <input type="hidden" id="payment-method" value="1">
-            <input type="hidden" id="product-acronym" value="@Model.Acronym">
-            <a href="#disabled" class="blue-btn hidden" id="create-order-btn" data-url="@Url.Action("Create", "Order")">Поръчай</a>
+                            if (count++ == 0)
+                            {
+                                continue;
+                            }
+
+                            <li><a class="gallery-img" href="@Url.RouteUrl("ProductImage", new { name = image.Name })"><img src="@Url.RouteUrl("ProductImage", new { name = image.Name })" alt=""></a></li>
+                        }
+                    }
+                </ul>
+            </div>
+            <div id="product-details-info">
+                <h1>@Model.Title</h1>
+                <h2>@Model.Description</h2>
+                <strong>Код на продукт: @Model.Code</strong>
+                <ul>
+                    @foreach (var tag in Model.Tags)
+                    {
+                        <li><a href="@Url.RouteUrl("Tag", new { acronym = tag.Acronym })">@tag.Name</a></li>
+                    }
+                </ul>
+            </div>
         </div>
-        <div id="step4" class="hidden">
-            <div class="status-success">Успешно завършихте вашата поръчка</div>
-            <strong id="step4-acronym">Поръчка №<span></span></strong>
-            <dl>
-                <dt>Метод на плащане:</dt>
-                <dd id="step4-payment-method"></dd>
-                <dt>Адрес за доставка:</dt>
-                <dd id="step4-address"></dd>
-                <dt>Крайна цена:</dt>
-                <dd id="step4-price"></dd>
-            </dl>
+        <div id="product-details-full-info">
+            <ul>
+                <li>
+                    <div class="product-details-full-info-icon"><i class="fa fa-info-circle" aria-hidden="true"></i></div>
+                    <div><strong>Информация</strong>Предлагаме Ви керамичнa чашa със специално покритие предназначено за печат. Чашата се продава опакована в найлон и собствена кутия.</div>
+                </li>
+                <li>
+                    <div class="product-details-full-info-icon">
+                        <i class="fa fa-beer" aria-hidden="true"></i>
+                    </div>
+                    <div>
+                        <strong>Размери на продукт</strong>
+                        <ol>
+                            <li>Височина: 10см. диаметър: 8.5см.</li>
+                            <li>Състав: Керамика</li>
+                            <li>Обем: 330мл.</li>
+                        </ol>
+                    </div>
+                </li>
+                <li>
+                    <div class="product-details-full-info-icon"><i class="fa fa-comments" aria-hidden="true"></i></div>
+                    <div>
+                        <strong>За консултация</strong>
+                        Може да се свържете с нас чрез:
+                        <ol>
+                            <li>тел. 0885 022 352 в работно време</li>
+                            <li>email: mug3@abv.bg</li>
+                            <li><a href="@Url.Action("contacts", "home")">формата за контакти</a> или заповядайте в нашия офис в гр. Асеновград</li>
+                        </ol>
+                    </div>
+                </li>
+                <li>
+                    <div class="product-details-full-info-icon"><i class="fa fa-truck" aria-hidden="true"></i></div>
+                    <div>
+                        <strong>Доставка</strong>
+                        Доставката е на стойност @string.Format("{0:0.00}", ViewBag.DeliveryPrice) лв. и може да се извърши до адрес или офис на избрана от Вас куриерска фирма.
+                    </div>
+                </li>
+            </ul>
         </div>
-        <a href="#disabled" class="blue-btn" id="show-form-btn">Поръчай</a>
+    </div>
+    <div>
+        <div id="product-details-order">
+            <h2 id="product-price">Цена: @string.Format("{0:0.00}", ViewBag.SingleMugPrice + ViewBag.DeliveryPrice) лв.</h2>
+            <h3 id="product-price-info">(в цената е включена доставка)</h3>
+            <div id="step3" class="hidden">
+                <strong><span class="circle">1</span> Попълни данни за доставка</strong>
+                <input type="text" name="names" id="names-field" placeholder="Име и фамилия">
+                <input type="text" name="phone" id="phone-field" placeholder="Тел. за контакт">
+                <select name="city" id="city-dd">
+                    @foreach (var city in ViewBag.Cities)
+                    {
+                        <option value="@city.Id">@city.Name (п.к. @city.PostCode)</option>
+                    }
+                </select>
+                <textarea name="address" id="address-field" placeholder="Адрес за доставка"></textarea>
+                <textarea name="comment" id="comment-field" placeholder="Коментар / забележка (незадължително)"></textarea>
+                <input type="hidden" id="quantity-range" value="1">
+                <input type="hidden" id="payment-method" value="1">
+                <input type="hidden" id="product-acronym" value="@Model.Acronym">
+                <a href="#disabled" class="blue-btn hidden" id="create-order-btn" data-url="@Url.Action("Create", "Order")">Поръчай</a>
+            </div>
+            <div id="step4" class="hidden">
+                <div class="status-success">Успешно завършихте вашата поръчка</div>
+                <strong id="step4-acronym">Поръчка №<span></span></strong>
+                <dl>
+                    <dt>Метод на плащане:</dt>
+                    <dd id="step4-payment-method"></dd>
+                    <dt>Адрес за доставка:</dt>
+                    <dd id="step4-address"></dd>
+                    <dt>Крайна цена:</dt>
+                    <dd id="step4-price"></dd>
+                </dl>
+            </div>
+            <a href="#disabled" class="blue-btn" id="show-form-btn">Поръчай</a>
+        </div>
     </div>
 </section>
 

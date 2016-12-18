@@ -566,6 +566,10 @@ input.invalid, textarea.invalid {
     justify-content: space-between;
 }
 
+#product-details-upper-container {
+    display: flex;
+}
+
 #image-gallery > a > img {
 	width: 300px;
 	border: 1px solid #E4E4E4;
@@ -593,6 +597,7 @@ input.invalid, textarea.invalid {
 #product-details-info {
 	padding-left: 30px;
     width: 100%;
+    min-width: 362px;
 }
 
 #product-details-info h1 {
@@ -788,6 +793,51 @@ input.invalid, textarea.invalid {
     margin-top: 20px;
 }
 
+#product-details-full-info {
+    color: #a5a5a5;
+    margin-top: 60px;
+    font-size: 13px;
+}
+
+#product-details-full-info a {
+    color: #343434;
+    text-decoration: none;
+}
+
+#product-details-full-info i {
+    color: #0fcabf;
+    font-size: 30px;
+    padding-right: 15px;
+}
+
+#product-details-full-info div:nth-child(2n) {
+    padding-right: 15px;
+}
+
+#product-details-full-info > ul {
+    display: flex;
+    flex-flow: row wrap;
+    list-style-type: none;
+}
+
+#product-details-full-info strong {
+    display: block;
+    font-family: "Roboto Condensed",sans-serif;
+    font-size: 18px;
+    color: #343434;
+}
+
+#product-details-full-info > ul > li {
+    width: 50%;
+    display: flex;
+    flex-basis: 50%;
+    margin-top: 30px;
+}
+
+#product-details-full-info ol {
+    list-style-type: none;
+}
+
 @media all and (max-width: 1000px) {
 	#header > div {
 		width: 100%;
@@ -832,6 +882,7 @@ input.invalid, textarea.invalid {
 
     #product-details-info, #product-details-order {
         padding-left: 0;
+        min-width: initial;
     }
 
     #contacts ul {
@@ -894,5 +945,35 @@ input.invalid, textarea.invalid {
 
     #gallery-left strong {
         margin-right: 0;
+    }
+
+    #product-details-container > div {
+        flex-direction: column;
+    }
+
+    #product-details-upper-container {
+        flex-direction: column;
+    }
+
+    #product-details-full-info {
+        margin-top: 10px;
+        margin-bottom: 30px;
+    }
+
+    #product-details-full-info > ul {
+        flex-direction: column;
+    }
+
+    #product-details-full-info > ul > li {
+        width: 100%;
+    }
+
+    .product-details-full-info-icon {
+        width: 45px !important;
+    }
+
+    #product-details-full-info div {
+        padding: 0;
+        width: 100%;
     }
 }

@@ -177,7 +177,7 @@ var Cart = (function($) {
                             $('#step4-acronym').find('span').html(data.acronym);
                             $('#step4-payment-method').html(paymentMethods[data.paymentMethod]);
                             $('#step4-address').html(data.fullName + '<br>' + data.city + ', ' + data.address + '<br>' + data.phone);
-                            $('#step4-price').html(data.price + 'лв');
+                            $('#step4-price').html(data.price.toFixed(2) + ' лв.');
                             gotoStep4();
                         }
                     });

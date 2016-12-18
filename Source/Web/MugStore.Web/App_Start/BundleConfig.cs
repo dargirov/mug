@@ -1,9 +1,7 @@
-﻿using System;
-using System.Web;
-using System.Web.Optimization;
-
-namespace MugStore.Web
+﻿namespace MugStore.Web
 {
+    using System.Web.Optimization;
+
     public class BundleConfig
     {
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
@@ -11,23 +9,6 @@ namespace MugStore.Web
         {
             RegisterScripts(bundles);
             RegisterStyles(bundles);
-            
-
-            //bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-            //            "~/Scripts/jquery.validate*"));
-
-            //// Use the development version of Modernizr to develop with and learn from. Then, when you're
-            //// ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
-            //bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-            //            "~/Scripts/modernizr-*"));
-
-            //bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-            //          "~/Scripts/bootstrap.js",
-            //          "~/Scripts/respond.js"));
-
-            //bundles.Add(new StyleBundle("~/Content/css").Include(
-            //          "~/Content/bootstrap.css",
-            //          "~/Content/site.css"));
         }
 
         private static void RegisterStyles(BundleCollection bundles)
@@ -47,7 +28,7 @@ namespace MugStore.Web
             bundles.Add(new ScriptBundle("~/bundles/main").Include("~/Scripts/main.js"));
             bundles.Add(new ScriptBundle("~/bundles/product").Include("~/Scripts/product.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/admin/scripts").Include("~/Areas/Admin/Scripts/main.js", "~/Areas/Admin/Scripts/tether.min.js", "~/Areas/Admin/Scripts/bootstrap.min.js"));
+            bundles.Add(new ScriptBundle("~/bundles/admin/scripts").Include("~/Areas/Admin/Scripts/main.js", "~/Areas/Admin/Scripts/tether.min.js", "~/Areas/Admin/Scripts/bootstrap.min.js", "~/Areas/Admin/Scripts/Chart.bundle.min.js"));
         }
     }
 }

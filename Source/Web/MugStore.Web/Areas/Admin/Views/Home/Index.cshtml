@@ -8,7 +8,7 @@
     <div class="col-md-4">
         <h3>Summary</h3>
         <ul class="list-group">
-            @{ 
+            @{
                 var newCount = Model.Orders.Where(o => (o.ConfirmationStatus == ConfirmationStatus.Pending || o.ConfirmationStatus == ConfirmationStatus.Confirmed) && o.OrderStatus == OrderStatus.InProgress).Count();
             }
             <li class="list-group-item@(newCount > 0 ? " list-group-item-warning" : "")">
@@ -35,5 +35,10 @@
                 <h6 class="list-group-item-heading">Emails for bulletin</h6>
             </li>
         </ul>
+    </div>
+
+    <div class="col-md-7 offset-md-1">
+        <h3>Prices</h3>
+        <canvas id="priceChart" data-labels="@Html.Raw(string.Join(", ", Model.Orders.Where(x => x.OrderStatus == OrderStatus.Finalized).Select(x => $"{x.CreatedOn.ToString("dd MMM")}")))" data-price-customer="@Html.Raw(string.Join(", ", Model.Orders.Where(x => x.OrderStatus == OrderStatus.Finalized).Select(x => $"{x.PriceCustomer}")))" data-price-supplier="@Html.Raw(string.Join(", ", Model.Orders.Where(x => x.OrderStatus == OrderStatus.Finalized).Select(x => $"{x.PriceSupplier}")))"></canvas>
     </div>
 </div>

@@ -10,6 +10,8 @@
 
         public const decimal SingleMugPrice = 8;
 
+        public const decimal SungleMugPriceSupplier = 2.2m;
+
         public const decimal DeliveryPrice = 5;
 
         public const int EmailMaxLength = 100;

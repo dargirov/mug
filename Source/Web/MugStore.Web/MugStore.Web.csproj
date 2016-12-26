@@ -232,6 +232,7 @@
     <Content Include="Areas\Admin\Content\css\main.css" />
     <Content Include="Areas\Admin\Content\css\tether.min.css" />
     <Content Include="Areas\Admin\Scripts\bootstrap.min.js" />
+    <Content Include="Areas\Admin\Scripts\index.js" />
     <Content Include="Areas\Admin\Scripts\main.js" />
     <Content Include="Areas\Admin\Scripts\tether.min.js" />
     <Content Include="Content\css\main.css" />

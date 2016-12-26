@@ -42,3 +42,7 @@
         <canvas id="priceChart" data-labels="@Html.Raw(string.Join(", ", Model.Orders.Where(x => x.OrderStatus == OrderStatus.Finalized).Select(x => $"{x.CreatedOn.ToString("dd MMM")}")))" data-price-customer="@Html.Raw(string.Join(", ", Model.Orders.Where(x => x.OrderStatus == OrderStatus.Finalized).Select(x => $"{x.PriceCustomer}")))" data-price-supplier="@Html.Raw(string.Join(", ", Model.Orders.Where(x => x.OrderStatus == OrderStatus.Finalized).Select(x => $"{x.PriceSupplier}")))"></canvas>
     </div>
 </div>
+
+@section scripts {
+    <script src="~/Areas/Admin/Scripts/index.js"></script>
+}

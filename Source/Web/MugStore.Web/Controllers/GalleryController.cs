@@ -4,8 +4,10 @@
     using System.Linq;
     using System.Net;
     using System.Web.Mvc;
+    using Common;
     using Services.Data;
     using ViewModels.Gallery;
+    using System;
 
     public class GalleryController : BaseController
     {
@@ -20,16 +22,32 @@
             this.tags = tags;
         }
 
-        public ActionResult Index()
+        public ActionResult Index(int id = 1)
         {
+            var page = id;
             var categories = this.categories.Get().OrderBy(c => c.Order).ToList();
-            var products = this.products.Get().Where(p => p.Active).Include(p => p.Images).OrderByDescending(p => p.Id).ToList();
+            var totalCount = this.products.Get().Where(p => p.Active).Count();
+
+            var itemsPerPage = GlobalConstants.ProductsPerPage;
+            var totalPages = (int)Math.Ceiling(totalCount / (decimal)itemsPerPage);
+            var itemsToSkip = (page - 1) * itemsPerPage;
+
+            var products = this.products.Get()
+                .Where(p => p.Active)
+                .Include(p => p.Images)
+                .OrderByDescending(p => p.Id)
+                .Skip(itemsToSkip)
+                .Take(itemsPerPage)
+                .ToList();
+
             this.AddTagsToViewBag(this.tags);
 
             var viewModel = new IndexViewModel()
             {
                 Categories = categories,
-                Products = products
+                Products = products,
+                CurrentPage = page,
+                TotalPages = totalPages
             };
 
             return this.View(viewModel);

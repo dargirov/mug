@@ -8,7 +8,7 @@
 
         public const int OrderAcronymLength = 15;
 
-        public const decimal SingleMugPrice = 8;
+        public const decimal SingleMugPrice = 9;
 
         public const decimal SungleMugPriceSupplier = 2.2m;
 
@@ -55,5 +55,7 @@
         public const int MaxTagsInFooter = 10;
 
         public const string PingParam = "abcdefg8642";
+
+        public const int ProductsPerPage = 21;
     }
 }

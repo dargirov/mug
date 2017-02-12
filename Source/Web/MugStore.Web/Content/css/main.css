@@ -539,14 +539,14 @@ input.invalid, textarea.invalid {
     justify-content: space-between;
 }
 
-#gallery-right li {
+#gallery-right ul li {
 	display: inline-block;
 	width: 200px;
 	margin-bottom: 50px;
 	background-color: #E4E4E4;
 }
 
-#gallery-right li img {
+#gallery-right ul li img {
 	width: 100%;
 }
 
@@ -836,6 +836,34 @@ input.invalid, textarea.invalid {
 
 #product-details-full-info ol {
     list-style-type: none;
+}
+
+.pagination {
+    list-style-type: none;
+}
+
+.pagination li {
+    display: inline-block;
+    border: 1px solid #ccc;
+    margin-bottom: 5px;
+}
+
+.pagination .active {
+    background-color: #e4e4e4;
+}
+
+.pagination a {
+    text-decoration: none;
+    color: #555;
+    font-family: 'Comfortaa', cursive;
+    font-size: 14px;
+    font-weight: bold;
+    padding: 3px 15px;
+    display: block;
+}
+
+.pagination a:hover {
+    color: black;
 }
 
 @media all and (max-width: 1000px) {

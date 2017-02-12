@@ -34,14 +34,43 @@
                         continue;
                     }
                     <li>
-                        <a href="@Url.RouteUrl("Product", new { acronym = product.Acronym })">
-                            <img src="@Url.RouteUrl("ProductImage", new { name = product.Images.Where(i => i.Thumb).First().Name })">
+                        <a href="@Url.RouteUrl("Product", new { acronym = product.Acronym })" title="@product.PageTitle">
+                            <img src="@Url.RouteUrl("ProductImage", new { name = product.Images.Where(i => i.Thumb).First().Name })" alt="@product.PageTitle">
                         </a>
                         <strong>@product.Title</strong>
                         <a href="@Url.RouteUrl("Product", new { acronym = product.Acronym })" class="blue-btn">Детайли</a>
                     </li>
                 }
             </ul>
+
+            <ol class="pagination">
+                @if (Model.CurrentPage > 1)
+                {
+                    <li>
+                        <a href="@Url.Action("index", "gallery", new { id = Model.CurrentPage - 1 })" aria-label="Previous">
+                            <span aria-hidden="true">&laquo;</span>
+                        </a>
+                    </li>
+                }
+                @for (int i = 1; i <= Model.TotalPages; i++)
+                {
+                    var classActive = "";
+                    if (Model.CurrentPage == i)
+                    {
+                        classActive = "active";
+                    }
+                    <li class="@classActive">@Html.ActionLink(i.ToString(), "index", "gallery", new { id = i }, null)</li>
+                }
+
+                @if (Model.CurrentPage < Model.TotalPages)
+                {
+                    <li>
+                        <a href="@Url.Action("index", "gallery", new { id = Model.CurrentPage + 1 })" aria-label="Next">
+                            <span aria-hidden="true">&raquo;</span>
+                        </a>
+                    </li>
+                }
+            </ol>
         </div>
     </div>
 </section>

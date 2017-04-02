@@ -17,7 +17,7 @@
     }
 }
 
-<section id="product-details" class="site-section" data-preview-images="@string.Join(",", previewImagesList)">
+<section id="product-details" class="site-section" itemscope itemtype="http://schema.org/Product" data-preview-images="@string.Join(",", previewImagesList)">
     <div>
         <div id="product-details-upper-container">
             <div id="image-gallery">
@@ -37,15 +37,16 @@
                                 continue;
                             }
 
-                            <li><a class="gallery-img" href="@Url.RouteUrl("ProductImage", new { name = image.Name })"><img src="@Url.RouteUrl("ProductImage", new { name = image.Name })" alt=""></a></li>
+                            <li><a class="gallery-img" href="@Url.RouteUrl("ProductImage", new { name = image.Name })"><img itemprop="image" src="@Url.RouteUrl("ProductImage", new { name = image.Name })" alt="@Model.PageTitle.Replace("\"", "")"></a></li>
                         }
                     }
                 </ul>
             </div>
             <div id="product-details-info">
-                <h1>@Model.Title</h1>
-                <h2>@Model.Description</h2>
+                <h1 itemprop="name">@Model.Title</h1>
+                <h2 itemprop="description">@Model.Description</h2>
                 <strong>Код на продукт: @Model.Code</strong>
+                <meta itemprop="productID" content="@Model.Code" />
                 <ul>
                     @foreach (var tag in Model.Tags)
                     {
@@ -97,7 +98,14 @@
     </div>
     <div>
         <div id="product-details-order">
-            <h2 id="product-price">Цена: @string.Format("{0:0.00}", ViewBag.SingleMugPrice + ViewBag.DeliveryPrice) лв.</h2>
+            <h2 id="product-price" itemprop="offers" itemscope itemtype="http://schema.org/Offer">
+                Цена: 
+                <span itemprop="price" content="@(ViewBag.SingleMugPrice + ViewBag.DeliveryPrice)">
+                    @string.Format("{0:0.00}", ViewBag.SingleMugPrice + ViewBag.DeliveryPrice)
+                </span>
+                <span itemprop="priceCurrency" content="BGN">лв.</span>
+                <link itemprop="availability" href="http://schema.org/InStock" />
+            </h2>
             <h3 id="product-price-info">(в цената е включена доставка)</h3>
             <div id="step3" class="hidden">
                 <strong><span class="circle">1</span> Попълни данни за доставка</strong>

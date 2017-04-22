@@ -33,7 +33,7 @@
 
             foreach (var order in this.orders.Get().Where(o => o.OrderStatus == OrderStatus.Finalized))
             {
-                if (!priceChartOrders.Any(x => x.CreatedOn.Day == order.CreatedOn.Day))
+                if (!priceChartOrders.Any(x => x.CreatedOn.ToShortDateString() == order.CreatedOn.ToShortDateString()))
                 {
                     priceChartOrders.Add(order);
                 }

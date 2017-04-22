@@ -59,7 +59,7 @@
             <ul>
                 <li>
                     <div class="product-details-full-info-icon"><i class="fa fa-info-circle" aria-hidden="true"></i></div>
-                    <div><strong>Информация</strong>Предлагаме Ви керамичнa чашa със специално покритие предназначено за печат. Чашата се продава опакована в найлон и собствена кутия.</div>
+                    <div><strong>Информация</strong>Предлагаме ви керамичнa чашa със специално покритие предназначено за печат. Чашата се продава опакована в найлон и собствена кутия.</div>
                 </li>
                 <li>
                     <div class="product-details-full-info-icon">
@@ -90,7 +90,16 @@
                     <div class="product-details-full-info-icon"><i class="fa fa-truck" aria-hidden="true"></i></div>
                     <div>
                         <strong>Доставка</strong>
-                        Доставката е на стойност @string.Format("{0:0.00}", ViewBag.DeliveryPrice) лв. и може да се извърши до адрес или офис на избрана от Вас куриерска фирма.
+                        Доставката 
+                        @if (ViewBag.DeliveryPrice > 0)
+                        {
+                            @:е на стойност @string.Format("{0:0.00}", ViewBag.DeliveryPrice) лв. 
+                        }
+                        else
+                        {
+                            @:е за ваша сметка 
+                        }
+                        и може да се извърши до адрес или офис на избрана от вас куриерска фирма.
                     </div>
                 </li>
             </ul>

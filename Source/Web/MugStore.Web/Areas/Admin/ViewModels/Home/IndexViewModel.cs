@@ -10,5 +10,7 @@
         public IEnumerable<Bulletin> Bulletin { get; set; }
 
         public IEnumerable<Image> Images { get; set; }
+
+        public IEnumerable<Order> PriceChartOrders { get; set; }
     }
 }

@@ -237,6 +237,7 @@
     <Content Include="Areas\Admin\Scripts\index.js" />
     <Content Include="Areas\Admin\Scripts\main.js" />
     <Content Include="Areas\Admin\Scripts\tether.min.js" />
+    <Content Include="Content\css\jquery.webui-popover.min.css" />
     <Content Include="Content\css\main.css" />
     <Content Include="Content\css\touchcarousel.css" />
     <Content Include="Content\font_awesome_4_6_3\css\font-awesome.min.css" />
@@ -254,6 +255,7 @@
     <Content Include="Scripts\cart.js" />
     <Content Include="Scripts\libs\jquery-2.2.3.min.js" />
     <Content Include="Scripts\libs\jquery.colorbox-min.js" />
+    <Content Include="Scripts\libs\jquery.webui-popover.min.js" />
     <Content Include="Scripts\libs\touchcarousel-1.3.min.js" />
     <Content Include="Scripts\main.js" />
     <Content Include="Scripts\mug.js" />

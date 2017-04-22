@@ -11,7 +11,7 @@
     <h4>Направете уникален подарък на достъпна цена</h4>
     <div>
         <span><strong>Чашa със снимка</strong> е уникален начин да зарадвате ваш близък или познат. Това е подходящ подарък за малки и големи, роднини, колеги и познати. Чрез този сайт може да направите <strong>собствен дизайн</strong>, който да ви гарантира <strong>уникалност на чашата</strong>.</span>
-        <span>Предлагаме класически бели керамични чаши с голяма дръжка и обем от 330мл. Могат да се използват безпроблемно за топли напитки като кафе и чай както и да се поставят в микровълнова печка.</span>
+        <span>Предлагаме класически бели керамични чаши с голяма дръжка и обем от 330мл. Могат да се използват безпроблемно за топли напитки като кафе и чай както и да се поставят в микровълнова фурна.</span>
     </div>
 </section>
 
@@ -25,7 +25,7 @@
                     {
                         <li class="touchcarousel-item">
                             <a href="@Url.RouteUrl("Product", new { acronym = product.Acronym })">
-                                <img src="@Url.RouteUrl("ProductImage", new { name = product.Images.Where(i => i.Thumb).First().Name })">
+                                <img src="@Url.RouteUrl("ProductImage", new { name = product.Images.Where(i => i.Thumb).First().Name })" alt="@(product.PageTitle?.Replace("\"", ""))">
                             </a>
                             <strong>@product.Title</strong>
                             <a href="@Url.RouteUrl("Product", new { acronym = product.Acronym })" class="blue-btn">Виж повече</a>

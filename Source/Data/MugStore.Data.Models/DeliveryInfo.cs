@@ -23,5 +23,9 @@
         public string Address { get; set; }
 
         public string Comment { get; set; }
+
+        public int? CourierId { get; set; }
+
+        public virtual Courier Courier { get; set; }
     }
 }

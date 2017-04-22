@@ -8,12 +8,6 @@
 
         public const int OrderAcronymLength = 15;
 
-        public const decimal SingleMugPrice = 7;
-
-        public const decimal SungleMugPriceSupplier = 2.2m;
-
-        public const decimal DeliveryPrice = 5;
-
         public const int EmailMaxLength = 100;
 
         public const int ProductTagMaxlength = 40;
@@ -57,5 +51,7 @@
         public const string PingParam = "abcdefg8642";
 
         public const int ProductsPerPage = 21;
+
+        public const int MaxCourierNameLength = 50;
     }
 }

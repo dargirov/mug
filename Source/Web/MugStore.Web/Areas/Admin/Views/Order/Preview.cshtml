@@ -6,6 +6,11 @@
 <div class="row">
     <div class="col-md-12">
         <h4>Order @Model.Acronym</h4>
+        <ul>
+            <li>PriceCustomer: @Model.PriceCustomer</li>
+            <li>PriceDelivery: @Model.PriceDelivery</li>
+            <li>Quantity: @Model.Quantity</li>
+        </ul>
     </div>
     @if (Model.Product != null)
     {
@@ -35,7 +40,7 @@
                 scene.init({ canvasId: 'canvas' });
 
                 var mug1 = Mug;
-                mug1.init('lqlq', { x: 0, height: 2, z: 0 }, scene.getScene());
+                mug1.init('mug1', { x: 0, height: 2, z: 0 }, scene.getScene());
                 mug1.create();
 
                 @foreach (var image in Model.Images)

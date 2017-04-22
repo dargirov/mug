@@ -1,8 +1,8 @@
 ﻿namespace MugStore.Web.Controllers
 {
     using System;
+    using System.Configuration;
     using System.Web.Mvc;
-    using Common;
     using Data.Models;
     using Services.Data;
     using ViewModels.Order;
@@ -13,13 +13,15 @@
         private readonly IImagesService images;
         private readonly ICitiesService cities;
         private readonly IProductsService products;
+        private readonly ICouriersService couriers;
 
-        public OrderController(IOrdersService orders, IImagesService images, ICitiesService cities, IProductsService products)
+        public OrderController(IOrdersService orders, IImagesService images, ICitiesService cities, IProductsService products, ICouriersService couriers)
         {
             this.orders = orders;
             this.images = images;
             this.cities = cities;
             this.products = products;
+            this.couriers = couriers;
         }
 
         public ActionResult Create(CreateInputModel model)
@@ -30,18 +32,28 @@
             }
 
             var city = this.cities.Get(model.DeliveryInfo.CityId);
-
             if (city == null)
             {
                 return this.Json(new { status = "error", message = "Invalid city id" }, JsonRequestBehavior.AllowGet);
+            }
+
+            Courier courier = null;
+            if (model.DeliveryInfo.CourierId.HasValue)
+            {
+                courier = this.couriers.Get(model.DeliveryInfo.CourierId.Value);
+                if (courier == null)
+                {
+                    return this.Json(new { status = "error", message = "Invalid courier id" }, JsonRequestBehavior.AllowGet);
+                }
             }
 
             var order = new Order()
             {
                 Acronym = this.GenerateAcronym(),
                 Quantity = model.Quantity,
-                PriceCustomer = GlobalConstants.SingleMugPrice,
-                PriceSupplier = GlobalConstants.SungleMugPriceSupplier,
+                PriceCustomer = decimal.Parse(ConfigurationManager.AppSettings["SingleMugPrice"]),
+                PriceSupplier = decimal.Parse(ConfigurationManager.AppSettings["SungleMugPriceSupplier"]),
+                PriceDelivery = decimal.Parse(ConfigurationManager.AppSettings["DeliveryPrice"]),
                 PaymentMethod = model.PaymentMethod,
                 DeliveryInfo = new DeliveryInfo()
                 {
@@ -49,7 +61,8 @@
                     Address = model.DeliveryInfo.Address,
                     CityId = model.DeliveryInfo.CityId,
                     Comment = model.DeliveryInfo.Comment,
-                    Phone = model.DeliveryInfo.Phone
+                    Phone = model.DeliveryInfo.Phone,
+                    CourierId = model.DeliveryInfo.CourierId
                 },
                 ConfirmationStatus = ConfirmationStatus.Pending,
                 OrderStatus = OrderStatus.InProgress
@@ -91,8 +104,9 @@
                 phone = order.DeliveryInfo.Phone,
                 comment = order.DeliveryInfo.Comment,
                 city = city.Name,
+                courier = courier?.Name,
                 quantity = order.Quantity,
-                price = (order.Quantity * GlobalConstants.SingleMugPrice) + GlobalConstants.DeliveryPrice
+                price = (order.Quantity * decimal.Parse(ConfigurationManager.AppSettings["SingleMugPrice"])) +decimal.Parse(ConfigurationManager.AppSettings["DeliveryPrice"])
             };
 
             return this.Json(result, JsonRequestBehavior.AllowGet);

@@ -51,6 +51,7 @@
     <Compile Include="City.cs" />
     <Compile Include="CityType.cs" />
     <Compile Include="ConfirmationStatus.cs" />
+    <Compile Include="Courier.cs" />
     <Compile Include="DeliveryInfo.cs" />
     <Compile Include="ProductImage.cs" />
     <Compile Include="OrderStatus.cs" />

@@ -65,6 +65,9 @@
             builder.RegisterType<TagsService>()
                 .As<ITagsService>();
 
+            builder.RegisterType<CouriersService>()
+                .As<ICouriersService>();
+
             builder.RegisterGeneric(typeof(DbRepository<>))
                .As(typeof(IDbRepository<>))
                .InstancePerRequest();

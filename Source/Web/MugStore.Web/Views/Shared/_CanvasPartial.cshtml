@@ -57,7 +57,13 @@
                     </tr>
                     <tr>
                         <td>Доставка:</td>
-                        <td id="delivery-fee" data-fee="@ViewBag.DeliveryPrice">@string.Format("{0:0.00}", ViewBag.DeliveryPrice) лв.</td>
+                        <td id="delivery-fee" data-fee="@ViewBag.DeliveryPrice">
+                            @string.Format("{0:0.00}", ViewBag.DeliveryPrice) лв.
+                            @if (ViewBag.DeliveryPrice == 0)
+                            {
+                                <i class="fa fa-question-circle-o popover" aria-hidden="true" data-title="Информация за доставка" data-content="Доставката е за ваша сметка и се определя от&lt;br&gt;тарифата на избраната куриерска фирма." data-placement="top-left" data-animation="pop"></i>
+                            }
+                        </td>
                     </tr>
                 </table>
                 <div id="price-container">
@@ -91,6 +97,15 @@
                         <option value="@city.Id">@city.Name (п.к. @city.PostCode)</option>
                     }
                 </select>
+                @if (ViewBag.DeliveryPrice == 0)
+                {
+                    <select name="courier" id="courier-dd">
+                        @foreach (var courier in ViewBag.Couriers)
+                        {
+                            <option value="@courier.Id">@courier.Name</option>
+                        }
+                    </select>
+                }
                 <textarea name="address" id="address-field" placeholder="Адрес за доставка"></textarea>
                 <textarea name="comment" id="comment-field" placeholder="Коментар / забележка (незадължително)"></textarea>
 
@@ -104,6 +119,8 @@
                 <dl>
                     <dt>Метод на плащане:</dt>
                     <dd id="step4-payment-method"></dd>
+                    <dt id="step4-courier-dt" class="hidden">Куриер:</dt>
+                    <dd id="step4-courier" class="hidden"></dd>
                     <dt>Адрес за доставка:</dt>
                     <dd id="step4-address"></dd>
                     <dt>Крайна цена:</dt>

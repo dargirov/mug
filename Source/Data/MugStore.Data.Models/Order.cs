@@ -29,6 +29,9 @@
         public decimal PriceSupplier { get; set; }
 
         [Required]
+        public decimal PriceDelivery { get; set; }
+
+        [Required]
         public PaymentMethod PaymentMethod { get; set; }
 
         [Required]

@@ -13,7 +13,7 @@
 
         private static void RegisterStyles(BundleCollection bundles)
         {
-            bundles.Add(new StyleBundle("~/Content/main").Include("~/Content/css/main.css", "~/Content/css/touchcarousel.css", "~/Content/font_awesome_4_6_3/css/font-awesome.min.css"));
+            bundles.Add(new StyleBundle("~/Content/main").Include("~/Content/css/main.css", "~/Content/css/touchcarousel.css", "~/Content/font_awesome_4_6_3/css/font-awesome.min.css", "~/Content/css/jquery.webui-popover.min.css"));
             bundles.Add(new StyleBundle("~/Content/admin/main").Include("~/Areas/Admin/Content/css/main.css", "~/Areas/Admin/Content/css/bootstrap.min.css", "~/Areas/Admin/Content/css/tether.min.css"));
         }
 
@@ -25,7 +25,7 @@
             bundles.Add(new ScriptBundle("~/bundles/colorbox").Include("~/Scripts/libs/jquery.colorbox-min.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/scripts").Include("~/Scripts/scene.js", "~/Scripts/mug.js", "~/Scripts/cart.js"));
-            bundles.Add(new ScriptBundle("~/bundles/main").Include("~/Scripts/main.js"));
+            bundles.Add(new ScriptBundle("~/bundles/main").Include("~/Scripts/libs/jquery.webui-popover.min.js", "~/Scripts/main.js"));
             bundles.Add(new ScriptBundle("~/bundles/product").Include("~/Scripts/product.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/admin/scripts").Include("~/Areas/Admin/Scripts/main.js", "~/Areas/Admin/Scripts/tether.min.js", "~/Areas/Admin/Scripts/bootstrap.min.js", "~/Areas/Admin/Scripts/Chart.bundle.min.js"));

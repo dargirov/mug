@@ -37,7 +37,7 @@
                                 continue;
                             }
 
-                            <li><a class="gallery-img" href="@Url.RouteUrl("ProductImage", new { name = image.Name })"><img itemprop="image" src="@Url.RouteUrl("ProductImage", new { name = image.Name })" alt="@Model.PageTitle.Replace("\"", "")"></a></li>
+                            <li><a class="gallery-img" href="@Url.RouteUrl("ProductImage", new { name = image.Name })"><img itemprop="image" src="@Url.RouteUrl("ProductImage", new { name = image.Name })" alt="@(Model.PageTitle?.Replace("\"", ""))"></a></li>
                         }
                     }
                 </ul>
@@ -106,7 +106,16 @@
                 <span itemprop="priceCurrency" content="BGN">лв.</span>
                 <link itemprop="availability" href="http://schema.org/InStock" />
             </h2>
-            <h3 id="product-price-info">(в цената е включена доставка)</h3>
+            <h3 id="product-price-info">
+                @if (ViewBag.DeliveryPrice > 0)
+                {
+                    @:в цената е включена доставка
+                }
+                else
+                {
+                    @:в цената <b>не</b> е включена доставка <i class="fa fa-question-circle-o popover" aria-hidden="true" data-title="Информация за доставка" data-content="Доставката е за ваша сметка и се определя от&lt;br&gt;тарифата на избраната куриерска фирма." data-placement="top-left" data-animation="pop"></i>
+                }
+            </h3>
             <div id="step3" class="hidden">
                 <strong><span class="circle">1</span> Попълни данни за доставка</strong>
                 <input type="text" name="names" id="names-field" placeholder="Име и фамилия">
@@ -117,6 +126,15 @@
                         <option value="@city.Id">@city.Name (п.к. @city.PostCode)</option>
                     }
                 </select>
+                @if (ViewBag.DeliveryPrice == 0)
+                {
+                    <select name="courier" id="courier-dd">
+                        @foreach (var courier in ViewBag.Couriers)
+                        {
+                            <option value="@courier.Id">@courier.Name</option>
+                        }
+                    </select>
+                }
                 <textarea name="address" id="address-field" placeholder="Адрес за доставка"></textarea>
                 <textarea name="comment" id="comment-field" placeholder="Коментар / забележка (незадължително)"></textarea>
                 <input type="hidden" id="quantity-range" value="1">
@@ -130,6 +148,8 @@
                 <dl>
                     <dt>Метод на плащане:</dt>
                     <dd id="step4-payment-method"></dd>
+                    <dt id="step4-courier-dt" class="hidden">Куриер:</dt>
+                    <dd id="step4-courier" class="hidden"></dd>
                     <dt>Адрес за доставка:</dt>
                     <dd id="step4-address"></dd>
                     <dt>Крайна цена:</dt>

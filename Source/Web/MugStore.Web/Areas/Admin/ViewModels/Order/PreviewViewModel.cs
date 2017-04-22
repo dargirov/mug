@@ -11,5 +11,11 @@
         public IEnumerable<Image> Images { get; set; }
 
         public Product Product { get; set; }
+
+        public int Quantity { get; set; }
+
+        public decimal PriceCustomer { get; set; }
+
+        public decimal PriceDelivery { get; set; }
     }
 }

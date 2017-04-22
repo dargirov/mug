@@ -35,7 +35,7 @@
                     }
                     <li>
                         <a href="@Url.RouteUrl("Product", new { acronym = product.Acronym })" title="@product.PageTitle">
-                            <img src="@Url.RouteUrl("ProductImage", new { name = product.Images.Where(i => i.Thumb).First().Name })" alt="@product.PageTitle">
+                            <img src="@Url.RouteUrl("ProductImage", new { name = product.Images.Where(i => i.Thumb).First().Name })" alt="@(product.PageTitle?.Replace("\"", ""))">
                         </a>
                         <strong>@product.Title</strong>
                         <a href="@Url.RouteUrl("Product", new { acronym = product.Acronym })" class="blue-btn">Детайли</a>

@@ -1,5 +1,6 @@
 ﻿namespace MugStore.Web.Areas.Admin.Controllers
 {
+    using System.Collections.Generic;
     using System.Configuration;
     using System.Linq;
     using System.Web.Mvc;
@@ -28,12 +29,22 @@
             var orders = this.orders.Get().Where(o => o.ConfirmationStatus != ConfirmationStatus.Denied).ToList();
             var bulletins = this.bulletin.Get().OrderByDescending(b => b.Id).ToList();
             var images = this.images.Get().OrderByDescending(i => i.Id).ToList();
+            var priceChartOrders = new List<Order>();
+
+            foreach (var order in this.orders.Get().Where(o => o.OrderStatus == OrderStatus.Finalized))
+            {
+                if (!priceChartOrders.Any(x => x.CreatedOn.Day == order.CreatedOn.Day))
+                {
+                    priceChartOrders.Add(order);
+                }
+            }
 
             var viewModel = new IndexViewModel()
             {
                 Orders = orders,
                 Bulletin = bulletins,
-                Images = images
+                Images = images,
+                PriceChartOrders = priceChartOrders
             };
 
             return this.View(viewModel);

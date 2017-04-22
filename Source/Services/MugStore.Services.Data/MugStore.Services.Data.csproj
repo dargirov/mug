@@ -43,9 +43,11 @@
     <Compile Include="BulletinsService.cs" />
     <Compile Include="CategoriesService.cs" />
     <Compile Include="CitiesService.cs" />
+    <Compile Include="CouriersService.cs" />
     <Compile Include="IBulletinsService.cs" />
     <Compile Include="ICategoriesService.cs" />
     <Compile Include="ICitiesService.cs" />
+    <Compile Include="ICouriersService.cs" />
     <Compile Include="IImagesService.cs" />
     <Compile Include="ImagesService.cs" />
     <Compile Include="IOrdersService.cs" />
@@ -70,7 +72,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-	<Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\Newtonsoft.Json.dll" />
+    <Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\Newtonsoft.Json.dll" />
     <Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\StyleCop.Analyzers.CodeFixes.dll" />
     <Analyzer Include="..\..\packages\StyleCop.Analyzers.1.0.0\analyzers\dotnet\cs\StyleCop.Analyzers.dll" />
   </ItemGroup>

@@ -29,6 +29,10 @@
 
         public IDbSet<Category> Categories { get; set; }
 
+        public IDbSet<DeliveryInfo> DeliveryInfoes { get; set; }
+
+        public IDbSet<Courier> Couriers { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

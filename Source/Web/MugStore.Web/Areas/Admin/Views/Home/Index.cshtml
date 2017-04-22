@@ -39,7 +39,7 @@
 
     <div class="col-md-7 offset-md-1">
         <h3>Prices</h3>
-        <canvas id="priceChart" data-labels="@Html.Raw(string.Join(", ", Model.Orders.Where(x => x.OrderStatus == OrderStatus.Finalized).Select(x => $"{x.CreatedOn.ToString("dd MMM")}")))" data-price-customer="@Html.Raw(string.Join(", ", Model.Orders.Where(x => x.OrderStatus == OrderStatus.Finalized).Select(x => $"{x.PriceCustomer}")))" data-price-supplier="@Html.Raw(string.Join(", ", Model.Orders.Where(x => x.OrderStatus == OrderStatus.Finalized).Select(x => $"{x.PriceSupplier}")))"></canvas>
+        <canvas id="priceChart" data-labels="@Html.Raw(string.Join(", ", Model.PriceChartOrders.Select(x => $"{x.CreatedOn.ToString("dd MMM yy")}")))" data-price-customer="@Html.Raw(string.Join(", ", Model.PriceChartOrders.Select(x => $"{x.PriceCustomer}")))" data-price-supplier="@Html.Raw(string.Join(", ", Model.PriceChartOrders.Select(x => $"{x.PriceSupplier}")))"></canvas>
     </div>
 </div>
 

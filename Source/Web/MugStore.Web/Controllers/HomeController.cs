@@ -21,22 +21,25 @@
         private readonly ICitiesService cities;
         private readonly ITagsService tags;
         private readonly ICategoriesService categories;
+        private readonly ICouriersService couriers;
 
-        public HomeController(IProductsService products, ICitiesService cities, ITagsService tags, ICategoriesService categories)
+        public HomeController(IProductsService products, ICitiesService cities, ITagsService tags, ICategoriesService categories, ICouriersService couriers)
         {
             this.products = products;
             this.cities = cities;
             this.tags = tags;
             this.categories = categories;
+            this.couriers = couriers;
         }
 
         public ActionResult Index()
         {
             var products = this.products.Get().Where(c => c.Active).Include(p => p.Images).OrderByDescending(p => p.Id).Take(GlobalConstants.MaxProductsInHomePage).ToList();
-            this.ViewBag.Cities = this.cities.Get().Where(c => c.Highlight).ToList();
+            this.ViewBag.Cities = this.cities.Get().Where(c => c.Highlight).OrderBy(x => x.Name).ToList();
+            this.ViewBag.Couriers = this.couriers.Get().Where(c => c.Active).OrderBy(c => c.Id).ToList();
             this.ViewBag.ShowRight = true;
-            this.ViewBag.SingleMugPrice = GlobalConstants.SingleMugPrice;
-            this.ViewBag.DeliveryPrice = GlobalConstants.DeliveryPrice;
+            this.ViewBag.SingleMugPrice = decimal.Parse(ConfigurationManager.AppSettings["SingleMugPrice"]);
+            this.ViewBag.DeliveryPrice = decimal.Parse(ConfigurationManager.AppSettings["DeliveryPrice"]);
             this.AddTagsToViewBag(this.tags);
 
             this.ViewBag.HideGoogleAnalytics = false;

@@ -28,8 +28,20 @@
             //    );
             //
 
+            //this.SeedCouriers(context);
             //this.SeedCities(context);
             //this.SeedCategories(context);
+        }
+
+        private void SeedCouriers(ApplicationDbContext context)
+        {
+            context.Couriers.AddOrUpdate(
+                c => c.Name,
+                new Courier() { Name = "Спиди", Active = true },
+                new Courier() { Name = "Еконт", Active = true },
+                new Courier() { Name = "Лео Експрес", Active = true });
+
+            context.SaveChanges();
         }
 
         private void SeedCategories(ApplicationDbContext context)

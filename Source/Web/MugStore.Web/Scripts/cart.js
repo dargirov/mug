@@ -136,7 +136,8 @@ var Cart = (function($) {
 			data.deliveryInfo.phone = $('#phone-field').val();
 			data.deliveryInfo.cityId = $('#city-dd').val();
 			data.deliveryInfo.address = $('#address-field').val();
-			data.deliveryInfo.comment = $('#comment-field').val();
+            data.deliveryInfo.comment = $('#comment-field').val();
+            data.deliveryInfo.courierId = $('#courier-dd').val();
 
 			var invalidInput = false;
 			if (data.deliveryInfo.fullName.length === 0) {
@@ -178,6 +179,11 @@ var Cart = (function($) {
                             $('#step4-payment-method').html(paymentMethods[data.paymentMethod]);
                             $('#step4-address').html(data.fullName + '<br>' + data.city + ', ' + data.address + '<br>' + data.phone);
                             $('#step4-price').html(data.price.toFixed(2) + ' лв.');
+                            if (data.courier !== null) {
+                                $('#step4-courier-dt').removeClass('hidden');
+                                $('#step4-courier').removeClass('hidden').html(data.courier);
+                            }
+
                             gotoStep4();
                         }
                     });

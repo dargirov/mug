@@ -1,7 +1,7 @@
 ﻿$(document).ready(function () {
 
     $('.gallery-img').colorbox({
-        rel: 'gallery-img', transition: "fade", photo: true, close: 'Затвори',
+        rel: 'gallery-img', transition: 'fade', photo: true, close: 'Затвори', speed: 200,
         onLoad: function () {
             $('#cboxClose').hide();
             $('#cboxPrevious').remove();

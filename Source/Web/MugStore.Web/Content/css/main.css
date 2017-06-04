@@ -738,10 +738,6 @@ input.invalid, textarea.invalid {
     cursor: pointer;
 }
 
-.image-help-colorbox {
-    background-color: white;
-}
-
 .image-help-colorbox h1 {
     font-size: 23px;
     margin: 10px 0;
@@ -751,8 +747,8 @@ input.invalid, textarea.invalid {
     text-align: center;
     font-family: Tahoma;
     color: #333;
-    border: 1px solid #E4E4E4;
-    height: 99%;
+    height: 98%;
+    background-color: white;
 }
 
 .image-help-colorbox ul {
@@ -881,6 +877,17 @@ input.invalid, textarea.invalid {
     font-family: Tahoma;
     font-size: 14px;
     color: #666;
+}
+
+#cboxOverlay {
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    background-color: #e4e4e4;
+    opacity: 0.5;
+    position: fixed;
 }
 
 @media all and (max-width: 1000px) {

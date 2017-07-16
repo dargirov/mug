@@ -1,7 +1,8 @@
-var Cart = (function($) {
+var Cart = (function($, Notification) {
 	'use strict';
 
-	var _mug, _skipCustomization = false, _currentStep = 1;
+    var _mug, _skipCustomization = false, _currentStep = 1;
+    var MAX_IMAGE_COUNT = 3;
 
 	function bindUpload() {
 		$('#step1').find('input[type=file]').on('change', function(){    
@@ -29,7 +30,15 @@ var Cart = (function($) {
 		    _mug.addImage({ name: data.filename, url: '/Download/' + data.filename, width: data.width, height: data.height, dpi: data.dpi});
 		    $('#customization-controls-container').removeClass('hidden');
 		    var $controls = $($('.move-controls.hidden')[0]);
-		    $controls.removeClass('hidden');
+            $controls.removeClass('hidden');
+
+            var images = MAX_IMAGE_COUNT - _mug.getImagesCount();
+            if (images > 0) {
+                Notification.show({ selector: '#canvas-container-right input[type=file]', content: 'Може да качите още ' + images + ' ' + (images == 1 ? 'изображение' : 'изображения'), timeout: 3000 });
+            } else {
+                $('#canvas-container-right input[type=file]').prop('disabled', true);
+            }
+
 	    } else {
 	        if (data.message === 'Parameter is not valid.') {
 	            alert('Моля, изберете изображение');
@@ -240,4 +249,4 @@ var Cart = (function($) {
 		init: init
 	}
 
-})(jQuery);
+})(jQuery, Notification);

@@ -91,6 +91,8 @@ canvas {
 
 .circle {
 	border: 1px solid black;
+    font-family: Arial;
+    font-size: 20px;
 	border-radius: 20px;
 	width: 24px;
     height: 24px;

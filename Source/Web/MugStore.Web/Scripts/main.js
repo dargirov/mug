@@ -39,6 +39,7 @@
         $.colorbox({ href: url, opacity: 1, transition: "none", className: 'image-help-colorbox', close: 'Затвори', width: 900, height: 620 });
     }
 
-    $('.popover').webuiPopover({ trigger: 'hover' });
+    Notification.init();
+    Notification.bind('.popover');
 
 });

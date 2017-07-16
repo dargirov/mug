@@ -6,7 +6,7 @@ var Scene = (function ($, BABYLON) {
 	function initBabylon() {
 
 	    var canvas = document.getElementById(_canvasId);
-		var engine = new BABYLON.Engine(canvas, true);				
+		var engine = new BABYLON.Engine(canvas, true);
 
 		var createScene = function() {
 			var scene = new BABYLON.Scene(engine);
@@ -32,7 +32,7 @@ var Scene = (function ($, BABYLON) {
 		window.addEventListener('resize', function() {
 			engine.resize();
 		});
-	}
+    }
 
 	var showAxis = function(size) {
 	    var makeTextPlane = function(text, color, size) {
@@ -87,7 +87,7 @@ var Scene = (function ($, BABYLON) {
         isSupported: isSupported,
 		init: init,
 		getScene: getScene,
-		showAxis: showAxis
+        showAxis: showAxis
 	}
 
 })(jQuery, BABYLON);

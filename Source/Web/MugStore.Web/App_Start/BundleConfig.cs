@@ -23,9 +23,10 @@
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include("~/Scripts/libs/jquery-2.2.3.min.js"));
             bundles.Add(new ScriptBundle("~/bundles/touchcarousel").Include("~/Scripts/libs/touchcarousel-1.3.min.js"));
             bundles.Add(new ScriptBundle("~/bundles/colorbox").Include("~/Scripts/libs/jquery.colorbox-min.js"));
+            bundles.Add(new ScriptBundle("~/bundles/notification").Include("~/Scripts/libs/jquery.webui-popover.min.js", "~/Scripts/notification.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/scripts").Include("~/Scripts/scene.js", "~/Scripts/mug.js", "~/Scripts/cart.js"));
-            bundles.Add(new ScriptBundle("~/bundles/main").Include("~/Scripts/libs/jquery.webui-popover.min.js", "~/Scripts/main.js"));
+            bundles.Add(new ScriptBundle("~/bundles/main").Include("~/Scripts/main.js"));
             bundles.Add(new ScriptBundle("~/bundles/product").Include("~/Scripts/product.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/admin/scripts").Include("~/Areas/Admin/Scripts/main.js", "~/Areas/Admin/Scripts/tether.min.js", "~/Areas/Admin/Scripts/bootstrap.min.js", "~/Areas/Admin/Scripts/Chart.bundle.min.js"));

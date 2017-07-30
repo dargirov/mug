@@ -53,5 +53,7 @@
         public const int ProductsPerPage = 21;
 
         public const int MaxCourierNameLength = 50;
+
+        public const int MaxFeedbackNameLength = 100;
     }
 }

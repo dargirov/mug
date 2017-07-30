@@ -13,6 +13,7 @@
     using Common;
     using Services.Data;
     using ViewModels.Home;
+    using MugStore.Data.Models;
 
     [RoutePrefix("")]
     public class HomeController : BaseController
@@ -22,14 +23,20 @@
         private readonly ITagsService tags;
         private readonly ICategoriesService categories;
         private readonly ICouriersService couriers;
+        private readonly IFeedbacksService feedbacks;
+        private readonly IOrdersService orders;
+        private readonly IBulletinsService bulletins;
 
-        public HomeController(IProductsService products, ICitiesService cities, ITagsService tags, ICategoriesService categories, ICouriersService couriers)
+        public HomeController(IProductsService products, ICitiesService cities, ITagsService tags, ICategoriesService categories, ICouriersService couriers, IFeedbacksService feedbacks, IOrdersService orders, IBulletinsService bulletins)
         {
             this.products = products;
             this.cities = cities;
             this.tags = tags;
             this.categories = categories;
             this.couriers = couriers;
+            this.feedbacks = feedbacks;
+            this.orders = orders;
+            this.bulletins = bulletins;
         }
 
         public ActionResult Index()
@@ -72,30 +79,15 @@
 
             if (this.ModelState.IsValid)
             {
-                var message = new MailMessage();
-                message.To.Add(new MailAddress("argirov@outlook.com"));
-                message.From = new MailAddress("info@mug3.eu");
-                message.Subject = "Съобщение от mug3.eu";
-                message.Body = string.Format("Name: {0}<br>Email: {1}<br><hr>Comment: {2}", model.Name, model.Email, model.Comment);
-                message.IsBodyHtml = true;
-                using (var smtp = new SmtpClient())
+                this.feedbacks.Add(new Data.Models.Feedback()
                 {
-                    var email = ConfigurationManager.AppSettings["ContactsEmailFrom"];
-                    var password = ConfigurationManager.AppSettings["ContactsEmailPassword"];
+                    Name = model.Name,
+                    Email = model.Email,
+                    Text = model.Comment,
+                    IsNew = true
+                });
 
-                    var credential = new NetworkCredential
-                    {
-                        UserName = email,
-                        Password = password
-                    };
-
-                    smtp.Credentials = credential;
-                    smtp.Host = "smtp-mail.outlook.com";
-                    smtp.Port = 587;
-                    smtp.EnableSsl = true;
-                    smtp.Send(message);
-                    this.ViewBag.MailSend = true;
-                }
+                this.ViewBag.MailSend = true;
             }
             else
             {
@@ -108,6 +100,16 @@
         public ActionResult ImageHelp()
         {
             return this.View();
+        }
+
+        [Route("s")]
+        public ActionResult Status()
+        {
+            var orders = this.orders.Get().Where(x => (x.ConfirmationStatus == ConfirmationStatus.Pending || x.ConfirmationStatus == ConfirmationStatus.Confirmed) && x.OrderStatus == OrderStatus.InProgress).Count();
+            var feedbacks = this.feedbacks.Get().Where(x => x.IsNew).Count();
+            var bulletins = this.bulletins.Get().Count();
+
+            return this.Content($"{orders}:{feedbacks}:{bulletins}", "text/plain", Encoding.UTF8);
         }
 
         [Route("sitemap.xml")]

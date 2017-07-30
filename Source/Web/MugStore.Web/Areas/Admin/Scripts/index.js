@@ -59,4 +59,17 @@
             }]
         }
     });
+
+    $('.feedback-status').on('click', feedbackStatusClick);
+    function feedbackStatusClick(e) {
+        e.preventDefault();
+        var id = $(this).data('id');
+        var url = $('#feedback-section').data('url');
+
+        $.ajax({ method: 'POST', url: url, data: { id: id }})
+            .done(function (msg) {
+                location.reload();
+            });
+    }
+
 });

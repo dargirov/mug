@@ -68,6 +68,9 @@
             builder.RegisterType<CouriersService>()
                 .As<ICouriersService>();
 
+            builder.RegisterType<FeedbacksService>()
+                .As<IFeedbacksService>();
+
             builder.RegisterGeneric(typeof(DbRepository<>))
                .As(typeof(IDbRepository<>))
                .InstancePerRequest();

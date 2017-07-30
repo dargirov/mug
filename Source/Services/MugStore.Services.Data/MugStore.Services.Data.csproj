@@ -44,10 +44,12 @@
     <Compile Include="CategoriesService.cs" />
     <Compile Include="CitiesService.cs" />
     <Compile Include="CouriersService.cs" />
+    <Compile Include="FeedbacksService.cs" />
     <Compile Include="IBulletinsService.cs" />
     <Compile Include="ICategoriesService.cs" />
     <Compile Include="ICitiesService.cs" />
     <Compile Include="ICouriersService.cs" />
+    <Compile Include="IFeedbacksService.cs" />
     <Compile Include="IImagesService.cs" />
     <Compile Include="ImagesService.cs" />
     <Compile Include="IOrdersService.cs" />

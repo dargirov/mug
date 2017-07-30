@@ -13,21 +13,24 @@
     public class HomeController : BaseController
     {
         private readonly IOrdersService orders;
-        private readonly IBulletinsService bulletin;
+        private readonly IBulletinsService bulletins;
         private readonly IImagesService images;
+        private readonly IFeedbacksService feedbacks;
 
-        public HomeController(IOrdersService orders, IBulletinsService bulletin, IImagesService images)
+        public HomeController(IOrdersService orders, IBulletinsService bulletin, IImagesService images, IFeedbacksService feedbacks)
         {
             this.orders = orders;
-            this.bulletin = bulletin;
+            this.bulletins = bulletin;
             this.images = images;
+            this.feedbacks = feedbacks;
         }
 
         [AuthorizeUser]
         public ActionResult Index()
         {
             var orders = this.orders.Get().Where(o => o.ConfirmationStatus != ConfirmationStatus.Denied).ToList();
-            var bulletins = this.bulletin.Get().OrderByDescending(b => b.Id).ToList();
+            var bulletins = this.bulletins.Get().OrderByDescending(b => b.Id).ToList();
+            var feedbacks = this.feedbacks.Get().OrderByDescending(x => x.IsNew).ThenByDescending(x => x.Id).ToList();
             var images = this.images.Get().OrderByDescending(i => i.Id).ToList();
             var priceChartOrders = new List<Order>();
 
@@ -44,7 +47,8 @@
                 Orders = orders,
                 Bulletin = bulletins,
                 Images = images,
-                PriceChartOrders = priceChartOrders
+                PriceChartOrders = priceChartOrders,
+                Feedbacks = feedbacks
             };
 
             return this.View(viewModel);
@@ -87,13 +91,28 @@
         [AuthorizeUser]
         public ActionResult Bulletin()
         {
-            var bulletins = this.bulletin.Get().OrderByDescending(b => b.Id).ToList();
+            var bulletins = this.bulletins.Get().OrderByDescending(b => b.Id).ToList();
             var viewModel = new BulletinViewModel()
             {
                 Bulletins = bulletins
             };
 
             return this.View(viewModel);
+        }
+
+        [AuthorizeUser]
+        [HttpPost]
+        public ActionResult FeedbackStatus(int id)
+        {
+            var feedback = this.feedbacks.Get().Where(x => x.Id == id).FirstOrDefault();
+            if (feedback == null)
+            {
+                return this.HttpNotFound();
+            }
+
+            feedback.IsNew = false;
+            this.feedbacks.Save();
+            return null;
         }
     }
 }

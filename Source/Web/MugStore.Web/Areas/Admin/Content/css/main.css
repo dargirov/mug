@@ -57,3 +57,13 @@
     width: 100%;
     height: 300px;
 }
+
+.feedback-status {
+    text-decoration: none;
+    color: white;
+}
+
+.feedback-status:hover {
+    color: #ccc;
+    text-decoration: none;
+}

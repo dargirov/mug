@@ -1,20 +1,23 @@
-﻿namespace MugStore.Web.ViewModels.Home
+﻿namespace MugStore.Data.Models
 {
+    using MugStore.Common;
+    using MugStore.Data.Common.Models;
     using System.ComponentModel.DataAnnotations;
-    using Common;
 
-    public class ContactsInputModel
+    public class Feedback : BaseModel<int>
     {
         [Required]
         [MaxLength(GlobalConstants.MaxFeedbackNameLength)]
         public string Name { get; set; }
 
         [Required]
-        [EmailAddress]
         [MaxLength(GlobalConstants.EmailMaxLength)]
         public string Email { get; set; }
 
         [Required]
-        public string Comment { get; set; }
+        public string Text { get; set; }
+
+        [Required]
+        public bool IsNew { get; set; }
     }
 }

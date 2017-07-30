@@ -720,22 +720,6 @@ input.invalid, textarea.invalid {
     font-weight: normal;
 }
 
-#cboxClose {
-    background-color: #217E79;
-    text-align: center;
-    text-decoration: none;
-    height: 35px;
-    text-transform: uppercase;
-    box-sizing: border-box;
-    font-weight: bold;
-    font-size: 12px;
-    line-height: 16px;
-    color: white;
-    font-family: Arial;
-    border: 0;
-    cursor: pointer;
-}
-
 #image-help {
     cursor: pointer;
 }
@@ -879,17 +863,6 @@ input.invalid, textarea.invalid {
     font-family: Tahoma;
     font-size: 14px;
     color: #666;
-}
-
-#cboxOverlay {
-    top: 0;
-    left: 0;
-    overflow: hidden;
-    width: 100%;
-    height: 100%;
-    background-color: #e4e4e4;
-    opacity: 0.5;
-    position: fixed;
 }
 
 @media all and (max-width: 1000px) {

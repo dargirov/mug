@@ -13,7 +13,7 @@
 
         private static void RegisterStyles(BundleCollection bundles)
         {
-            bundles.Add(new StyleBundle("~/Content/main").Include("~/Content/css/main.css", "~/Content/css/touchcarousel.css", "~/Content/font_awesome_4_6_3/css/font-awesome.min.css", "~/Content/css/jquery.webui-popover.min.css"));
+            bundles.Add(new StyleBundle("~/Content/main").Include("~/Content/css/main.css", "~/Content/css/touchcarousel.css", "~/Content/font_awesome_4_6_3/css/font-awesome.min.css", "~/Content/css/jquery.webui-popover.min.css", "~/Content/css/colorbox.css"));
             bundles.Add(new StyleBundle("~/Content/admin/main").Include("~/Areas/Admin/Content/css/main.css", "~/Areas/Admin/Content/css/bootstrap.min.css", "~/Areas/Admin/Content/css/tether.min.css"));
         }
 

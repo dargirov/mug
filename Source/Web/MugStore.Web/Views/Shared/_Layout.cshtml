@@ -12,17 +12,20 @@
 <body>
 
     <section id="logo-container">
-        @*<img src="~/Content/images/logo.png">*@
-
-        @if (ViewBag.PageHeading != null)
-        {
-            <h1>@ViewBag.PageHeading</h1>
-        }
-        else
-        {
-            <h1>Направи си чаша със собствени снимки</h1>
-        }
-
+        <div>
+            <img src="~/Content/images/logo.png">
+        </div>
+        <div>
+            @if (ViewBag.PageHeading != null)
+            {
+                <h1>@ViewBag.PageHeading</h1>
+            }
+            else
+            {
+                <h1>Чаша със снимка</h1>
+                <h2>Направи си сам чаша със снимки</h2>
+            }
+        </div>
     </section>
 
     @RenderBody()

@@ -23,14 +23,23 @@
         var selector = options.selector || 'body';
         var title = options.title || '';
         var content = options.content || '';
-        var timeout = options.timeout || 0;
+        var timeout = options.timeout || false;
+        var width = options.width || 300;
+        var placement = options.placement || 'top';
 
         $(selector).webuiPopover('destroy');
-        $(selector).webuiPopover({ trigger: 'manual', title: title, content: content, animation: _animation, placement: 'top' });
+        $(selector).webuiPopover(
+            {
+                trigger: 'manual',
+                title: title,
+                content: content,
+                animation: _animation,
+                placement: placement,
+                width: width,
+                multi: true,
+                autoHide: timeout
+            });
         $(selector).webuiPopover('show');
-        if (timeout > 0) {
-            setTimeout(function () { $(selector).webuiPopover('hide'); }, timeout);
-        }
     }
 
     return {

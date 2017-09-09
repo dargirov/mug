@@ -881,6 +881,18 @@ input.invalid, textarea.invalid {
     color: #666;
 }
 
+#error-page h1 {
+    font-size: 46px;
+    color: #111;
+}
+
+#error-page h2 {
+    text-align: left;
+    color: #333;
+    font-size: 26px;
+    margin-top: 50px;
+}
+
 @media all and (max-width: 1000px) {
     #header > div {
 		width: 100%;

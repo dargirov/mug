@@ -54,6 +54,8 @@
     <Compile Include="Courier.cs" />
     <Compile Include="DeliveryInfo.cs" />
     <Compile Include="Feedback.cs" />
+    <Compile Include="Log.cs" />
+    <Compile Include="LogLevel.cs" />
     <Compile Include="ProductImage.cs" />
     <Compile Include="OrderStatus.cs" />
     <Compile Include="PaymentMethod.cs" />

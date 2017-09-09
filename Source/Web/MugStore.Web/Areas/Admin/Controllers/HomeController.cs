@@ -3,9 +3,11 @@
     using System.Collections.Generic;
     using System.Configuration;
     using System.Linq;
+    using System.Web;
     using System.Web.Mvc;
     using App_Start;
     using Data.Models;
+    using MugStore.Services.Common;
     using Services.Data;
     using ViewModels.Home;
     using Web.Controllers;
@@ -16,13 +18,15 @@
         private readonly IBulletinsService bulletins;
         private readonly IImagesService images;
         private readonly IFeedbacksService feedbacks;
+        private readonly ILoggerService logger;
 
-        public HomeController(IOrdersService orders, IBulletinsService bulletin, IImagesService images, IFeedbacksService feedbacks)
+        public HomeController(IOrdersService orders, IBulletinsService bulletin, IImagesService images, IFeedbacksService feedbacks, ILoggerService logger)
         {
             this.orders = orders;
             this.bulletins = bulletin;
             this.images = images;
             this.feedbacks = feedbacks;
+            this.logger = logger;
         }
 
         [AuthorizeUser]
@@ -48,7 +52,8 @@
                 Bulletin = bulletins,
                 Images = images,
                 PriceChartOrders = priceChartOrders,
-                Feedbacks = feedbacks
+                Feedbacks = feedbacks,
+                LogMessages = this.logger.GetLogMessages()
             };
 
             return this.View(viewModel);
@@ -107,7 +112,7 @@
             var feedback = this.feedbacks.Get().Where(x => x.Id == id).FirstOrDefault();
             if (feedback == null)
             {
-                return this.HttpNotFound();
+                throw new HttpException(404, id.ToString());
             }
 
             feedback.IsNew = false;

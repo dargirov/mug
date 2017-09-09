@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25123.0
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.12
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Source", "Source", "{CE9FAD52-6B5C-41D8-ADEC-FBBC8ACC12EA}"
 EndProject
@@ -24,6 +24,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MugStore.Common", "MugStore.Common\MugStore.Common.csproj", "{E8734C1D-1A90-4C40-9D19-5D400555FA6C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MugStore.Web.Infrastructure", "Web\MugStore.Web.Infrastructure\MugStore.Web.Infrastructure.csproj", "{55B03FCF-855F-42AB-9CFB-9239D6663CF6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MugStore.Services.Common", "Services\MugStore.Services.Common\MugStore.Services.Common.csproj", "{BF8E8C93-DF09-4412-B1C2-8981EA944DF7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -59,6 +61,10 @@ Global
 		{55B03FCF-855F-42AB-9CFB-9239D6663CF6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{55B03FCF-855F-42AB-9CFB-9239D6663CF6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{55B03FCF-855F-42AB-9CFB-9239D6663CF6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF8E8C93-DF09-4412-B1C2-8981EA944DF7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF8E8C93-DF09-4412-B1C2-8981EA944DF7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF8E8C93-DF09-4412-B1C2-8981EA944DF7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF8E8C93-DF09-4412-B1C2-8981EA944DF7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -74,5 +80,9 @@ Global
 		{8B67B092-A0FF-4A6F-983D-7324AF304706} = {9AEEA07D-6E72-4A2D-BBBD-1DC30389F76D}
 		{E8734C1D-1A90-4C40-9D19-5D400555FA6C} = {CE9FAD52-6B5C-41D8-ADEC-FBBC8ACC12EA}
 		{55B03FCF-855F-42AB-9CFB-9239D6663CF6} = {3EF6F32E-B961-44E6-80DC-8335A9244E91}
+		{BF8E8C93-DF09-4412-B1C2-8981EA944DF7} = {9AEEA07D-6E72-4A2D-BBBD-1DC30389F76D}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {53723F0E-8D53-4B6A-AAEA-3767A93C722D}
 	EndGlobalSection
 EndGlobal

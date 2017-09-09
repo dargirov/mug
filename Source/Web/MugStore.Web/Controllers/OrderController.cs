@@ -2,6 +2,7 @@
 {
     using System;
     using System.Configuration;
+    using System.Web;
     using System.Web.Mvc;
     using Data.Models;
     using Services.Data;
@@ -73,7 +74,7 @@
                 var product = this.products.Get(model.ProductAcronym);
                 if (product == null)
                 {
-                    return this.HttpNotFound();
+                    throw new HttpException(404, model.ProductAcronym);
                 }
 
                 order.Product = product;

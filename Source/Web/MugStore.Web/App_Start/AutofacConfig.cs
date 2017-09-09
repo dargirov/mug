@@ -1,15 +1,16 @@
 ﻿namespace MugStore.Web.App_Start
 {
+    using System.Data.Entity;
     using System.Reflection;
     using System.Web.Mvc;
     using Autofac;
     using Autofac.Integration.Mvc;
     using MugStore.Data;
-    using System.Data.Entity;
-    using MugStore.Services.Data;
     using MugStore.Data.Common;
+    using MugStore.Services.Common;
+    using MugStore.Services.Data;
 
-    public class AutofacConfig
+    public static class AutofacConfig
     {
         public static void RegisterAutofac()
         {
@@ -70,6 +71,9 @@
 
             builder.RegisterType<FeedbacksService>()
                 .As<IFeedbacksService>();
+
+            builder.RegisterType<LoggerService>()
+                .As<ILoggerService>();
 
             builder.RegisterGeneric(typeof(DbRepository<>))
                .As(typeof(IDbRepository<>))

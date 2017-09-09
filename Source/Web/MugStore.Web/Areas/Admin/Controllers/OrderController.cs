@@ -2,6 +2,7 @@
 {
     using System.Data.Entity;
     using System.Linq;
+    using System.Web;
     using System.Web.Mvc;
     using App_Start;
     using Data.Models;
@@ -62,7 +63,7 @@
             var order = this.orders.Get(id);
             if (order == null)
             {
-                return this.HttpNotFound();
+                throw new HttpException(404, id.ToString());
             }
 
             var viewModel = this.Mapper.Map<PreviewViewModel>(order);

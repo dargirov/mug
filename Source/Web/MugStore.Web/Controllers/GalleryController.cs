@@ -1,13 +1,14 @@
 ﻿namespace MugStore.Web.Controllers
 {
+    using System;
     using System.Data.Entity;
     using System.Linq;
     using System.Net;
+    using System.Web;
     using System.Web.Mvc;
     using Common;
     using Services.Data;
     using ViewModels.Gallery;
-    using System;
 
     public class GalleryController : BaseController
     {
@@ -80,7 +81,7 @@
             var tag = this.tags.Get(acronym);
             if (tag == null)
             {
-                return this.HttpNotFound();
+                throw new HttpException(404, acronym);
             }
 
             this.AddTagsToViewBag(this.tags);

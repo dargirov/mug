@@ -14,5 +14,7 @@
         public IEnumerable<Image> Images { get; set; }
 
         public IEnumerable<Order> PriceChartOrders { get; set; }
+
+        public IEnumerable<Log> LogMessages { get; set; }
     }
 }

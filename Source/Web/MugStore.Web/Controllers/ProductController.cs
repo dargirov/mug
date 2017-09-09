@@ -2,8 +2,8 @@
 {
     using System.Configuration;
     using System.Linq;
+    using System.Web;
     using System.Web.Mvc;
-    using Common;
     using Services.Data;
     using ViewModels.Product;
 
@@ -27,7 +27,7 @@
             var product = this.products.Get(acronym);
             if (product == null)
             {
-                return this.HttpNotFound();
+                throw new HttpException(404, acronym);
             }
 
             this.ViewBag.Cities = this.cities.Get().Where(c => c.Highlight).OrderBy(x => x.Name).ToList();

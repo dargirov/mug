@@ -35,6 +35,8 @@
 
         public IDbSet<Feedback> Feedbacks { get; set; }
 
+        public IDbSet<Log> Logs { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

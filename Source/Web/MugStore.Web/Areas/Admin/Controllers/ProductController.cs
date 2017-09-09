@@ -45,7 +45,7 @@
             var product = this.products.Get(id);
             if (product == null)
             {
-                return this.HttpNotFound();
+                throw new HttpException(404, id.ToString());
             }
 
             var viewModel = this.Mapper.Map<CreateViewModel>(product);
@@ -69,7 +69,7 @@
             var product = this.products.Get(id);
             if (product == null)
             {
-                return this.HttpNotFound();
+                throw new HttpException(404, id.ToString());
             }
 
             product.Title = model.Title;
@@ -132,7 +132,7 @@
             var product = this.products.Get(id);
             if (product == null)
             {
-                return this.HttpNotFound();
+                throw new HttpException(404, id.ToString());
             }
 
             if (file.ContentLength > 0)

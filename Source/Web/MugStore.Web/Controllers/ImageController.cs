@@ -2,6 +2,7 @@
 {
     using System;
     using System.IO;
+    using System.Web;
     using System.Web.Mvc;
     using Common;
     using Data.Models;
@@ -21,7 +22,7 @@
             var image = this.images.Get(name);
             if (image == null)
             {
-                return this.HttpNotFound();
+                throw new HttpException(404, name);
             }
 
             var type = image.ContentType.Split('/');
@@ -35,7 +36,7 @@
             var image = this.images.GetProductImage(name);
             if (image == null)
             {
-                return this.HttpNotFound();
+                throw new HttpException(404, name);
             }
 
             var type = image.ContentType.Split('/');

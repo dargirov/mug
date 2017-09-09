@@ -67,3 +67,8 @@
     color: #ccc;
     text-decoration: none;
 }
+
+#log-container {
+    max-height: 500px;
+    overflow-y: scroll;
+}

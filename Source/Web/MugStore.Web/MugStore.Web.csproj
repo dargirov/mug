@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -116,6 +117,7 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -208,6 +210,7 @@
     <Compile Include="Areas\Admin\ViewModels\Tag\IndexViewModel.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\BulletinController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\GalleryController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImageController.cs" />
@@ -328,6 +331,8 @@
     <None Include="Properties\PublishProfiles\mug.pubxml">
       <SubType>Designer</SubType>
     </None>
+    <Content Include="Views\Error\Index.cshtml" />
+    <Content Include="Views\Error\NotFound.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Data\MugStore.Data.Common\MugStore.Data.Common.csproj">
@@ -345,6 +350,10 @@
     <ProjectReference Include="..\..\MugStore.Common\MugStore.Common.csproj">
       <Project>{e8734c1d-1a90-4c40-9d19-5d400555fa6c}</Project>
       <Name>MugStore.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Services\MugStore.Services.Common\MugStore.Services.Common.csproj">
+      <Project>{BF8E8C93-DF09-4412-B1C2-8981EA944DF7}</Project>
+      <Name>MugStore.Services.Common</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Services\MugStore.Services.Data\MugStore.Services.Data.csproj">
       <Project>{8b67b092-a0ff-4a6f-983d-7324af304706}</Project>

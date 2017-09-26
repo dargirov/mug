@@ -195,7 +195,10 @@ var Cart = (function($, Notification) {
                             if (data.courier !== null) {
                                 $('#step4-courier-dt').removeClass('hidden');
                                 $('#step4-courier').removeClass('hidden').html(data.courier);
-                            }
+								$('#step4-delivery-fee').removeClass('hidden');
+								var priceHtml = $('#step4-price').html();
+								$('#step4-price').html(priceHtml + ' *');
+							}
 
                             gotoStep4();
                         }

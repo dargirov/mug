@@ -31,7 +31,7 @@
             }
 
             this.ViewBag.Cities = this.cities.Get().Where(c => c.Highlight).OrderBy(x => x.Name).ToList();
-            this.ViewBag.Couriers = this.couriers.Get().Where(c => c.Active).OrderBy(x => x.Id).ToList();
+            this.ViewBag.Couriers = this.couriers.Get().Where(c => c.Active).OrderBy(x => x.Name).ToList();
             this.ViewBag.ShowRight = false;
             this.ViewBag.PageHeading = product.Title;
             this.ViewBag.SingleMugPrice = decimal.Parse(ConfigurationManager.AppSettings["SingleMugPrice"]);

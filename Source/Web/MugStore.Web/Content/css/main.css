@@ -893,6 +893,13 @@ input.invalid, textarea.invalid {
     margin-top: 50px;
 }
 
+#step4-delivery-fee {
+	font-family: Tahoma;
+    font-size: 14px;
+    color: #333;
+    margin-top: 10px;
+}
+
 @media all and (max-width: 1000px) {
     #header > div {
 		width: 100%;

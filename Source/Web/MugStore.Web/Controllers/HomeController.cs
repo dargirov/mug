@@ -43,7 +43,7 @@
         {
             var products = this.products.Get().Where(c => c.Active).Include(p => p.Images).OrderByDescending(p => p.Id).Take(GlobalConstants.MaxProductsInHomePage).ToList();
             this.ViewBag.Cities = this.cities.Get().Where(c => c.Highlight).OrderBy(x => x.Name).ToList();
-            this.ViewBag.Couriers = this.couriers.Get().Where(c => c.Active).OrderBy(c => c.Id).ToList();
+            this.ViewBag.Couriers = this.couriers.Get().Where(c => c.Active).OrderBy(c => c.Name).ToList();
             this.ViewBag.ShowRight = true;
             this.ViewBag.SingleMugPrice = decimal.Parse(ConfigurationManager.AppSettings["SingleMugPrice"]);
             this.ViewBag.DeliveryPrice = decimal.Parse(ConfigurationManager.AppSettings["DeliveryPrice"]);

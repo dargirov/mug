@@ -327,6 +327,7 @@
     <Content Include="Views\Gallery\Index.cshtml" />
     <Content Include="Views\Product\Index.cshtml" />
     <Content Include="Views\Home\ImageHelp.cshtml" />
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <None Include="Properties\PublishProfiles\icn.pubxml" />
     <None Include="Properties\PublishProfiles\mug.pubxml">
       <SubType>Designer</SubType>

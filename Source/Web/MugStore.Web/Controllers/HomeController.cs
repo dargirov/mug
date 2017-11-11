@@ -1,5 +1,6 @@
 ﻿namespace MugStore.Web.Controllers
 {
+    using System;
     using System.Collections.Generic;
     using System.Configuration;
     using System.Data.Entity;
@@ -11,9 +12,9 @@
     using System.Web.Mvc;
     using System.Xml.Linq;
     using Common;
+    using MugStore.Data.Models;
     using Services.Data;
     using ViewModels.Home;
-    using MugStore.Data.Models;
 
     [RoutePrefix("")]
     public class HomeController : BaseController
@@ -39,6 +40,8 @@
             this.bulletins = bulletins;
         }
 
+        private IList<string> MugInfoTypes => new List<string>() { "dark", "white" };
+
         public ActionResult Index()
         {
             var products = this.products.Get().Where(c => c.Active).Include(p => p.Images).OrderByDescending(p => p.Id).Take(GlobalConstants.MaxProductsInHomePage).ToList();
@@ -58,7 +61,8 @@
 
             var viewModel = new IndexViewModel()
             {
-                Products = products
+                Products = products,
+                MugInfoType = this.MugInfoTypes.OrderBy(x => Guid.NewGuid()).First()
             };
 
             return this.View(viewModel);

@@ -15,7 +15,43 @@
     </div>
 </section>
 
-<section id="recommended-products">
+@{
+    string circleClass = Model.MugInfoType != "white" ? "circle-white" : "";
+}
+<section id="how-to-create" class="how-to-create-@Model.MugInfoType">
+    <div class="site-section">
+        <h2>Как да си направите чаша?</h2>
+        <div id="how-to-info">
+            <div>
+                <ul id="how-to-info-left">
+                    <li>
+                        <div><span class="circle @circleClass">1</span> Качете до 3 снимки</div>
+                        <div class="description">Може да качите до 3 снимки. За максимално качество ви препоръчваме да използвате изображения с висока резолюция - 2362px x 1004px при 300dpi.</div>
+                    </li>
+                    <li>
+                        <div><span class="circle @circleClass">3</span> Изберете количество и начин на плащане</div>
+                        <div class="description">Според избраното количество и начин на плащане се определя крайната цена.</div>
+                    </li>
+                </ul>
+            </div>
+            <div><img src="~/Content/images/mug-@(Model.MugInfoType).jpg"></div>
+            <div>
+                <ul id="how-to-info-right">
+                    <li>
+                        <div><span class="circle @circleClass">2</span> Изберете позиция върху чашата</div>
+                        <div class="description">Използвайте стрелките за да позиционирате изображенията върху чашата.</div>
+                    </li>
+                    <li>
+                        <div><span class="circle @circleClass">4</span> Въведете информация за доставка</div>
+                        <div class="description">Въведете име, телефон и адрес за доставка. Не се изисква регистрация за да направите поръчка.</div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="recommended-products" class="recommended-products-@Model.MugInfoType">
     <div class="site-section">
         <h2>Последни продукти</h2>
         <div class="touchcarousel">

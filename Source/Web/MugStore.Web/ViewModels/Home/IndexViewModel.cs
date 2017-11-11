@@ -6,5 +6,6 @@
     public class IndexViewModel
     {
         public IEnumerable<Product> Products { get; set; }
+        public string MugInfoType { get; set; }
     }
 }

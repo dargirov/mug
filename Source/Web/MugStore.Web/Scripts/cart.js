@@ -104,7 +104,7 @@ var Cart = (function($, Notification) {
 			var deliveryFee = parseFloat($('#delivery-fee').data('fee'));
 
 			$('#selected-quantity').html(quantity);
-			$('#price-container').find('h3').html((price * quantity + deliveryFee) + ',');
+            $('.price-container-calc').find('h3').html((price * quantity + deliveryFee) + '.');
 		}
 
 		// go back bottons

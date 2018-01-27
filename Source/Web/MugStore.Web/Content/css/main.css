@@ -62,7 +62,7 @@ canvas {
     margin: 0;
 }
 
-#price-container {
+.price-container {
     text-align: center;
     display: flex;
     justify-content: center;
@@ -72,18 +72,18 @@ canvas {
     margin-bottom: 10px;
 }
 
-#price-container h3 {
+.price-container h3 {
     font-size: 55px;
     color: black;
 }
 
-#price-container span:first-of-type {
+.price-container span:first-of-type {
     font-size: 20px;
     padding-top: 9px;
     box-sizing: border-box;
 }
 
-#price-container span:last-of-type {
+.price-container span:last-of-type {
     align-self: flex-end;
     box-sizing: border-box;
     padding-bottom: 9px;
@@ -982,6 +982,37 @@ input.invalid, textarea.invalid {
 
 .recommended-products-dark {
     background-color: #E4E4E4;
+}
+
+#canvas-price-container {
+    margin-bottom: 20px;
+}
+
+#canvas-price-container-customer {
+    color: #9E0505;
+    font-size: 55px;
+}
+
+#canvas-price-container-msrp {
+    font-family: 'Comfortaa', cursive;
+    font-weight: bold;
+    font-size: 20px;
+    color: #757373;
+}
+
+#canvas-price-container-msrp s {
+    color: #c0392b;
+    display: inline-block;
+    margin-right: 5px;
+}
+
+#canvas-price-container-msrp span {
+    color: #757373;
+}
+
+.price-container-canvas {
+    text-align: left;
+    justify-content: flex-start;
 }
 
 @media all and (max-width: 1000px) {

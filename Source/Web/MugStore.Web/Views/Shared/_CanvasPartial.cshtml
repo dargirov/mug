@@ -6,9 +6,16 @@
     {
         <div id="canvas-container-right">
             <div data-url="@Url.Action("Upload", "Image")" id="step1">
+                <div id="canvas-price-container">
+                    <div class="price-container price-container-canvas">
+                        <h3>@ViewBag.SingleMugPrice.</h3>
+                        <span>00</span>
+                        <span> лв.</span>
+                    </div>
+                    <div id="canvas-price-container-msrp"><s><span>@Html.Raw(string.Format("{0:0.00} лв.", ViewBag.SingleMugMsrpPrice))</span></s> -@ViewBag.Decrease%</div>
+                </div>
                 <strong><span class="circle">1</span> Качи изображение <i class="fa fa-question-circle-o" aria-hidden="true" id="image-help" data-url="@Url.Action("ImageHelp", "Home")"></i></strong>
                 <input type="file">
-
                 <div id="customization-controls-container" class="hidden">
                     <strong><span class="circle">2</span> Задай разположение</strong>
                     <div data-image="0" class="move-controls hidden">
@@ -70,8 +77,8 @@
                         </td>
                     </tr>
                 </table>
-                <div id="price-container">
-                    <h3>@(ViewBag.SingleMugPrice + ViewBag.DeliveryPrice),</h3>
+                <div class="price-container price-container-calc">
+                    <h3>@(ViewBag.SingleMugPrice + ViewBag.DeliveryPrice).</h3>
                     <span>00</span>
                     <span> лв.</span>
                 </div>

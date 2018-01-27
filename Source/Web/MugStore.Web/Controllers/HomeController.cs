@@ -49,6 +49,8 @@
             this.ViewBag.Couriers = this.couriers.Get().Where(c => c.Active).OrderBy(c => c.Name).ToList();
             this.ViewBag.ShowRight = true;
             this.ViewBag.SingleMugPrice = decimal.Parse(ConfigurationManager.AppSettings["SingleMugPrice"]);
+            this.ViewBag.SingleMugMsrpPrice = decimal.Parse(ConfigurationManager.AppSettings["SingleMugMsrpPrice"]);
+            this.ViewBag.Decrease = Math.Round((this.ViewBag.SingleMugMsrpPrice - this.ViewBag.SingleMugPrice) / this.ViewBag.SingleMugMsrpPrice * 100);
             this.ViewBag.DeliveryPrice = decimal.Parse(ConfigurationManager.AppSettings["DeliveryPrice"]);
             this.AddTagsToViewBag(this.tags);
 

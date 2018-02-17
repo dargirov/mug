@@ -38,6 +38,8 @@
             this.ViewBag.DeliveryPrice = decimal.Parse(ConfigurationManager.AppSettings["DeliveryPrice"]);
             this.AddTagsToViewBag(this.tags);
             var viewModel = this.Mapper.Map<IndexViewModel>(product);
+            viewModel.Email = ConfigurationManager.AppSettings["ContactsEmail"];
+            viewModel.Phone = ConfigurationManager.AppSettings["ContactsPhone"];
 
             return this.View(viewModel);
         }

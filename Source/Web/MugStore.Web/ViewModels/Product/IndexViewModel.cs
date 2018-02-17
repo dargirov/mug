@@ -25,5 +25,9 @@
         public virtual IEnumerable<ProductTag> Tags { get; set; }
 
         public string PageTitle { get; set; }
+
+        public string Email { get; set; }
+
+        public string Phone { get; set; }
     }
 }

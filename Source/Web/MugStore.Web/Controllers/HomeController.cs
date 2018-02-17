@@ -74,7 +74,14 @@
         public ActionResult Contacts()
         {
             this.AddTagsToViewBag(this.tags);
-            return this.View();
+
+            var viewModel = new ContactsViewModel()
+            {
+                Email = ConfigurationManager.AppSettings["ContactsEmail"],
+                Phone = ConfigurationManager.AppSettings["ContactsPhone"]
+            };
+
+            return this.View(viewModel);
         }
 
         [HttpPost]
@@ -100,7 +107,13 @@
                 this.ViewBag.MailSend = false;
             }
 
-            return this.View();
+            var viewModel = new ContactsViewModel()
+            {
+                Email = ConfigurationManager.AppSettings["ContactsEmail"],
+                Phone = ConfigurationManager.AppSettings["ContactsPhone"]
+            };
+
+            return this.View(viewModel);
         }
 
         public ActionResult ImageHelp()

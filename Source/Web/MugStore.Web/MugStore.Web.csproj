@@ -224,6 +224,7 @@
     <Compile Include="ViewModels\Bulletin\BulletinInputModel.cs" />
     <Compile Include="ViewModels\Gallery\IndexViewModel.cs" />
     <Compile Include="ViewModels\Home\ContactsInputModel.cs" />
+    <Compile Include="ViewModels\Home\ContactsViewModel.cs" />
     <Compile Include="ViewModels\Home\IndexViewModel.cs" />
     <Compile Include="ViewModels\Home\SitemapFrequency.cs" />
     <Compile Include="ViewModels\Home\SitemapNode.cs" />

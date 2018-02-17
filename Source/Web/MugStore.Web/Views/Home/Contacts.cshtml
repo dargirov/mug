@@ -1,4 +1,5 @@
-﻿@{
+﻿@model MugStore.Web.ViewModels.Home.ContactsViewModel
+@{
     ViewBag.Title = "За контакти - Чаша със собствен дизайн";
 }
 
@@ -18,9 +19,9 @@
             <li>Адрес:</li>
             <li>Асеновград<br>ул. Борислав №2 (срещу магазин LIDL)</li>
             <li>Телефон:</li>
-            <li>0885 022 352</li>
+            <li>@Model.Phone</li>
             <li>Email:</li>
-            <li>mug3@mail.bg</li>
+            <li>@Model.Email</li>
         </ul>
     </div>
 </section>

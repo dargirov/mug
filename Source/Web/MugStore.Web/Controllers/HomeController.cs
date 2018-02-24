@@ -141,18 +141,22 @@
             var nodes = new List<SitemapNode>();
 
             nodes.Add(new SitemapNode() { Priority = 1, Url = this.Url.RouteUrl("Default", new { action = "Index" }, this.Request.Url.Scheme) });
-            nodes.Add(new SitemapNode() { Priority = 0.5, Url = this.Url.RouteUrl("Default", new { action = "Contacts" }, this.Request.Url.Scheme) });
-            nodes.Add(new SitemapNode() { Priority = 0.6, Url = this.Url.RouteUrl("Default", new { controller = "Gallery", action = "Index" }, this.Request.Url.Scheme) });
+            nodes.Add(new SitemapNode() { Priority = 0.2, Url = this.Url.RouteUrl("Default", new { action = "Contacts" }, this.Request.Url.Scheme) });
+            nodes.Add(new SitemapNode() { Priority = 0.3, Url = this.Url.RouteUrl("Default", new { controller = "Gallery", action = "Index" }, this.Request.Url.Scheme) });
+            if (this.blog.GetPosts().Count() > 0)
+            {
+                nodes.Add(new SitemapNode() { Priority = 0.6, Url = this.Url.RouteUrl("Default", new { controller = "Blog", action = "Index" }, this.Request.Url.Scheme) });
+            }
 
             var products = this.products.Get().Where(p => p.Active).OrderByDescending(p => p.Id).ToList();
             foreach (var product in products)
             {
                 nodes.Add(new SitemapNode()
-                    {
-                        Priority = 0.8,
-                        Frequency = SitemapFrequency.Monthly,
-                        Url = this.Url.RouteUrl("Product", new { acronym = product.Acronym }, this.Request.Url.Scheme)
-                    });
+                {
+                    Priority = 0.8,
+                    Frequency = SitemapFrequency.Monthly,
+                    Url = this.Url.RouteUrl("Product", new { acronym = product.Acronym }, this.Request.Url.Scheme)
+                });
             }
 
             var categories = this.categories.Get().OrderBy(c => c.Order).ToList();
@@ -160,9 +164,20 @@
             {
                 nodes.Add(new SitemapNode()
                 {
-                    Priority = 0.6,
+                    Priority = 0.3,
                     Frequency = SitemapFrequency.Weekly,
                     Url = this.Url.RouteUrl("GalleryCategory", new { acronym = category.Acronym }, this.Request.Url.Scheme)
+                });
+            }
+
+            var posts = this.blog.GetPosts().ToList();
+            foreach (var post in posts)
+            {
+                nodes.Add(new SitemapNode()
+                {
+                    Priority = 0.4,
+                    Frequency = SitemapFrequency.Monthly,
+                    Url = this.Url.RouteUrl("BlogPost", new { acronym = post.Acronym }, this.Request.Url.Scheme)
                 });
             }
 

@@ -1034,7 +1034,7 @@ input.invalid, textarea.invalid {
 }
 
 #blog-posts li > span:first-of-type {
-    width: 25%;
+    width: 35%;
     border-right: 3px solid #b9b9b9;
     padding-right: 20px;
 }
@@ -1106,6 +1106,13 @@ input.invalid, textarea.invalid {
     color: #292929;
     text-decoration: none;
     border-bottom: 1px dotted #292929;
+}
+
+#blog-post .box {
+    border: 1px dotted #737373;
+    padding: 2px 4px;
+    background-color: #f1f1f1;
+    font-family: monospace;
 }
 
 @media all and (max-width: 1000px) {
@@ -1278,5 +1285,9 @@ input.invalid, textarea.invalid {
 
     #how-to-info li .description {
         font-size: 14px;
+    }
+
+    #blog-post img {
+        max-width: 100%;
     }
 }

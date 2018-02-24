@@ -1,8 +1,9 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="bg">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="@ViewBag.PageDescription">
     <title>@ViewBag.Title</title>
 
     @Styles.Render("~/Content/main")
@@ -13,7 +14,7 @@
 
     <section id="logo-container">
         <div>
-            <img src="~/Content/images/logo.png">
+            <img src="~/Content/images/logo.png" alt="mug3.eu logo">
         </div>
         <div>
             @if (ViewBag.PageHeading != null)
@@ -52,13 +53,14 @@
                     <ol>
                         <li><a href="@Url.Action("index", "home")">Начало</a></li>
                         <li><a href="@Url.Action("index", "gallery")">Галерия</a></li>
-                        @*<li><a href="#">За нас</a></li>*@
+                        <li><a href="@Url.Action("index", "blog")">Блог</a></li>
                         <li><a href="@Url.Action("contacts", "home")">Контакти</a></li>
                     </ol>
                 </nav>
                 <h5>Приятели</h5>
                 <nav>
                     <ol>
+                        <li><a href="//sitostil.com" target="_blank" rel="noopener">Ситопечат и реклама</a></li>
                         <li><a href="//svetlini.bg" target="_blank" rel="noopener">Осветление за автомобили</a></li>
                         <li><a href="//remont-farove.com" target="_blank" rel="noopener">Ремонт на фарове</a></li>
                     </ol>

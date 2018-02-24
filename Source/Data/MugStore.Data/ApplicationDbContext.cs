@@ -37,6 +37,10 @@
 
         public IDbSet<Log> Logs { get; set; }
 
+        public IDbSet<Post> Posts { get; set; }
+
+        public IDbSet<PostTag> PostTags { get; set; }
+
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

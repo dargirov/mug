@@ -56,6 +56,8 @@
     <Compile Include="Feedback.cs" />
     <Compile Include="Log.cs" />
     <Compile Include="LogLevel.cs" />
+    <Compile Include="Post.cs" />
+    <Compile Include="PostTag.cs" />
     <Compile Include="ProductImage.cs" />
     <Compile Include="OrderStatus.cs" />
     <Compile Include="PaymentMethod.cs" />

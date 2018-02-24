@@ -12,5 +12,8 @@
         [Required]
         [MaxLength(GlobalConstants.ProductTagAcronymMaxlength)]
         public string Acronym { get; set; }
+
+        [Required]
+        public bool IsProductTag { get; set; }
     }
 }

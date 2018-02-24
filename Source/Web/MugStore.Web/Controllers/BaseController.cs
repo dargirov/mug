@@ -14,7 +14,7 @@
 
         protected void AddTagsToViewBag(ITagsService tags)
         {
-            this.ViewBag.Tags = tags.Get().Where(t => t.Active).OrderBy(t => Guid.NewGuid()).Take(GlobalConstants.MaxTagsInFooter).ToList();
+            this.ViewBag.Tags = tags.GetProductTag().Where(t => t.Active).OrderBy(t => Guid.NewGuid()).Take(GlobalConstants.MaxTagsInFooter).ToList();
         }
     }
 }

@@ -1,0 +1,96 @@
+﻿@model MugStore.Web.Areas.Admin.ViewModels.Blog.CreateViewModel
+<div class="row">
+    <div class="row">
+        <div class="col-md-12">
+            <h4>Blog Post</h4>
+        </div>
+    </div>
+    @{
+        var action = "Create";
+        if (Model.Id > 0)
+        {
+            action = "Edit";
+        }
+    }
+    @using (Html.BeginForm(action, "Blog", FormMethod.Post, new { area = "Admin", @class = "form" }))
+    {
+        @Html.AntiForgeryToken()
+        <div class="row">
+            <div class="col-md-6">
+                <fieldset class="form-group">
+                    <label for="Title">Title</label>
+                    @Html.EditorFor(p => p.Title)
+                </fieldset>
+            </div>
+            <div class="col-md-6">
+                <fieldset class="form-group">
+                    <label for="Acronym">Acronym</label>
+                    @Html.EditorFor(p => p.Acronym)
+                </fieldset>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <fieldset class="form-group">
+                    <label for="PageTitle">Page Title</label>
+                    @Html.EditorFor(p => p.PageTitle)
+                </fieldset>
+            </div>
+            <div class="col-md-4">
+                <fieldset class="form-group">
+                    <label for="PageDescription">Page Description</label>
+                    @Html.EditorFor(p => p.PageDescription)
+                </fieldset>
+            </div>
+            <div class="col-md-4">
+                <fieldset class="form-group">
+                    <label for="Active">Active</label>
+                    <select name="Active" class="form-control">
+                        @{
+                            var selectedTrue = "";
+                            var selectedFalse = "";
+                            if (Model.Active)
+                            {
+                                selectedTrue = " selected=\"selected\"";
+                            }
+                            else
+                            {
+                                selectedFalse = " selected=\"selected\"";
+                            }
+                        }
+                        <option value="True" @Html.Raw(selectedTrue)>Yes</option>
+                        <option value="False" @Html.Raw(selectedFalse)>No</option>
+                    </select>
+                </fieldset>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <fieldset class="form-group">
+                    <label for="ShortDescription">Short Description</label>
+                    @Html.TextAreaFor(p => p.ShortDescription, new { @class = "form-control blog-short-description" })
+                </fieldset>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <fieldset class="form-group">
+                    <label for="FullDescription">Full Description</label>
+                    @Html.TextAreaFor(p => p.FullDescription, new { @class = "form-control blog-full-description" })
+                </fieldset>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                @if (Model.Id == 0)
+                {
+                    <input type="submit" class="btn btn-primary" value="Create">
+                }
+                else
+                {
+                    <input type="submit" class="btn btn-primary" value="Edit">
+                }
+            </div>
+        </div>
+    }
+</div>

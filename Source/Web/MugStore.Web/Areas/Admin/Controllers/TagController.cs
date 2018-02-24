@@ -22,11 +22,13 @@
 
         public ActionResult Index()
         {
-            var tags = this.tags.Get().Include(t => t.Products).ToList();
+            var productTags = this.tags.GetProductTag().Include(t => t.Products).ToList();
+            var postTags = this.tags.GetPostTag().Include(t => t.Posts).ToList();
 
             var viewModel = new IndexViewModel()
             {
-                Tags = tags
+                ProductTags = productTags,
+                PostTags = postTags
             };
 
             return this.View(viewModel);
@@ -41,17 +43,22 @@
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
 
-            var tag = this.tags.Get().Where(t => t.Name == model.Name || t.Acronym == model.Acronym).FirstOrDefault();
-            if (tag == null)
-            {
-                var newTag = new ProductTag()
-                {
-                    Name = model.Name,
-                    Acronym = model.Acronym,
-                    Active = true
-                };
+            var tag = model.IsProductTag
+                ? this.tags.GetProductTag().Any(t => t.Name == model.Name || t.Acronym == model.Acronym)
+                : this.tags.GetPostTag().Any(t => t.Name == model.Name || t.Acronym == model.Acronym);
 
-                this.tags.Create(newTag);
+            if (!tag)
+            {
+                if (model.IsProductTag)
+                {
+                    var newTag = new ProductTag() { Name = model.Name, Acronym = model.Acronym, Active = true };
+                    this.tags.Create(newTag);
+                }
+                else
+                {
+                    var newTag = new PostTag() { Name = model.Name, Acronym = model.Acronym, Active = true };
+                    this.tags.Create(newTag);
+                }
             }
 
             return this.RedirectToAction("Index", "Tag");

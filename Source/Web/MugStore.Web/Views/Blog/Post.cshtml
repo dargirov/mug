@@ -1,0 +1,21 @@
+﻿@model MugStore.Web.ViewModels.Blog.PostViewModel
+@{
+    ViewBag.Title = Model.PageTitle;
+}
+
+@Html.Partial("_MenuPartial")
+
+<section id="blog-post" class="site-section">
+    <h2>@Model.Title</h2>
+    <div class="post-date">Добавен на: @Model.CreatedOn.ToString("dd.MM.yyyy")</div>
+    <div>@Html.Raw(Model.FullDescription)</div>
+    <div>
+        <ul class="post-tags">
+            @foreach (var tag in Model.Tags)
+            {
+                <li>@tag.Name</li>
+            }
+        </ul>
+    </div>
+</section>
+

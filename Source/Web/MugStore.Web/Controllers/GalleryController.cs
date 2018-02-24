@@ -42,6 +42,7 @@
                 .ToList();
 
             this.AddTagsToViewBag(this.tags);
+            this.ViewBag.PageDescription = "Колекция от чаши с картинки в 3D изглед.";
 
             var viewModel = new IndexViewModel()
             {
@@ -65,6 +66,7 @@
             var categories = this.categories.Get().OrderBy(c => c.Order).ToList();
             var products = this.products.Get().Where(p => p.Active && p.CategoryId == category.Id).Include(p => p.Images).OrderByDescending(p => p.Id).ToList();
             this.AddTagsToViewBag(this.tags);
+            this.ViewBag.PageDescription = $"Колекция от чаши със снимки за {category.Name} в 3D изглед.";
 
             var viewModel = new IndexViewModel()
             {
@@ -78,13 +80,14 @@
 
         public ActionResult Tag(string acronym)
         {
-            var tag = this.tags.Get(acronym);
+            var tag = this.tags.GetProductTag(acronym);
             if (tag == null)
             {
                 throw new HttpException(404, acronym);
             }
 
             this.AddTagsToViewBag(this.tags);
+            this.ViewBag.PageDescription = $"Колекция от чаши със снимки за {tag.Name} в 3D изглед.";
             var products = tag.Products.Where(p => p.Active).AsQueryable().Include(p => p.Images).OrderByDescending(p => p.Id).ToList();
             var categories = this.categories.Get().OrderBy(c => c.Order).ToList();
 

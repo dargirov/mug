@@ -19,6 +19,7 @@
         public ActionResult Index()
         {
             this.AddTagsToViewBag(this.tags);
+            this.ViewBag.PageDescription = "Грешка.";
             this.logger.Log(LogLevel.Error, this.Request.QueryString["aspxerrorpath"], "500");
 
             this.Response.StatusCode = 500;
@@ -28,6 +29,7 @@
         public ActionResult NotFound()
         {
             this.AddTagsToViewBag(this.tags);
+            this.ViewBag.PageDescription = "Несъществуваща страница.";
             this.logger.Log(LogLevel.Warn, this.Request.QueryString["aspxerrorpath"], "404");
 
             this.Response.StatusCode = 404;

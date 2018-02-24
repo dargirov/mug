@@ -55,5 +55,13 @@
         public const int MaxCourierNameLength = 50;
 
         public const int MaxFeedbackNameLength = 100;
+
+        public const int MaxBlogPostTitleLength = 1000;
+
+        public const int MaxBlogPostAcronymLength = 1000;
+
+        public const int PostTagMaxlength = 40;
+
+        public const int PostTagAcronymMaxlength = 50;
     }
 }

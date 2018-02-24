@@ -31,19 +31,22 @@
     margin: 5px;
 }
 
-#product-tag-list, #product-tag-list-right {
+#product-tag-list, #product-tag-list-right,
+#post-tag-list, #post-tag-list-right {
     list-style-type: none;
     padding: 0;
 }
 
-#product-tag-list li, #product-tag-list-right li {
+#product-tag-list li, #product-tag-list-right li,
+#post-tag-list li, #post-tag-list-right li {
     padding: 5px 10px;
     margin: 5px;
     display: inline-block;
     background-color: #ddd;
 }
 
-#product-tag-list li:nth-child(2n+1), #product-tag-list-right li:nth-child(2n+1) {
+#product-tag-list li:nth-child(2n+1), #product-tag-list-right li:nth-child(2n+1),
+#post-tag-list li:nth-child(2n+1), #post-tag-list-right li:nth-child(2n+1) {
     background-color: #eee;
 }
 
@@ -71,4 +74,12 @@
 #log-container {
     max-height: 500px;
     overflow-y: scroll;
+}
+
+.blog-short-description {
+    height: 100px;
+}
+
+.blog-full-description {
+    height: 500px;
 }

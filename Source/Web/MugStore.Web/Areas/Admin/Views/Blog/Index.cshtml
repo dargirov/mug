@@ -1,0 +1,49 @@
+﻿@model MugStore.Web.Areas.Admin.ViewModels.Blog.IndexViewModel
+
+@{ 
+    ViewBag.Title = "Mug3 Blog Posts";
+}
+
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-bordered table-hover table-sm">
+            <thead class="thead-inverse">
+                <tr>
+                    <th>Id</th>
+                    <th>Title</th>
+                    <th>Page Title</th>
+                    <th>Short Description</th>
+                    <th>Active</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var post in Model.Posts)
+                {
+                    <tr>
+                        <td>@post.Id</td>
+                        <td>@post.Title</td>
+                        <td>@post.PageTitle</td>
+                        <td>@Html.Raw(post.ShortDescription)</td>
+                        <td>
+                            @if (post.Active)
+                            {
+                                <span class="tag tag-success">Yes</span>
+                            }
+                            else
+                            {
+                                <span class="tag tag-warning">No</span>
+                            }
+                        </td>
+                        <td>
+                            <div class="btn-group btn-group-sm" role="group" aria-label="Actions">
+                                <a href="@Url.Action("Edit", "Blog", new { area = "Admin", id = post.Id })" class="btn btn-secondary">Edit</a>
+                                <a href="#" class="btn btn-secondary">Delete</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

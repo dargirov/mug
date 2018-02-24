@@ -31,6 +31,7 @@
             return this.File(path, image.ContentType);
         }
 
+        [OutputCache(Duration = 86400)]
         public ActionResult ProductImage(string name)
         {
             var image = this.images.GetProductImage(name);

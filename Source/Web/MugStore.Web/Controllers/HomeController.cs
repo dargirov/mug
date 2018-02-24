@@ -6,8 +6,6 @@
     using System.Data.Entity;
     using System.Globalization;
     using System.Linq;
-    using System.Net;
-    using System.Net.Mail;
     using System.Text;
     using System.Web.Mvc;
     using System.Xml.Linq;
@@ -27,8 +25,9 @@
         private readonly IFeedbacksService feedbacks;
         private readonly IOrdersService orders;
         private readonly IBulletinsService bulletins;
+        private readonly IBlogService blog;
 
-        public HomeController(IProductsService products, ICitiesService cities, ITagsService tags, ICategoriesService categories, ICouriersService couriers, IFeedbacksService feedbacks, IOrdersService orders, IBulletinsService bulletins)
+        public HomeController(IProductsService products, ICitiesService cities, ITagsService tags, ICategoriesService categories, ICouriersService couriers, IFeedbacksService feedbacks, IOrdersService orders, IBulletinsService bulletins, IBlogService blog)
         {
             this.products = products;
             this.cities = cities;
@@ -38,6 +37,7 @@
             this.feedbacks = feedbacks;
             this.orders = orders;
             this.bulletins = bulletins;
+            this.blog = blog;
         }
 
         private IList<string> MugInfoTypes => new List<string>() { "dark", "white" };
@@ -52,6 +52,7 @@
             this.ViewBag.SingleMugMsrpPrice = decimal.Parse(ConfigurationManager.AppSettings["SingleMugMsrpPrice"]);
             this.ViewBag.Decrease = Math.Round((this.ViewBag.SingleMugMsrpPrice - this.ViewBag.SingleMugPrice) / this.ViewBag.SingleMugMsrpPrice * 100);
             this.ViewBag.DeliveryPrice = decimal.Parse(ConfigurationManager.AppSettings["DeliveryPrice"]);
+            this.ViewBag.PageDescription = "С този сайт може сам да си направиш чаша. Качи до 3 снимки и ги разположи на желаното място върху 3D модел на чаша. Поръчката става бързо и не е необходима регистрация.";
             this.AddTagsToViewBag(this.tags);
 
             this.ViewBag.HideGoogleAnalytics = false;
@@ -64,7 +65,8 @@
             var viewModel = new IndexViewModel()
             {
                 Products = products,
-                MugInfoType = this.MugInfoTypes.OrderBy(x => Guid.NewGuid()).First()
+                MugInfoType = this.MugInfoTypes.OrderBy(x => Guid.NewGuid()).First(),
+                BlogPosts = this.blog.GetPosts().ToList()
             };
 
             return this.View(viewModel);
@@ -74,6 +76,7 @@
         public ActionResult Contacts()
         {
             this.AddTagsToViewBag(this.tags);
+            this.ViewBag.PageDescription = "За контакти и въпроси при направа на чаша може да се свържете с нас.";
 
             var viewModel = new ContactsViewModel()
             {
@@ -89,6 +92,7 @@
         public ActionResult Contacts(ContactsInputModel model)
         {
             this.AddTagsToViewBag(this.tags);
+            this.ViewBag.PageDescription = "За контакти и въпроси при направа на чаша може да се свържете с нас.";
 
             if (this.ModelState.IsValid)
             {

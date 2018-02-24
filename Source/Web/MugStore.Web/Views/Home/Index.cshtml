@@ -73,6 +73,26 @@
     </div>
 </section>
 
+@if (Model.BlogPosts.Count() > 0)
+{
+    <section id="blog-posts" class="blog-post-@Model.MugInfoType-inv">
+        <div class="site-section">
+            <h2>Блог</h2>
+            <div>
+                <ul>
+                    @foreach (var post in Model.BlogPosts)
+                    {
+                        <li>
+                            <span><a href="@Url.RouteUrl("BlogPost", new { acronym = post.Acronym })">@post.Title</a></span>
+                            <span>@Html.Raw(post.ShortDescription)</span>
+                        </li>
+                    }
+                </ul>
+            </div>
+        </div>
+    </section>
+}
+
 @section scripts {
     @Scripts.Render("~/bundles/colorbox")
     <script>

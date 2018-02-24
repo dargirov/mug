@@ -5,12 +5,20 @@
 
     public interface ITagsService
     {
-        IQueryable<ProductTag> Get();
+        IQueryable<ProductTag> GetProductTag();
 
-        ProductTag Get(int id);
+        IQueryable<PostTag> GetPostTag();
 
-        ProductTag Get(string acronym);
+        ProductTag GetProductTag(int id);
+
+        PostTag GetPostTag(int id);
+
+        ProductTag GetProductTag(string acronym);
+
+        PostTag GetPostTag(string acronym);
 
         void Create(ProductTag tag);
+
+        void Create(PostTag tag);
     }
 }

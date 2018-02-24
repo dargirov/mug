@@ -6,32 +6,55 @@
 
     public class TagsService : ITagsService
     {
-        private readonly IDbRepository<ProductTag> tags;
+        private readonly IDbRepository<ProductTag> productTags;
+        private readonly IDbRepository<PostTag> postTags;
 
-        public TagsService(IDbRepository<ProductTag> tags)
+        public TagsService(IDbRepository<ProductTag> productTags, IDbRepository<PostTag> postTags)
         {
-            this.tags = tags;
+            this.productTags = productTags;
+            this.postTags = postTags;
         }
 
         public void Create(ProductTag tag)
         {
-            this.tags.Add(tag);
-            this.tags.Save();
+            this.productTags.Add(tag);
+            this.productTags.Save();
         }
 
-        public IQueryable<ProductTag> Get()
+        public void Create(PostTag tag)
         {
-            return this.tags.All();
+            this.postTags.Add(tag);
+            this.postTags.Save();
         }
 
-        public ProductTag Get(int id)
+        public IQueryable<ProductTag> GetProductTag()
         {
-            return this.tags.GetById(id);
+            return this.productTags.All();
         }
 
-        public ProductTag Get(string acronym)
+        public IQueryable<PostTag> GetPostTag()
         {
-            return this.tags.All().Where(t => t.Acronym == acronym).FirstOrDefault();
+            return this.postTags.All();
+        }
+
+        public ProductTag GetProductTag(int id)
+        {
+            return this.productTags.GetById(id);
+        }
+
+        public PostTag GetPostTag(int id)
+        {
+            return this.postTags.GetById(id);
+        }
+
+        public ProductTag GetProductTag(string acronym)
+        {
+            return this.productTags.All().Where(t => t.Acronym == acronym).FirstOrDefault();
+        }
+
+        public PostTag GetPostTag(string acronym)
+        {
+            return this.postTags.All().Where(t => t.Acronym == acronym).FirstOrDefault();
         }
     }
 }

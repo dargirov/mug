@@ -5,6 +5,8 @@
 
     public class IndexViewModel
     {
-        public IEnumerable<ProductTag> Tags { get; set; }
+        public IEnumerable<ProductTag> ProductTags { get; set; }
+
+        public IEnumerable<PostTag> PostTags { get; set; }
     }
 }

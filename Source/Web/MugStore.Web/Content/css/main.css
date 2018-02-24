@@ -109,7 +109,7 @@ canvas {
     margin: 0 auto;
     padding: 40px 0;
     box-sizing: border-box;
-    color: #A5A5A5;
+    color: #757575;
     font-family: Tahoma;
     font-size: 15px;
     font-weight: normal;
@@ -1015,6 +1015,99 @@ input.invalid, textarea.invalid {
     justify-content: flex-start;
 }
 
+.blog-post-dark-inv {
+    background-color: #fff;
+    color: #343434;
+}
+
+.blog-post-white-inv {
+    background-color: #E4E4E4;
+    color: #343434;
+}
+
+#blog-posts ul {
+    list-style-type: none;
+}
+
+#blog-posts li {
+    display: flex;
+}
+
+#blog-posts li > span:first-of-type {
+    width: 25%;
+    border-right: 3px solid #b9b9b9;
+    padding-right: 20px;
+}
+
+#blog-posts li > span:last-of-type {
+    color: #343434;
+    padding-left: 20px;
+}
+
+#blog-posts li > span:first-of-type a {
+    color: #0fcabf;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#blog-posts li > span:first-of-type a:hover {
+    color: #343434;
+}
+
+#blog-posts-page a {
+    color: #0fcabf;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 28px;
+}
+
+#blog-posts-page a:hover {
+    color: #343434;
+}
+
+#blog-posts-page ol, .post-tags ul {
+    list-style-type: none;
+}
+
+#blog-posts-page ol > li {
+    margin-bottom: 50px;
+}
+
+#blog-posts-page ol > li strong {
+    font-weight: normal;
+    color: #343434;
+}
+
+.post-tags li {
+    display: inline-block;
+    border-bottom: 1px dotted #A5A5A5;
+    font-size: 12px;
+    margin-right: 10px;
+}
+
+.post-date {
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+
+#blog-post div > p {
+    display: inline-block;
+    text-indent: 50px;
+    margin-bottom: 20px;
+}
+
+#blog-post div ul {
+    list-style-type: disc;
+    margin-bottom: 20px;
+    list-style-position: inside;
+}
+
+#blog-post a {
+    color: #292929;
+    text-decoration: none;
+    border-bottom: 1px dotted #292929;
+}
+
 @media all and (max-width: 1000px) {
     #header > div {
         width: 100%;
@@ -1177,5 +1270,13 @@ input.invalid, textarea.invalid {
 
     #how-to-info-left li:last-of-type, #how-to-info-right li:first-of-type, #how-to-info-right li:last-of-type {
         padding-top: 0;
+    }
+
+    #recommended-products strong {
+        font-size: 16px;
+    }
+
+    #how-to-info li .description {
+        font-size: 14px;
     }
 }

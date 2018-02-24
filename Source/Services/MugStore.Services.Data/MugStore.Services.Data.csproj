@@ -40,11 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BlogService.cs" />
     <Compile Include="BulletinsService.cs" />
     <Compile Include="CategoriesService.cs" />
     <Compile Include="CitiesService.cs" />
     <Compile Include="CouriersService.cs" />
     <Compile Include="FeedbacksService.cs" />
+    <Compile Include="IBlogService.cs" />
     <Compile Include="IBulletinsService.cs" />
     <Compile Include="ICategoriesService.cs" />
     <Compile Include="ICitiesService.cs" />

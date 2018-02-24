@@ -50,7 +50,7 @@
 
             var viewModel = this.Mapper.Map<CreateViewModel>(product);
             viewModel.Categories = this.categories.Get();
-            viewModel.AllTags = this.tags.Get().Where(t => t.Active).ToList();
+            viewModel.AllTags = this.tags.GetProductTag().Where(t => t.Active).ToList();
 
             return this.View(viewModel);
         }
@@ -63,7 +63,7 @@
 
             if (!this.ModelState.IsValid)
             {
-                return this.View("Create", model);
+                return this.RedirectToAction("Edit", "Product", new { id = id });
             }
 
             var product = this.products.Get(id);
@@ -171,7 +171,7 @@
         public ActionResult EditTag(int tagId, int productId, string type)
         {
             var product = this.products.Get(productId);
-            var tag = this.tags.Get(tagId);
+            var tag = this.tags.GetProductTag(tagId);
 
             if (product == null || tag == null)
             {

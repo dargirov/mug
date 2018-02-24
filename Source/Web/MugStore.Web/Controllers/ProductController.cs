@@ -37,6 +37,7 @@
             this.ViewBag.SingleMugPrice = decimal.Parse(ConfigurationManager.AppSettings["SingleMugPrice"]);
             this.ViewBag.DeliveryPrice = decimal.Parse(ConfigurationManager.AppSettings["DeliveryPrice"]);
             this.AddTagsToViewBag(this.tags);
+            this.ViewBag.PageDescription = $"{product.PageTitle}, {product.Title}";
             var viewModel = this.Mapper.Map<IndexViewModel>(product);
             viewModel.Email = ConfigurationManager.AppSettings["ContactsEmail"];
             viewModel.Phone = ConfigurationManager.AppSettings["ContactsPhone"];

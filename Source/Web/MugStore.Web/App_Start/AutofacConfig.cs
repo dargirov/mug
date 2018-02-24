@@ -75,6 +75,9 @@
             builder.RegisterType<LoggerService>()
                 .As<ILoggerService>();
 
+            builder.RegisterType<BlogService>()
+                .As<IBlogService>();
+
             builder.RegisterGeneric(typeof(DbRepository<>))
                .As(typeof(IDbRepository<>))
                .InstancePerRequest();

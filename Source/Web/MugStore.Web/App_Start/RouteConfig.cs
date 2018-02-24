@@ -47,6 +47,13 @@
             );
 
             routes.MapRoute(
+                name: "BlogPost",
+                url: "blog/{acronym}",
+                defaults: new { controller = "Blog", action = "Post" },
+                namespaces: new[] { "MugStore.Web.Controllers" }
+            );
+
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },

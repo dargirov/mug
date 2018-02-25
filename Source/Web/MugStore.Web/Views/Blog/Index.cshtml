@@ -12,14 +12,20 @@
             @foreach (var post in Model.Posts)
             {
                 <li>
-                    <h3><a href="@Url.RouteUrl("BlogPost", new { acronym = post.Acronym })">@post.Title</a></h3>
-                    <strong>@Html.Raw(post.ShortDescription)</strong>
-                    <ul class="post-tags">
-                        @foreach (var tag in post.Tags)
-                        {
-                            <li>@tag.Name</li>
-                        }
-                    </ul>
+                    <article>
+                        <header>
+                            <h3><a href="@Url.RouteUrl("BlogPost", new { acronym = post.Acronym })">@post.Title</a></h3>
+                            <strong>@Html.Raw(post.ShortDescription)</strong>
+                        </header>
+                        <footer>
+                            <ul class="post-tags">
+                                @foreach (var tag in post.Tags)
+                                {
+                                    <li>@tag.Name</li>
+                                }
+                            </ul>
+                        </footer>
+                    </article>
                 </li>
             }
         </ol>

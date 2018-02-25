@@ -1108,7 +1108,7 @@ input.invalid, textarea.invalid {
     border-bottom: 1px dotted #292929;
 }
 
-#blog-post article section strong {
+#blog-post section strong {
     font-weight: 500;
 }
 

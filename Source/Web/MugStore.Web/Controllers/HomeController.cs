@@ -94,7 +94,7 @@
             this.AddTagsToViewBag(this.tags);
             this.ViewBag.PageDescription = "За контакти и въпроси при направа на чаша може да се свържете с нас.";
 
-            if (this.ModelState.IsValid)
+            if (this.ModelState.IsValid && model.Captcha.Trim() == "5")
             {
                 this.feedbacks.Add(new Data.Models.Feedback()
                 {

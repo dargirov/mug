@@ -119,5 +119,19 @@
             this.feedbacks.Save();
             return null;
         }
+
+        [AuthorizeUser]
+        [HttpPost]
+        public ActionResult FeedbackDelete(int id)
+        {
+            var feedback = this.feedbacks.Get().Where(x => x.Id == id).FirstOrDefault();
+            if (feedback == null)
+            {
+                throw new HttpException(404, id.ToString());
+            }
+
+            this.feedbacks.Delete(feedback);
+            return null;
+        }
     }
 }

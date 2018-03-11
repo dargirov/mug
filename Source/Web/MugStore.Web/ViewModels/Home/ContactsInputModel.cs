@@ -16,5 +16,10 @@
 
         [Required]
         public string Comment { get; set; }
+
+        [Required]
+        [MinLength(1)]
+        [MaxLength(5)]
+        public string Captcha { get; set; }
     }
 }

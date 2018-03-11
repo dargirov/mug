@@ -61,12 +61,12 @@
     height: 300px;
 }
 
-.feedback-status {
+.feedback-status, .feedback-delete {
     text-decoration: none;
     color: white;
 }
 
-.feedback-status:hover {
+.feedback-status:hover, .feedback-delete:hover {
     color: #ccc;
     text-decoration: none;
 }

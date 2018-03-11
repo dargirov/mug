@@ -10,5 +10,7 @@
         void Add(Feedback feedback);
 
         void Save();
+
+        void Delete(Feedback feedback);
     }
 }

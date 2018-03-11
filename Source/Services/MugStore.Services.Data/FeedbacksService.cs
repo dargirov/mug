@@ -28,5 +28,11 @@
         {
             this.feedback.Save();
         }
+
+        public void Delete(Feedback feedback)
+        {
+            this.feedback.Delete(feedback);
+            this.feedback.Save();
+        }
     }
 }

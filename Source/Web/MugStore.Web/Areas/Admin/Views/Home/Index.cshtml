@@ -45,7 +45,7 @@
 
 <div class="row">
     <div class="col-md-6">
-        <h3 id="feedback-section" data-url="@Url.Action("FeedbackStatus")">Feedback</h3>
+        <h3 id="feedback-section" data-url-status="@Url.Action("FeedbackStatus")" data-url-delete="@Url.Action("FeedbackDelete")">Feedback</h3>
         <ul class="list-group">
             @foreach (var feedback in Model.Feedbacks)
             {
@@ -54,6 +54,8 @@
                     {
                         <span class="tag tag-default tag-pill pull-xs-right"><a href="#" title="Mark as seen" data-id="@feedback.Id" class="feedback-status">!</a></span>
                     }
+
+                    <span class="tag tag-default tag-pill pull-xs-right"><a href="#" title="Delete" data-id="@feedback.Id" class="feedback-delete">X</a></span>
                     <h6 class="list-group-item-heading">From: @feedback.Name<br>Email: @feedback.Email</h6>
                     <p class="list-group-item-text">@feedback.Text</p>
                 </li>

@@ -44,7 +44,11 @@
             @Html.AntiForgeryToken()
             <input type="text" name="name" placeholder="Име" required="required">
             <input type="email" name="email" placeholder="Email адрес за обратна връзка" required="required">
-            <textarea name="comment" placeholder="Съобщение" required="required"></textarea>
+            <textarea name="comment" placeholder="Съобщение/Въпрос" required="required"></textarea>
+            <div>
+                <img src="~/Content/images/captcha-sadxcvfasqgsoius.png" alt="captcha">
+                <input type="text" name="captcha" placeholder="Въведете сумата на 2те числа" required="required">
+            </div>
             <a href="#" class="blue-btn" id="contacts-send-email-btn">Изпрати</a>
         </form>
     </div>

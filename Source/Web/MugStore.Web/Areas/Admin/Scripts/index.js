@@ -64,9 +64,21 @@
     function feedbackStatusClick(e) {
         e.preventDefault();
         var id = $(this).data('id');
-        var url = $('#feedback-section').data('url');
+        var url = $('#feedback-section').data('url-status');
 
         $.ajax({ method: 'POST', url: url, data: { id: id }})
+            .done(function (msg) {
+                location.reload();
+            });
+    }
+
+    $('.feedback-delete').on('click', feedbackDeleteClick);
+    function feedbackDeleteClick(e) {
+        e.preventDefault();
+        var id = $(this).data('id');
+        var url = $('#feedback-section').data('url-delete');
+
+        $.ajax({ method: 'POST', url: url, data: { id: id } })
             .done(function (msg) {
                 location.reload();
             });

@@ -78,6 +78,11 @@
         var id = $(this).data('id');
         var url = $('#feedback-section').data('url-delete');
 
+        var confirmDelete = confirm("Delete feedback?");
+        if (confirmDelete !== true) {
+            return;
+        }
+
         $.ajax({ method: 'POST', url: url, data: { id: id } })
             .done(function (msg) {
                 location.reload();

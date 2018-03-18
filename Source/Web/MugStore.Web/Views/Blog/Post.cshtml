@@ -8,7 +8,7 @@
 <article id="blog-post" class="site-section">
     <header>
         <h2>@Model.Title</h2>
-        <div class="post-date">Добавен на: @Model.CreatedOn.ToString("dd.MM.yyyy")</div>
+        @*<div class="post-date">Добавен на: @Model.CreatedOn.ToString("dd.MM.yyyy")</div>*@
     </header>
     <section>
         @Html.Raw(Model.FullDescription)

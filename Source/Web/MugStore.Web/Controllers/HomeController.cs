@@ -66,7 +66,7 @@
             {
                 Products = products,
                 MugInfoType = this.MugInfoTypes.OrderBy(x => Guid.NewGuid()).First(),
-                BlogPosts = this.blog.GetPosts().ToList()
+                BlogPosts = this.blog.GetPosts(x => x.Active).ToList()
             };
 
             return this.View(viewModel);
@@ -143,7 +143,7 @@
             nodes.Add(new SitemapNode() { Priority = 1, Url = this.Url.RouteUrl("Default", new { action = "Index" }, this.Request.Url.Scheme) });
             nodes.Add(new SitemapNode() { Priority = 0.2, Url = this.Url.RouteUrl("Default", new { action = "Contacts" }, this.Request.Url.Scheme) });
             nodes.Add(new SitemapNode() { Priority = 0.3, Url = this.Url.RouteUrl("Default", new { controller = "Gallery", action = "Index" }, this.Request.Url.Scheme) });
-            if (this.blog.GetPosts().Count() > 0)
+            if (this.blog.GetPosts(x => x.Active).Count() > 0)
             {
                 nodes.Add(new SitemapNode() { Priority = 0.6, Url = this.Url.RouteUrl("Default", new { controller = "Blog", action = "Index" }, this.Request.Url.Scheme) });
             }
@@ -170,7 +170,7 @@
                 });
             }
 
-            var posts = this.blog.GetPosts().ToList();
+            var posts = this.blog.GetPosts(x => x.Active).ToList();
             foreach (var post in posts)
             {
                 nodes.Add(new SitemapNode()

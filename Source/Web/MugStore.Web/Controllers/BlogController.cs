@@ -23,7 +23,7 @@
 
             var viewModel = new IndexViewModel()
             {
-                Posts = this.blog.GetPosts().ToList()
+                Posts = this.blog.GetPosts(x => x.Active).ToList()
             };
 
             return this.View(viewModel);

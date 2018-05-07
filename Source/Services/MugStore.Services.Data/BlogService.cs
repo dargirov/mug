@@ -1,6 +1,8 @@
 ﻿namespace MugStore.Services.Data
 {
+    using System;
     using System.Linq;
+    using System.Linq.Expressions;
     using MugStore.Data.Common;
     using MugStore.Data.Models;
 
@@ -13,9 +15,9 @@
             this.posts = posts;
         }
 
-        public IQueryable<Post> GetPosts()
+        public IQueryable<Post> GetPosts(Expression<Func<Post, bool>> predicate)
         {
-            return this.posts.All().Where(x => x.Active).OrderByDescending(x => x.CreatedOn);
+            return this.posts.All().Where(predicate).OrderByDescending(x => x.CreatedOn);
         }
 
         public Post GetPost(string acronym)

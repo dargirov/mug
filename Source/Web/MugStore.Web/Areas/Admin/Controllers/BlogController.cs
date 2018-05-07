@@ -23,7 +23,7 @@
 
         public ActionResult Index()
         {
-            var posts = this.blog.GetPosts().ToList();
+            var posts = this.blog.GetPosts(x => true).ToList();
 
             var viewModel = new IndexViewModel()
             {

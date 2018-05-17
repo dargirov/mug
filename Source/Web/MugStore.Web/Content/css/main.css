@@ -1045,13 +1045,13 @@ input.invalid, textarea.invalid {
 }
 
 #blog-posts li > span:first-of-type a {
-    color: #0fcabf;
     font-weight: bold;
     text-decoration: none;
+    color: #343434;
 }
 
 #blog-posts li > span:first-of-type a:hover {
-    color: #343434;
+    color: #0fcabf;
 }
 
 #blog-posts-page a {
